@@ -30,7 +30,7 @@
                         <ul class="submenu-angle" aria-expanded="true">
                             <li><a title="Dashboard" href="index.cfm">	<i class="icon nalika-home homeico"></i><span class="mini-sub-pro lft-home">Dashboard</span></a></li>                     
                             <li><a title="Movie Theaters" href="theaters-list.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Movie Theaters</span></a></li>
-                            <li><a title="Movies" href="product-edit.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Movies</span></a></li>
+                            <li><a title="Movies" href="movies.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Movies</span></a></li>
                             <li><a title="Show Timings" href="product-detail.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Show Timings</span></a></li>
                             <li><a title="Home Page" href="product-cart.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Home Page</span></a></li>
                             <li><a title="Users" href="product-payment.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Users</span></a></li>
