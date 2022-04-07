@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Movie Theaters | Nalika </title>
+    <title>Movies | Nalika </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <cfinclude template="common.cfm"> 
-    <script src="js/theater.js"></script> 
+    <script src="js/movies.js"></script> 
     <script src="./js/jquery.validate.min.js"></script>
 </head>
 <body>
     <cfoutput>
     <cfinclude template="leftsidemenu.cfm"> 
     <cfset variables.userID=session.stLoggedInUser.userID />
-    <cfset theaterObj=CreateObject("component","components.theater")/>
+    <cfset moviesObj=CreateObject("component","components.movies")/>
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
         <div class="container-fluid">
@@ -40,8 +40,8 @@
 												<i class="icon nalika-home"></i>
 											</div>
 											<div class="breadcomb-ctn">
-												<h2>Movie Theaters</h2>
-												<p>List all Theaters</p>
+												<h2>Movies</h2>
+												<p>List all Movies</p>
 											</div>
 										</div>
                                     </div>                                   
@@ -57,38 +57,38 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
-                            <h4>Movie Theaters</h4>
+                            <h4>Movies</h4>
                             <div class="add-product">
-                                <a href="##addEmployeeModal" class="myform-btnVal pd-setting"  data-toggle="modal"><span class="modal-txt1">ADD THEATER</span></a> 
+                                <a href="##addEmployeeModal" class="myform-btnVal pd-setting"  data-toggle="modal"><span class="modal-txt1">ADD MOVIE</span></a> 
                             </div>
-                            <cfset theaterList=theaterObj.getTheaters(variables.userID)/>                          
+                            <cfset movieList=moviesObj.getMovies(variables.userID)/>                          
                             <table>
                                 <tr>
                                     <th>S.No</th>
-                                    <th>Theater Name</th>
+                                    <th>Movies Name</th>
                                     <th>Image</th> 
                                     <th>Created Date</th>
                                     <th>Action</th>
                                 </tr> 
-                                <cfloop query="theaterList"> 
+                                <cfloop query="movieList"> 
                                     <tr>
-                                        <td>#theaterList.CurrentRow#</td>
-                                        <td>#theaterList.fld_theaterName# </td>
+                                        <td>#movieList.CurrentRow#</td>
+                                        <td>#movieList.fld_moviename# </td>
                                         <td>
-                                            <cfif theaterList.fld_theaterImage NEQ ''>
-												<img src="./theaterimages/#theaterList.fld_theaterImage#" class="user-img"/>
+                                            <cfif movieList.fld_poster NEQ ''>
+												<img src="./movies/#movieList.fld_poster#" class="user-img"/>
 											<cfelse> 
                                                  <img src="./theaterimages/no-man.jpg" class="user-img">
 											</cfif>
                                         </td>
                                         <td> 
-                                            #theaterList.createdDate#
+                                            #movieList.createdDate#
                                         </td>
                                         <td>
-                                            <a href="##addEmployeeModal" class="edit modal-trigger-edit icon-clr"  data-id=#theaterList.theaterID#  data-toggle="modal">
+                                            <a href="##addEmployeeModal" class="edit modal-trigger-edit icon-clr"  data-id=#movieList.movieID#  data-toggle="modal">
 												 <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                             </a>
-                                            <a href="" class="delete modal-trigger icon-clr"   data-toggle="modal" data-id=#theaterList.theaterID# data-target=".deleteEmployeeModal">
+                                            <a href="" class="delete modal-trigger icon-clr"   data-toggle="modal" data-id=#movieList.movieID# data-target=".deleteEmployeeModal">
                                                 <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             </a>
                                         </td>
@@ -113,30 +113,50 @@
 		<div id="addEmployeeModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="" method="post" name="theater" id="theater" enctype="multipart/form-data">
+					<form action="" method="post" name="movie" id="movie" enctype="multipart/form-data">
                         <input type="hidden" id="userID" name="userID" value= "#variables.userID#"/>
-						<input type="hidden" id="theaterID" name="theaterID" value="" />
+						<input type="hidden" id="movieID" name="movieID" value="" />
 						<div class="modal-header">						
 							<h4 class="modal-title mod-title"></h4>
 							<button type="button" class="close mod-clos" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">					
 							<div class="form-group">
-								<label>Theater Name:</label>
-								<input type="text" name="fld_theaterName" id="fld_theaterName" class="form-control" >
+								<label>Movie Name:</label>  
+								<input type="text" name="fld_moviename" id="fld_moviename" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>Theater Image:</label>
-								<input type="file" name="fld_theaterImage" accept=".jpg,.jpeg,.png" id="fld_theaterImage" onchange="preview()">
+								<label>Movie Poster:</label>
+								<input type="file" name="fld_poster" accept=".jpg,.jpeg,.png" id="fld_poster" onchange="preview()">
 								<input type="hidden" id="old_img" name="old_img" value="" />
                                 <div class="img-popup">
 								    <img src="./theaterimages/no-man.jpg" class="user-imgpopup" id="editimgsrc"/> 	 
 							    </div>
-							</div>				
+							</div> 
+                            <div class="form-group">
+								<label>Movie Details:</label>
+								<textArea name="fld_details" id="fld_details" class="form-control" ></textArea>
+							</div>
+                            <div class="form-group">
+								<label>Cast:</label>
+								<textArea name="fld_cast" id="fld_cast" class="form-control" ></textArea>
+							</div>	
+                             <div class="form-group">
+								<label>Facts:</label>
+								<textArea name="fld_facts" id="fld_facts" class="form-control" ></textArea>
+							</div>
+                            <div class="form-group">
+								<label>Movie Link:</label>
+								<input type="text" name="fld_link" id="fld_link" class="form-control" >
+							</div>
+                            <div class="form-group">
+								<label>Movie Ratings:</label>
+								<input type="text" name="fld_ratings" id="fld_ratings" class="form-control" >
+							</div>			
 						</div>
 						<div class="modal-footer">
 							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-							<input type="submit"  name="formTheaterSubmit" id ="formTheaterSubmit"  class="btn add-theatre formTheaterSubmit" value="Add">
+							<input type="submit"  name="formMovieSubmit" id ="formMovieSubmit"  class="btn add-theatre formMovieSubmit" value="Add">
 						</div>
 					</form>
 				</div>
@@ -147,9 +167,9 @@
 					<div class="modal-content dltcontent">
 						<form action="" method="post">
 							<div class="modal-contentVal">
-								<input type="hidden" id="theaterIDVal" name="theaterIDVal" value="" />
+								<input type="hidden" id="movieID Val" name="movieID Val" value="" />
 								<div class="modal-header">						
-									<h4 class="modal-title">Delete Theater</h4>
+									<h4 class="modal-title">Delete Movie</h4>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								</div>
 								<div class="modal-body">					
@@ -157,7 +177,7 @@
 								</div>
 								<div class="modal-footer">
 									<input type="button" class="btn btn-default cancel" data-dismiss="modal" value="Cancel">
-									<input type="submit" name="deleteSubmit" data-id=#theaterList.theaterID#  class="btn btn-danger deleteSubmit" value="Delete">
+									<input type="submit" name="deleteSubmit" data-id=#movieList.movieID#  class="btn btn-danger deleteSubmit" value="Delete">
 								</div>
 							</div>	
 						</form>
