@@ -1,24 +1,4 @@
-/*-----------------------------------------------------------------------------------
 
-    Template Name: Your template name 
-    Template URI: http://bootexperts.com
-    Description: This is html5 template
-    Author: BootExperts
-    Author URI: http://bootexperts.com
-    Version: 1.0
-
------------------------------------------------------------------------------------
-    
-    CSS INDEX
-    ===================
-	
-    1. Theme Default CSS (body, link color, section etc)
-
------------------------------------------------------------------------------------*/
-
-/*----------------------------------------*/
-/*  1.  Theme default CSS
-/*----------------------------------------*/
 html, body {height: 100%; font-family: 'Roboto', sans-serif;font-weight:400;background:#152036;}
 .floatleft {float:left}
 .floatright {float:right}
@@ -687,16 +667,7 @@ ul.message-menu li .message-content p, ul.notification-menu li .notification-con
 ul.setting-panel-list li{
 	display: block !important;
 }
-.checkbox-title-pro h2 {
-    display: block;
-    font-size: 14px;
-    margin: 0px;
-    padding: 8px 0px;
-	color: #fff;
-}
-.checkbox-title-pro{
-	position:relative;
-}
+
 .ts-custom-check{
 	position:absolute;
 	right:0px;
@@ -1836,192 +1807,6 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 	margin-bottom: 0px;
 }
 
-/*
-    Wizard
-*/
-.product-cart-inner {
-    background: #1b2a47;
-    padding: 20px 20px;
-}
-.product-status-wrap.border-pdt-ct p{
-	font-size:14px;
-	color:#fff;
-}
-.wizard > .steps{
-    position: relative;
-    display: block;
-    width: 100%;
-}
-.wizard.vertical > .steps{
-    display: inline;
-    float: left;
-    width: 30%;
-}
-.wizard > .steps .number{
-    font-size: 1.429em;
-}
-.wizard > .steps > ul > li{
-    width: 25%;
-}
-.wizard > .steps > ul > li,.wizard > .actions > ul > li{
-    float: left;
-}
-.wizard.vertical > .steps > ul > li{
-    float: none;
-    width: 100%;
-}
-.wizard > .steps a,.wizard > .steps a:hover,.wizard > .steps a:active{
-    display: block;
-    width: auto;
-    margin: 0 0.5em 0.5em;
-    padding: 1em 1em;
-    text-decoration: none;
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-.wizard > .steps .disabled a,.wizard > .steps .disabled a:hover,.wizard > .steps .disabled a:active{
-    background: #eee;
-    color: #aaa;
-    cursor: default;
-}
-.wizard > .steps .current a,.wizard > .steps .current a:hover,.wizard > .steps .current a:active{
-    background: #fff !important ;
-    color: #333;
-    cursor: default;
-}
-.wizard > .steps .done a,.wizard > .steps .done a:hover,.wizard > .steps .done a:active{
-    background: #9dc8e2;
-    color: #fff;
-}
-.wizard > .steps .error a,.wizard > .steps .error a:hover,.wizard > .steps .error a:active{
-    background: #ff3111;
-    color: #fff;
-}
-.wizard > .content{
-    display: block;
-    margin: 20px 0px;
-    min-height: 35em;
-    overflow: hidden;
-    position: relative;
-    width: auto;
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-.wizard.vertical > .content{
-    display: inline;
-    float: left;
-    margin: 0 2.5% 0.5em 2.5%;
-    width: 65%;
-}
-.wizard > .content > .body{
-    float: left;
-    position: absolute;
-    width: 95%;
-    height: 95%;
-}
-.wizard > .content > .body ul{
-    list-style: disc !important;
-}
-.wizard > .content > .body ul > li{
-    display: list-item;
-}
-.wizard > .content > .body > iframe{
-    border: 0 none;
-    width: 100%;
-    height: 100%;
-}
-.wizard > .content > .body input{
-    display: block;
-    border: 1px solid #ccc;
-	color:#fff;
-}
-.wizard > .content > .body input[type="checkbox"]{
-    display: inline-block;
-}
-.wizard > .content > .body input.error{
-    background: rgb(251, 227, 228);
-    border: 1px solid #fbc2c4;
-    color: #8a1f11;
-}
-.wizard > .content > .body label{
-    display: inline-block;
-    margin-bottom: 0.5em;
-	font-size:14px;
-	color:#fff;
-}
-.wizard > .content > .body label.error{
-    color: #8a1f11;
-    display: inline-block;
-    margin-left: 1.5em;
-}
-.wizard > .actions{
-    position: relative;
-    display: block;
-    text-align: right;
-    width: 100%;
-}
-.wizard.vertical > .actions{
-    display: inline;
-    float: right;
-    margin: 0 2.5%;
-    width: 95%;
-}
-.wizard > .actions > ul{
-    display: inline-block;
-    text-align: right;
-}
-.wizard > .actions > ul > li{
-    margin: 0 0.5em;
-}
-.wizard.vertical > .actions > ul > li{
-    margin: 0 0 0 1em;
-}
-.wizard > .actions a,.wizard > .actions a:hover,.wizard > .actions a:active{
-    background: #2184be;
-    color: #fff;
-    display: block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-.wizard > .actions .disabled a,.wizard > .actions .disabled a:hover,.wizard > .actions .disabled a:active{
-    background: #eee;
-    color: #333;
-}
-.current-info{
-	display:none;
-}
-#example-basic-h-1, #example-basic-h-0, #example-basic-h-2, #example-basic-h-3{
-	display:none;
-}
-.product-cart-inner .wizard > .steps a, .product-cart-inner .wizard > .steps a:hover, .product-cart-inner .wizard > .steps a:active{
-	padding:10px 15px;
-	line-height: 24px;
-	font-size:14px;
-	background:#152036;
-	font-weight:700;
-}
-.product-cart-inner .wizard > .steps .disabled a, .product-cart-inner .wizard > .steps .disabled a:hover, .product-cart-inner .wizard > .steps .disabled a:active{
-	background: #152036;
-    color: #fff;
-}
-.product-cart-inner .wizard > .content > .body{
-	width:100%;
-	background: #1b2a47;
-}
-.product-cart-inner .wizard > .content > .body input {
-    width: 35px;
-}
-.wizard > .actions a, .wizard > .actions a:hover, .wizard > .actions a:active {
-    background: #152036;
-}
 .product-list-cart .product-status-wrap{
 	border: 0px solid rgba(0,0,0,.12);
 	padding:0px;
@@ -2141,9 +1926,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 /*----------------------------------------*/
 /*  37.  Basic Form css
 /*----------------------------------------*/
-.sparkline8-graph .basic-login-inner, .sparkline8-graph .login-social-inner, .sparkline9-graph .basic-login-form-ad, .sparkline11-graph .basic-login-form-ad{
-	text-align:left;
-}
+
 .form-group-inner {
     margin-bottom: 15px;
 }
@@ -2165,27 +1948,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 	border-radius:0px;
 	box-shadow: none;
 }
-.icheckbox_square-green, .iradio_square-green {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0;
-    padding: 0;
-    width: 22px;
-    height: 22px;
-    background: url(img/green1.png) no-repeat;
-    border: none;
-    cursor: pointer;
-}
-.icheckbox_square-green {
-    background-position: 0 0;
-}
-.icheckbox_square-green.hover {
-    background-position: -22px 0;
-}
-.icheckbox_square-green.checked {
-    background-position: -44px 0;
-	transition: all 0.3s ease 0s;
-}
+
 .login-btn-inner .check-label{
 	margin-left:5px;
 }
@@ -2338,19 +2101,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .modal-bootstrap.modal-login-form a{
 	color: #fff;
 }
-.bt-df-checkbox {
-    padding: 8px 0px;
-    margin: 0;
-}
-.bt-df-checkbox .radio-checked {
-    margin-right: 8px;
-}
-.icheckbox_square-green.checked {
-    background-position: -44px 0;
-}
-.icheckbox_square-green.checked.disabled {
-    background-position: -88px 0;
-}
+
 .iradio_square-green {
     background-position: -109px 0;
 }
@@ -2363,12 +2114,6 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 }
 .iradio_square-green.checked.disabled {
     background-position: -197px 0;
-}
-.inline-checkbox-cs {
-    padding: 7px 0px;
-}
-.inline-checkbox-cs .checkbox-inline{
-	padding-left:0px;
 }
 .form-group-inner.input-with-success label{
 	color: #1ab394;
@@ -2491,9 +2236,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .file-upload-inner.file-upload-inner-right.ts-forms .append-small-btn .file-button input, .file-upload-inner.file-upload-inner-right.ts-forms .append-big-btn .file-button input{
 	right: 0px !important;
 }
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #03a9f4;
-}
+
 .chosen-select-single label{
 	font-weight:400;
 	font-size:14px;
@@ -2508,17 +2251,11 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .sliderv-wrapper.black-slider.slider-bl-pro {
     margin-top: 22px;
 }
-.input-mask-title{
-	text-align:right;
-	padding: 5px 0px;
-}
+
 .input-mark-inner, .data-custon-pick, .touchspin-inner{
 	text-align:left;
 }
-.input-mask-title label, .input-mark-inner .help-block, .data-custon-pick label, .touchspin-inner label{
-	font-size:14px;
-	font-weight:400;
-}
+
 .input-mark-inner .form-control, .data-custon-pick .form-control{
 	border-radius:0px;
 }
@@ -2586,60 +2323,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
     -o-transition: all.4s;
     transition: all.4s;
 }
-.sp-replacer {
-    background-color: #e0e0e0;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    -o-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-    border: none;
-    bottom: 0;
-    cursor: pointer;
-    display: block;
-    outline: none;
-    padding-left: 16px;
-    padding-top: 0px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 52px;
-    color: rgba(0,0,0,.56);
-    -webkit-transition: color.4s;
-    -moz-transition: color.4s;
-    -ms-transition: color.4s;
-    -o-transition: color.4s;
-    transition: color.4s;
-}
-.sp-preview-inner, .sp-alpha-inner, .sp-thumb-inner {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-.sp-replacer {
-	top: 20px !important;
-    padding-left: 10px !important;
-}
-.sp-preview {
-    position: relative;
-    width: 25px;
-    height: 20px;
-    border: solid 1px #222;
-    margin-right: 5px;
-    float: left;
-    z-index: 0;
-    top: 5px;
-}
-.sp-dd {
-    padding: 2px 0;
-    height: 16px;
-    line-height: 16px;
-    float: left;
-    font-size: 10px;
-    margin-top: 5px;
-}
+
 .dual-list-box-inner option{
 	padding:0px 15px;
 }
@@ -2651,14 +2335,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .dual-list-box-inner .comon-method{
 	margin-top:15px;
 }
-.images-cropper-pro .btn-primary{
-	background-color: #03a9f4;
-    border-color: #03a9f4;
-}
-.images-cropper-pro .btn-primary:active:focus, .images-cropper-pro .btn-primary:active:hover{
-	background-color: #03a9f4;
-    border-color: #03a9f4;
-}
+
 .images-action-pro .btn-warning{
 	background-color: #03a9f4;
     border-color: #03a9f4;
@@ -2841,30 +2518,12 @@ ul.mailbox-list li:hover a, ul.h-list li:hover a {
     width: 100%;
     height: 300px;
 }
-.main-sparkline8-hd h1, .main-sparkline9-hd h1, .main-spark7-hd h1, .main-sparkline10-hd h1, .main-sparkline11-hd h1, .main-sparkline12-hd h1, .main-sparkline13-hd h1, .main-sparkline14-hd h1{
-	font-size:20px;
-	color:#303030;
-}
+
 .basic-choropleth {
     height: 400px;
     width: 100%;
 }
-.alert-title.dropzone-custom-sys h2, .download-custom h2, .alert-title h2, .code-editor-single h2 {
-    font-size: 20px;
-    color: #444;
-}
-.alert-title.dropzone-custom-sys p, .download-custom p, .alert-title p, .sparkline-content p {
-    font-size: 14px;
-    color: #444;
-    line-height: 24px;
-}
-.preloader-single {
-    background: #fff;
-    width: 100%;
-    height: 350px;
-    padding: 15px;
-    border: 1px solid rgba(0,0,0,.12);
-}
+
 .img-preview-custom {
     height: 130px;
     width: 200px;
@@ -3238,27 +2897,7 @@ ul.mailbox-list li:hover a, ul.h-list li:hover a {
 	border-radius:0px;
 	box-shadow: none;
 }
-.icheckbox_square-green, .iradio_square-green {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0;
-    padding: 0;
-    width: 22px;
-    height: 22px;
-    background: url(img/green1.png) no-repeat;
-    border: none;
-    cursor: pointer;
-}
-.icheckbox_square-green {
-    background-position: 0 0;
-}
-.icheckbox_square-green.hover {
-    background-position: -22px 0;
-}
-.icheckbox_square-green.checked {
-    background-position: -44px 0;
-	transition: all 0.3s ease 0s;
-}
+
 .login-btn-inner .check-label{
 	margin-left:5px;
 }
@@ -3399,19 +3038,7 @@ ul.mailbox-list li:hover a, ul.h-list li:hover a {
     margin: 0px;
     padding: 7px 0px;
 }
-.bt-df-checkbox {
-    padding: 8px 0px;
-    margin: 0;
-}
-.bt-df-checkbox .radio-checked {
-    margin-right: 8px;
-}
-.icheckbox_square-green.checked {
-    background-position: -44px 0;
-}
-.icheckbox_square-green.checked.disabled {
-    background-position: -88px 0;
-}
+
 .iradio_square-green {
     background-position: -109px 0;
 }
@@ -3424,15 +3051,6 @@ ul.mailbox-list li:hover a, ul.h-list li:hover a {
 }
 .iradio_square-green.checked.disabled {
     background-position: -197px 0;
-}
-.inline-checkbox-cs {
-    padding: 7px 0px;
-}
-.inline-checkbox-cs .checkbox-inline{
-	padding-left:0px;
-}
-.checkbox.login-checkbox label {
-    padding-left: 0px;
 }
 .btn-success.loginbtn {
     background-color: #e12503;
@@ -3453,25 +3071,12 @@ ul.mailbox-list li:hover a, ul.h-list li:hover a {
     background-color: #e12503;
     border-color: #e12503;
 }
-.main-sparkline16-hd h1, .main-sparkline15-hd h1{
-	font-size:20px;
-}
-.knob-single input {
-    position: absolute;
-    top: 0px;
-    right: 25px;
-}
+
 .download-custom i {
     font-size: 40px;
 }
-.dropzone-custom-sys {
-    text-align: center;
-    padding: 30px 100px;
-    background: #fff;
-}
-div#sparklinehome canvas {
-    width: 100% !important;
-}
+
+
 .fc hr, .fc tbody, .fc td, .fc th, .fc thead, .fc-row {
     border-color: #1b2a47!important;
     background: #1b2a47!important;
@@ -3497,17 +3102,6 @@ th.fc-day-header.fc-widget-header {
 .persoanl-widget-hd.persoanl1-widget-hd {
     margin-top: 20px;
 }
-.flot-chart {
-    height: 319px;
-}
-.flot-chart.flot-chart-sts{
-	height: 308px;
-}
-.flot-chart-sts {
-    width: calc(100% + 16px);
-    left: -10px;
-    bottom: -10px;
-}
 #flotTip, .flot-tooltip {
     position: absolute;
     color: #333;
@@ -3525,12 +3119,7 @@ th.fc-day-header.fc-widget-header {
 .portlet-title {
     margin-bottom: 20px;
 }
-.flot-chart-sts.flot-chart.curved-chart-statistic{
-	height: 432px;
-}
-.flot-chart.flot-chart-sts.line-chart-statistic{
-	height: 362px;
-}
+
 .last-month-sc{
 	font-size:14px;
 }
@@ -3567,18 +3156,7 @@ th.fc-day-header.fc-widget-header {
 .left-custom-menu-adp-wrap .mCustomScrollBox, .left-custom-menu-adp-wrap .mCSB_container{
 	overflow:unset;
 }
-.mini-navbar #sidebar.active .sidebar-nav ul.metismenu li ul.submenu-angle{
-	width: 200px;
-    left: 80px;
-    position: absolute;
-    z-index: 999;
-}
-.mini-navbar #sidebar.active .sidebar-nav ul.metismenu li ul.submenu-angle li a{
-	text-align:left;
-}
-.mini-navbar #sidebar.active .sidebar-nav .metismenu a {
-    padding: 16px 15px;
-}
+
 .review-pro-edt.mg-b-0-pt{
 	margin-bottom:0px;
 }
@@ -3658,4 +3236,49 @@ th.fc-day-header.fc-widget-header {
 }
 .icon-clr{
     color:white;
+}
+.editimgsrc{
+    width: 100px;
+    height: 100px;
+}
+div.containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+div.online-indicator {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-right: 10px;
+    background-color: #0fcc45;
+    border-radius: 50%;
+    position: relative;
+    margin-right: -62px;
+    margin-top: -18px;
+  }
+  span.blink {
+    display: block;
+    width: 11px;
+    height: 11px;
+    background-color: #0fcc45;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: blink 1s linear infinite;
+  }
+  /*Animations*/
+  @keyframes blink {
+    100% { transform: scale(2, 2); 
+            opacity: 0;
+          }
+  }
+  #editimgsrc{
+      width:100px;
+      height:100px;
+  }
+.dateslt{
+  width: 196px;
+}
+.dateselection{   
+    display:flex;
 }

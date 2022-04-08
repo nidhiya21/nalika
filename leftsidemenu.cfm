@@ -13,6 +13,11 @@
         <div class="nalika-profile">
             <div class="profile-dtl">
                 <a href="##"><img src="img/notification/4.png.webp" alt="" /></a>
+                <div class="containers">
+                    <div class="online-indicator">
+                        <span class="blink"></span>
+                    </div>
+                </div>
                 <h2 class="admin-name"><cfoutput>#userName#</cfoutput></h2>
             </div>
             <div class="profile-social-dtl">
@@ -31,7 +36,7 @@
                             <li><a title="Dashboard" href="index.cfm">	<i class="icon nalika-home homeico"></i><span class="mini-sub-pro lft-home">Dashboard</span></a></li>                     
                             <li><a title="Movie Theaters" href="theaters-list.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Movie Theaters</span></a></li>
                             <li><a title="Movies" href="movies.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Movies</span></a></li>
-                            <li><a title="Show Timings" href="product-detail.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Show Timings</span></a></li>
+                            <li><a title="Show Timings" href="times.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Show Timings</span></a></li>
                             <li><a title="Home Page" href="product-cart.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Home Page</span></a></li>
                             <li><a title="Users" href="product-payment.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Users</span></a></li>
                             <li><a title="Booking" href="data-table.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Booking</span></a></li>
