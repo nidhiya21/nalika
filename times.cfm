@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Movies | Nalika </title>
+    <title>Show Timings | Nalika </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <cfinclude template="common.cfm"> 
@@ -40,8 +40,8 @@
 												<i class="icon nalika-home"></i>
 											</div>
 											<div class="breadcomb-ctn">
-												<h2>Movies</h2>
-												<p>List all Movies</p>
+												<h2>Show Timings</h2>
+												<p>List all Show Timings</p>
 											</div>
 										</div>
                                     </div>                                   
@@ -57,9 +57,9 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
-                            <h4>Movies</h4>
+                            <h4>Show Timings</h4>
                             <div class="add-product">
-                                <a href="##addEmployeeModal" class="myform-btnVal pd-setting"  data-toggle="modal"><span class="modal-txt1">ADD MOVIE</span></a> 
+                                <a href="##addEmployeeModal" class="myform-btnVal pd-setting"  data-toggle="modal"><span class="modal-txt1">ADD SHOW TIMINGS</span></a> 
                             </div>
                             <cfset movieList=moviesObj.getMovies(variables.userID)/>                          
                             <table>
@@ -130,23 +130,35 @@
 						<div class="modal-header">						
 							<h4 class="modal-title mod-title"></h4>
 							<button type="button" class="close mod-clos" data-dismiss="modal" aria-hidden="true">&times;</button>
-						</div> 
+						</div>
 						<div class="modal-body">					
 							<div class="form-group">
-								<label>Movie Name:</label>  
-								<input type="text" name="fld_moviename" id="fld_moviename" class="form-control">
+                                <cfset theatreList=moviesObj.gettheatreList(variables.userID)/>   
+								<label>Select Theater:</label>  
+                                <select class="form-select form-control" name="theaterID">            
+                                    <cfloop query="theatreList"> 
+                                        <option value="#theatreList.theaterID#">#theatreList.fld_theaterName#</option>
+                                    </cfloop>
+                                </select>
+							</div>
+                            <div class="form-group">
+                                <cfset movieList=moviesObj.getmovieList(variables.userID)/>   
+								<label>Select Movie:</label>  
+                                <select class="form-select form-control" name="movieID">            
+                                    <cfloop query="movieList"> 
+                                        <option value="#movieList.movieID#">#movieList.fld_moviename#</option>
+                                    </cfloop>
+                                </select>
 							</div>
 							<div class="form-group">
-								<label>Movie Poster:</label>
-								<input type="file" name="fld_poster" accept=".jpg,.jpeg,.png" id="fld_poster" onchange="preview()">
-								<input type="hidden" id="old_img" name="old_img" value="" />
-                                <div class="img-popup">
-								    <img src="./theaterimages/no-man.jpg" class="user-imgpopup" id="editimgsrc"/> 	 
-							    </div>
-							</div> 
+                               
+								<label>Show Start Date:</label>
+								<input type="date" name="startDate" id=startDate"dob" class="form-control dateslt" />
+							</div>
                             <div class="form-group">
-								<label>Movie Details:</label>
-								<textArea name="fld_details" id="fld_details" class="form-control" ></textArea>
+								<label>Show End Date:</label>
+								<input type="date" name="endDate" id="endDate" class="form-control dateslt" />
+                               
 							</div>
                             <div class="form-group">
 								<label>Cast:</label>
@@ -215,6 +227,7 @@
         </div>
     </div>  
     <cfinclude template="commonfooter.cfm">
+
     </cfoutput>
 </body>
 </html>

@@ -72,7 +72,7 @@ $(document).on("click", ".deleteSubmit", function () {
     }); 
 });
 $(document).on("click", ".myform-btnVal", function () {
-    $(".mod-title").html("ADD MOVIE"); 
+    $(".mod-title").html("ADD SHOW TIMINGS"); 
     var editSrc = "./theaterimages/no-man.jpg";
     $("#editimgsrc").attr('src', editSrc);      
 });   
@@ -87,7 +87,7 @@ $(document).on("click", ".modal-trigger-edit", function () {
                 movieID:movieID},
                 success: function(response) {
                     if (response){ 
-                        $(".mod-title").html("EDIT MOVIE");    
+                        $(".mod-title").html("EDIT SHOW TIMINGS");     
                     //  console.log(typeof response);
                         var dataInJson = JSON.parse(response);
                         $(".modal-content #fld_moviename").val(dataInJson.items[0].fld_moviename);
@@ -115,7 +115,7 @@ $(document).on("click", ".modal-trigger-edit", function () {
 $(document).on('hide.bs.modal','#addEmployeeModal', function () {
      $("label.fail-alert" ).remove(); 
     $('input').removeClass('fail-alert');
-    document.getElementById("movie").reset();
+    document.getElementById("movie").reset(); 
     
 });
 function preview() {
