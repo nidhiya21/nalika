@@ -26,7 +26,7 @@
                         location("../login.cfm", "no");     
                     }
                 }else{
-                    Session.errormsg = errorMessage;
+                    Session.errormsg = errorMessage; 
                     location("../login.cfm", "no");     
                 }
             return Session.errormsg ;

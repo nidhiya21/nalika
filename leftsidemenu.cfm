@@ -40,7 +40,7 @@
                             <li><a title="Home Page" href="product-cart.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Home Page</span></a></li>
                             <li><a title="Users" href="product-payment.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Users</span></a></li>
                             <li><a title="Booking" href="data-table.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Booking</span></a></li>
-                            <li><a title="Update Password" href="password-recovery.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Update Password</span></a></li>
+                            <li><a title="Update Password" href="password.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Update Password</span></a></li>
                         </ul>
                     </li>                     
                 </ul>

@@ -7,14 +7,18 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <cfinclude template="common.cfm"> 
-    <script src="js/movies.js"></script> 
+    <script type="text/javascript" src="./js/moment.min.js"></script>
+    <link href= "./css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="./js/bootstrap-datetimepicker.min.js"> </script>
+    <script src="./js/times.js"></script> 
     <script src="./js/jquery.validate.min.js"></script>
+    </script>
 </head>
 <body>
     <cfoutput>
     <cfinclude template="leftsidemenu.cfm"> 
     <cfset variables.userID=session.stLoggedInUser.userID />
-    <cfset moviesObj=CreateObject("component","components.movies")/>
+    <cfset showsObj=CreateObject("component","components.times")/>
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
         <div class="container-fluid">
@@ -61,45 +65,40 @@
                             <div class="add-product">
                                 <a href="##addEmployeeModal" class="myform-btnVal pd-setting"  data-toggle="modal"><span class="modal-txt1">ADD SHOW TIMINGS</span></a> 
                             </div>
-                            <cfset movieList=moviesObj.getMovies(variables.userID)/>                          
+                            <cfset showList=showsObj.getShows(variables.userID)/>                          
                             <table>
                                 <tr>
                                     <th>S.No</th>
+                                    <th>Theater</th> 
                                     <th>Movies Name</th>
-                                    <th>Poster</th> 
-                                    <th>Trailer</th>
-                                    <th>Created Date</th>
-                                    <th>Cast</th>
+                                    <th>Start Date / End Date</th>
+                                    <th>Start Time / End Time</th>
+                                    <th>Gold Full</th>
+                                    <th>Gold Half</th>
+                                    <th>ODC Full</th>
+                                    <th>ODC Half</th>
+                                    <th>Box</th>
+                                    <th>Seats</th>
                                     <th>Action</th>
                                 </tr> 
-                                <cfloop query="movieList"> 
+                                <cfloop query="showList"> 
                                     <tr>
-                                        <td>#movieList.CurrentRow#</td>
-                                        <td>#movieList.fld_moviename# </td>
+                                        <td>#showList.CurrentRow#</td>
+                                        <td>#showList.fld_theaterName# </td>
+                                        <td>#showList.fld_moviename# </td>
+                                        <td>#showList.startDate# / #showList.endDate#</td>
+                                        <td>#showList.startTime# / #showList.endTime#</td>
+                                        <td>#showList.seats#</td> 
+                                        <td><i class="fa fa-inr"></i> #showList.goldFull#</td> 
+                                        <td><i class="fa fa-inr"></i> #showList.goldHalf#</td> 
+                                        <td><i class="fa fa-inr"></i> #showList.odcFull#</td> 
+                                        <td><i class="fa fa-inr"></i> #showList.odcHalf#</td> 
+                                        <td><i class="fa fa-inr"></i> #showList.box#</td> 
                                         <td>
-                                            <cfif movieList.fld_poster NEQ ''>
-												<img src="./movies/#movieList.fld_poster#" class="user-img"/>
-											<cfelse> 
-                                                 <img src="./theaterimages/no-man.jpg" class="user-img">
-											</cfif>
-                                        </td>
-                                        <td> 
-                                            
-                                            <iframe width="150" height="100"
-                                            src=#movieList.fld_link#>
-                                            </iframe>
-                                        </td>
-                                        <td> 
-                                            #movieList.createdDate#
-                                        </td>
-                                         <td> 
-                                            #movieList.fld_cast#
-                                        </td>
-                                        <td>
-                                            <a href="##addEmployeeModal" class="edit modal-trigger-edit icon-clr"  data-id=#movieList.movieID#  data-toggle="modal">
+                                            <a href="##addEmployeeModal" class="edit modal-trigger-edit icon-clr"  data-id=#showList.showID#  data-toggle="modal">
 												 <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                             </a>
-                                            <a href="" class="delete modal-trigger icon-clr"   data-toggle="modal" data-id=#movieList.movieID# data-target=".deleteEmployeeModal">
+                                            <a href="" class="delete modal-trigger icon-clr"   data-toggle="modal" data-id=#showList.showID# data-target=".deleteEmployeeModal">
                                                 <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             </a>
                                         </td>
@@ -124,69 +123,94 @@
 		<div id="addEmployeeModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="" method="post" name="movie" id="movie" enctype="multipart/form-data">
+					<form action="" method="post" name="showtime" id="showtime" enctype="multipart/form-data">
                         <input type="hidden" id="userID" name="userID" value= "#variables.userID#"/>
-						<input type="hidden" id="movieID" name="movieID" value="" />
+						<input type="hidden" id="showID" name="showID" value="" />  
 						<div class="modal-header">						
 							<h4 class="modal-title mod-title"></h4>
 							<button type="button" class="close mod-clos" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">					
 							<div class="form-group">
-                                <cfset theatreList=moviesObj.gettheatreList(variables.userID)/>   
+                                <cfset theatreList=showsObj.gettheatreList(variables.userID)/>   
 								<label>Select Theater:</label>  
-                                <select class="form-select form-control" name="theaterID">            
-                                    <cfloop query="theatreList"> 
+                                <select class="form-select form-control" name="theaterID" id="theaterID">  
+                                    <option label="Select Theater">Select Theater</option>          
+                                    <cfloop query="theatreList">  
                                         <option value="#theatreList.theaterID#">#theatreList.fld_theaterName#</option>
                                     </cfloop>
                                 </select>
 							</div>
                             <div class="form-group">
-                                <cfset movieList=moviesObj.getmovieList(variables.userID)/>   
+                                <cfset movieList=showsObj.getmovieList(variables.userID)/>   
 								<label>Select Movie:</label>  
-                                <select class="form-select form-control" name="movieID">            
+                                <select class="form-select form-control" name="movieID" id="movieID" > 
+                                    <option label="Select Movie">Select Movie</option>                   
                                     <cfloop query="movieList"> 
                                         <option value="#movieList.movieID#">#movieList.fld_moviename#</option>
                                     </cfloop>
                                 </select>
 							</div>
 							<div class="form-group">
-                               
-								<label>Show Start Date:</label>
-								<input type="date" name="startDate" id=startDate"dob" class="form-control dateslt" />
+                                <div class="priceblock">
+                                    <div>
+                                        <label>Show Start Date:</label>
+                                        <input type="date" name="startDate" id="startDate" class="form-control  dateslt" />    
+                                    </div>
+                                    <div  class="endTimes">
+                                        <label>Show End Date:</label>
+                                        <input type="date" name="endDate" id="endDate" class="form-control dateslt " />
+                                    </div>
+                                </div>    
 							</div>
                             <div class="form-group">
-								<label>Show End Date:</label>
-								<input type="date" name="endDate" id="endDate" class="form-control dateslt" />
-                               
+                                <div class="priceblock">
+                                <div>
+                                    <label>Show Start Times:</label>
+                                    <input class="form-control" type="text" placeholder="--:--" class="startTime" name="startTime" id="startTime" /> 
+                                </div>
+                                <div class="endTimes">
+                                    <label>Show End Times:</label>
+                                    <input class="form-control" type="text"  placeholder="--:--" class="endTime" name="endTime" id="endTime" /> 
+                                </div>
+                                </div>
 							</div>
-                            <div class="form-group">
-								<label>Cast:</label>
-								<textArea name="fld_cast" id="fld_cast" class="form-control" ></textArea>
-							</div>	
-                             <div class="form-group">
-								<label>Facts:</label>
-								<textArea name="fld_facts" id="fld_facts" class="form-control" ></textArea>
-							</div>
-                            <div class="form-group">
-								<label>Movie Link:</label>
-								<input type="text" name="fld_link" id="fld_link" class="form-control" >
-							</div>
-                            <div class="form-group">
-								<label>Movie Ratings:</label>
-                                <select class="form-select form-control"  name="fld_ratings" id="fld_ratings" aria-label="Default select example">
-                                    <option selected>Select Ratings</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-							</div>			
+                            <div class="form-group"> 
+                                <div class="priceblock">
+                                    <div>
+                                        <label>Gold Full:</label>
+                                        <input class="form-control showprice"id="goldFull"  type="number" name="goldFull" step="1">
+                                    </div>
+                                    <div class="price-box">
+                                        <label>Gold Half:</label>
+                                        <input class="form-control showprice" id="goldHalf" type="number" name="goldHalf" step="1">
+                                    </div>
+                                    <div  class="price-box">
+                                        <label>ODC Full:</label>
+                                        <input class="form-control showprice" id="odcFull" type="number" name="odcFull" step="1">
+                                     </div>
+                                    <div  class="price-box">
+                                        <label>ODC Half:</label>
+                                        <input class="form-control showprice" id="odcHalf" type="number" name="odcHalf" step="1">
+                                    </div>
+                                    <div  class="price-box"> 
+                                        <label>BOX:</label>
+                                        <input class="form-control showprice" id="box" type="number" name="box" step="1">
+                                    </div>
+                                </div> 
+							</div> 	
+                            <div class="form-group"> 
+                                <div class="priceblock">
+                                    <div>
+                                        <label>Total Seats:</label>
+                                        <input class="form-control showprice" id="seats"  type="number" name="seats" step="1">
+                                    </div>
+                                </div> 
+							</div> 			
 						</div>
 						<div class="modal-footer">
 							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-							<input type="submit"  name="formMovieSubmit" id ="formMovieSubmit"  class="btn add-theatre formMovieSubmit" value="Add">
+							<input type="submit"  name="formTimeSubmit" id ="formTimeSubmit"  class="btn add-theatre formTimeSubmit" value="Add">
 						</div>
 					</form>
 				</div>
@@ -197,9 +221,9 @@
 					<div class="modal-content dltcontent">
 						<form action="" method="post">
 							<div class="modal-contentVal">
-								<input type="hidden" id="movieIDVal" name="movieIDVal" value="" />
+								<input type="hidden" id="showIDVal" name="showIDVal" value="" />
 								<div class="modal-header">						
-									<h4 class="modal-title">Delete Movie</h4>
+									<h4 class="modal-title">Delete Show Timings</h4>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								</div>
 								<div class="modal-body">					
@@ -207,7 +231,7 @@
 								</div>
 								<div class="modal-footer">
 									<input type="button" class="btn btn-default cancel" data-dismiss="modal" value="Cancel">
-									<input type="submit" name="deleteSubmit" data-id=#movieList.movieID#  class="btn btn-danger deleteSubmit" value="Delete">
+									<input type="submit" name="deleteSubmit" data-id=#showList.showID#  class="btn btn-danger deleteSubmit" value="Delete">
 								</div>
 							</div>	
 						</form>
@@ -226,8 +250,15 @@
             </div>
         </div>
     </div>  
+  <script>
+        $('##startTime').datetimepicker({ 
+            format: 'hh:mm a'  
+        });
+          $('##endTime').datetimepicker({
+            format: 'hh:mm a'
+        });
+    </script>
     <cfinclude template="commonfooter.cfm">
-
     </cfoutput>
 </body>
 </html>

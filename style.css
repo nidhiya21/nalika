@@ -3178,10 +3178,7 @@ th.fc-day-header.fc-widget-header {
 .custom-login{
     margin-top: 57px;
 }
-.fail-alert{
-    color: red !important;
-    font-size: 18px!important;
-} 
+
 .lft-home{
     margin-left: 14px;
 }
@@ -3272,13 +3269,42 @@ div.online-indicator {
             opacity: 0;
           }
   }
-  #editimgsrc{
-      width:100px;
-      height:100px;
-  }
+#editimgsrc{
+    width:100px;
+    height:100px;
+}
 .dateslt{
   width: 196px;
 }
 .dateselection{   
     display:flex;
+}
+#startTime{
+    width: 196px;
+}
+#endTime{
+    width: 196px;  
+}
+.endTimes{
+    margin-left: 158px;
+}
+.showprice{
+    width: 77px;
+}
+.priceblock{
+    display:flex;
+}
+.price-box{
+    margin-left: 42px;
+}
+.pass-txt{
+    color:black!important;
+}
+.updatebtn{
+    border: none;
+    color: #fff;
+    padding: 12px 15px;
+    font-size: 15px;
+    background: #24caa1;
+    border-radius: 3px;
 }

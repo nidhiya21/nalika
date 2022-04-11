@@ -122,22 +122,5 @@
             <cfset variables.result['items'] = retVal />
         <cfreturn variables.result> 
     </cffunction>  
-    <cffunction name="gettheatreList" hint="get theatre"  access="public" output="false" >	 
-        <cfargument name="userID" type="numeric" required="yes" >
-        <cfquery name = "gettheatre"> 
-            SELECT theaterID,fld_theaterName 
-            FROM theaters
-            where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
-        </cfquery>
-        <cfreturn variables.gettheatre/>  
-    </cffunction> 
-    <cffunction name="getmovieList" hint="get movie"  access="public" output="false" >	 
-        <cfargument name="userID" type="numeric" required="yes" >
-        <cfquery name = "getmovie"> 
-            SELECT movieID,fld_moviename 
-            FROM movies
-            where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
-        </cfquery>
-        <cfreturn variables.getmovie/>  
-    </cffunction> 
+
 </cfcomponent>     
