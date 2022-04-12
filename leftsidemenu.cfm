@@ -37,7 +37,7 @@
                             <li><a title="Movie Theaters" href="theaters-list.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Movie Theaters</span></a></li>
                             <li><a title="Movies" href="movies.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Movies</span></a></li>
                             <li><a title="Show Timings" href="times.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Show Timings</span></a></li>
-                            <li><a title="Home Page" href="product-cart.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Home Page</span></a></li>
+                            <li><a title="Home Page" href="home.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Home Page</span></a></li>
                             <li><a title="Users" href="product-payment.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Users</span></a></li>
                             <li><a title="Booking" href="data-table.html"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Booking</span></a></li>
                             <li><a title="Update Password" href="password.cfm"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">Update Password</span></a></li>

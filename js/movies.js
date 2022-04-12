@@ -121,3 +121,33 @@ $(document).on('hide.bs.modal','#addEmployeeModal', function () {
 function preview() {
     editimgsrc.src=URL.createObjectURL(event.target.files[0]);
 }
+$(document).on("click", ".activatebtn", function () {
+    var movieID = $(this).data('id');
+    var status = $('#activatebtn').val();
+	$.ajax({
+    url: 'components/movies.cfc', 
+    async: false,
+    dataType: "json",
+    data: 
+        { 
+            method: "activateMovies",
+            movieID:movieID,status:status},
+            success: function(objResponse ) {
+                if (objResponse.SUCCESS){ 
+                   
+                    if(status == "No"){ 
+                        $("#activatebtn").html("Activate"); 
+                        alert('Movie inactivate successfully');
+                     
+                    }else{
+                        $("#activatebtn").html("Activated"); 
+                        alert('Movie activated successfully');  
+                    }
+
+                } 
+                else {                  
+                    alert('Error in activation,Please try again!');    
+                }                    
+        }
+    }); 
+});

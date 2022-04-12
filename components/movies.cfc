@@ -54,12 +54,13 @@
                     fld_link = <cfqueryparam value = "#arguments.fld_link#" cfsqltype = "cf_sql_varchar">, 
                     fld_ratings = <cfqueryparam value = "#arguments.fld_ratings#" cfsqltype = "cf_sql_integer">, 
                     createdDate = #Now()#,
-                    userID = <cfqueryparam value = "#arguments.userID#" cfsqltype = "cf_sql_integer">
+                    userID = <cfqueryparam value = "#arguments.userID#" cfsqltype = "cf_sql_integer">,
+                    displayHome = "No"
                     where movieID = <cfqueryparam value = "#arguments.movieID#" cfsqltype = "cf_sql_integer"/>
                 </cfquery>      	  
             <cfelse>
                 <cfquery name = "insertMoviesDetails" result="res">  
-                    insert into  movies(fld_moviename,fld_poster,fld_details,fld_cast,fld_facts,fld_link,fld_ratings,createdDate,userID) 
+                    insert into  movies(fld_moviename,fld_poster,fld_details,fld_cast,fld_facts,fld_link,fld_ratings,createdDate,userID,displayHome) 
                     values(
                     <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.fld_moviename#" />  
                     ,<cfqueryparam cfsqltype="cf_sql_varchar" value="#variables.poster#" />   
@@ -70,6 +71,7 @@
                     ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.fld_ratings#" />                        
                     ,#Now()#
                     ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#" />
+                    ,"No"
                     )
                 </cfquery> 
             </cfif>  
@@ -121,6 +123,35 @@
             <cfset variables.result = {} />
             <cfset variables.result['items'] = retVal />
         <cfreturn variables.result> 
-    </cffunction>  
+    </cffunction>
+      <cffunction name="activateMovies" access="remote" returntype="struct" hint="activate Movie" returnformat="json"  output="false">
+        <cfargument name="movieID" type="any" required="true">		
+        <cfargument name="status" type="any" required="true">		       
+            <cfquery name="updateStatus" result="upResult">
+                UPDATE movies 
+                SET displayHome  = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.status#">
+                WHERE movieID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.movieID#">
+            </cfquery>
+            <cfset variables.Response.Success = true />   
+            <cfreturn variables.Response>
+    </cffunction>
+    <cffunction name="getMoviesCounts" hint="get movies Count"  access="public" output="false" >	 
+        <cfargument name="userID" type="numeric" required="yes" >
+        <cfquery name = "getMoviesCount"> 
+            SELECT COUNT(*) as cnt
+            FROM movies
+            where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
+        </cfquery>
+        <cfreturn variables.getMoviesCount/>  
+    </cffunction> 
+    <cffunction name="getTeaterCounts" hint="get Teater Count"  access="public" output="false" >	 
+        <cfargument name="userID" type="numeric" required="yes" >
+        <cfquery name = "getTeaterCount"> 
+            SELECT COUNT(*) as cnt
+            FROM theaters
+            where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
+        </cfquery>
+        <cfreturn variables.getTeaterCount/>  
+    </cffunction>    
 
 </cfcomponent>     

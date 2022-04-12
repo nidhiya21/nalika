@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Change Password | Nalika </title>
+    <title>Home | Nalika </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <cfinclude template="common.cfm"> 
+    <script src="js/movies.js"></script> 
     <script src="./js/jquery.validate.min.js"></script>
     </script>
 </head>
@@ -14,6 +15,7 @@
     <cfoutput>
     <cfinclude template="leftsidemenu.cfm"> 
     <cfset variables.userID=session.stLoggedInUser.userID />
+    <cfset moviesObj=CreateObject("component","components.movies")/>
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
         <div class="container-fluid">
@@ -39,7 +41,7 @@
 												<i class="icon nalika-home"></i>
 											</div>
 											<div class="breadcomb-ctn">
-												<h2>Change Password</h2>
+												<h2>Home Page</h2>
 											</div>
 										</div>
                                     </div>                                   
@@ -58,30 +60,38 @@
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
-                        <div>
-                        <center>
-                            <h2 class="pass-txt"><span class="fa-passwd-reset fa-stack "><i class="fa fa-undo fa-stack-2x"></i><i class="fa fa-lock fa-stack-1x"></i></span>Reset your Password<span class="fa-passwd-reset fa-stack"><i class="fa fa-undo fa-stack-2x"></i><i class="fa fa-lock fa-stack-1x"></i></span></h2>
-                        </center>
-                        </div>
-                        <form name="passwordForm" method="post" action="components/contactscript.cfc?method=validatePassword"> 
-                            <cfif isDefined("session.errormsg")> 
-                                <p class="fail-alert"><cfoutput>#session.errormsg[1]#</cfoutput></p>
-                            </cfif> 
-                            <div class="form-group">
-                                <label class="control-label" for="password">Old Password</label>
-                                <i class="fa fa-key icon"></i><input type="password" title="Please enter your password" placeholder="******" name="fld_password"  id="fld_password" class="form-control">
+                        <cfset movieList=moviesObj.getMovies(variables.userID)/>
+                        <cfloop query="movieList">       
+                            <div class="movie-title"> #movieList.fld_moviename# </div>
+                            <cfif movieList.fld_poster NEQ ''>
+                                <img src="./movies/#movieList.fld_poster#" class="home-img"/>
+                            <cfelse> 
+                                    <img src="./theaterimages/no-man.jpg" class="home-img">
+                            </cfif>
+                            <div class="movie-blk">
+                                <div class="movie-desc">
+                                    <span class="movie-top">Details :</span>
+                                     #movieList.fld_details#
+                                </div>
+                                <div class="movie-cast">
+                                    <span class="movie-top">Cast :</span>
+                                     #movieList.fld_cast#
+                                </div>
+                                <div class="movie-rate">
+                                    <span class="movie-top">Ratings :</span>
+                                    #movieList.fld_ratings# / 5
+                                </div>
+                                <div class="movie-facts">
+                                    <span class="movie-top">Facts :</span>
+                                    #movieList.fld_facts#
+                                </div>
                             </div>
-                             <div class="form-group">
-                                <label class="control-label" for="password">New Password</label>
-                                <input type="password" title="Please enter your password" placeholder="******" name="fld_new_password" id="fld_new_password" class="form-control">
-                            </div>    
-                            <div class="form-group">
-                                <label class="control-label" for="password">Confirm Password</label>
-                                <input type="password" title="Please enter your password" placeholder="******" name="fld_confirm_password" id="fld_confirm_password" class="form-control">
-                                <span class="help-block small">Your new password and confirm  password must be same</span>
-                            </div>
-                            <button class="btn updatebtn">Update Password</button> 
-                        </form> 
+                            <cfset btnContent= ((movieList.displayHome EQ "No") ?"Activate" :"Activated" ) /> 
+                            <cfset btnStatus= ((movieList.displayHome EQ "No") ?"yes" :"No" ) /> 
+                            <button class="btn activatebtn" id="activatebtn" value=#btnStatus# data-id=#movieList.movieID#>
+                              #btnContent# 
+                            </button> 
+                        </cfloop>    
                     </div>
                 </div>
             </div>

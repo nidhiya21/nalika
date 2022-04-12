@@ -3308,3 +3308,53 @@ div.online-indicator {
     background: #24caa1;
     border-radius: 3px;
 }
+.fail-alert {
+    -webkit-animation: seconds 1.0s forwards;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 5s;
+    animation: seconds 1.0s forwards;
+    animation-iteration-count: 1;
+    animation-delay: 5s;
+    position: relative;
+    background: white;
+  }
+  @-webkit-keyframes seconds {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: -9999px; 
+    }
+  }
+  @keyframes seconds {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: -9999px; 
+    }
+  }
+  .home-img{
+    width: 200px;
+    height: 187px;
+    float: left;
+  }
+ .movie-title{
+    text-align: center;
+    font-size: 21px;
+    font-weight: 600;
+  }
+.movie-top{
+  font-size: 15px;
+  font-weight: 600;
+}
+.movie-blk{
+    padding-left: 226px;
+}
+.activatebtn{
+    background: #24caa1;
+    color:white;
+    margin-left: 28px;
+}
