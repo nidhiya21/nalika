@@ -1,69 +1,74 @@
 $(document).ready(function() {
-    $("#movie").validate({
+    $("#showtime").validate({
         errorClass: "fail-alert",
         rules: {
-            fld_moviename: "required", 
-            fld_details: "required", 
-            fld_cast: "required", 
-            fld_link: "required" 
+            theaterID: "required", 
+            movieID: "required", 
+            startDate: "required", 
+            endDate: "required",
+            startTime: "required",
+            endTime: "required",
+            goldFull: "required",
+            goldHalf: "required",
+            odcFull: "required",
+            odcHalf: "required",
+            box: "required",
+            seats: "required"
         },
         messages: { 
-            fld_moviename: "Please enter name",
-            fld_details: "Please enter details",
-            fld_cast: "Please enter cast",
-            fld_link: "Please enter link"
+            theaterID: "Please select theate",
+            movieID: "Please select movie",
+            startDate: "Please enter start Date",
+            endDate: "Please enter end Date",
+            startTime: "Please enter start Time",
+            endTime: "Please enter price",
+            goldFull: "Please enter price",
+            goldHalf: "Please enter price",
+            odcFull: "Please enter price",
+            odcHalf: "Please enter price",
+            box: "Please enter end price",
+            seats: "Please enter seats"
              
         },       
     });
 });
-$(document).on("click", ".formMovieSubmit", function () {
-    if ($('#fld_poster').val()!='') {
-        var movieImageVal = $('#fld_poster').val();
-    } else if ($('#old_img').val()!='') {
-        var movieImageVal = $('#old_img').val(); 
-    } else {
-        var movieImageVal = '';
-    }
-    var movieImage = movieImageVal.split("\\").pop();
+$(document).on("click", ".formTimeSubmit", function () {
     var userID = $('#userID').val();
-    var fld_moviename = $('#fld_moviename').val();
-    var movieID  = $('#movieID').val();
-    var fileData = new FormData($('#movie')[0]);
-    var fileData = fileData.append("fld_moviename", fld_moviename); 
+    var showID  = $('#showID').val();
     $.ajax({ 
-        url: "components/movies.cfc?method=insertMovie",
+        url: "components/times.cfc?method=insertShow",
         type: "POST",
-        data: new FormData($('#movie')[0]), 
+        data: new FormData($('#showtime')[0]), 
         enctype: 'multipart/form-data',
         processData: false,
         contentType: false
     }).done(function(objResponse) { 
         if (!$.trim(objResponse)){  
         
-            alert('Movie Updated successfully');    
+            alert('Time Updated successfully');    
         }else{
-            alert('Movie Updated successfully');    
+            alert('Time Updated successfully');    
         }
     })  
     	
 });
 $(document).on("click", ".modal-trigger", function () {
-	var movieID = $(this).data('id');
-	$(".modal-contentVal #movieIDVal").val(movieID);   
+	var showID = $(this).data('id');
+	$(".modal-contentVal #showIDVal").val(showID);   
 });
 $(document).on("click", ".deleteSubmit", function () {
-	var movieID = $('#movieIDVal').val();
+	var showID = $('#showIDVal').val();
 	$.ajax({
-    url: 'components/movies.cfc', 
+    url: 'components/times.cfc', 
     async: false,
     dataType: "json",
     data: 
         { 
-            method: "deleteMovies",
-            movieID:movieID},
+            method: "deleteShows",
+            showID:showID},
             success: function(objResponse ) {
                 if (objResponse.SUCCESS){ 
-                    alert('Movie deleted successfully');           
+                    alert('Shows deleted successfully');           
                 } 
                 else {                  
                     alert('Error in deletion,Please try again!');    
@@ -73,38 +78,47 @@ $(document).on("click", ".deleteSubmit", function () {
 });
 $(document).on("click", ".myform-btnVal", function () {
     $(".mod-title").html("ADD SHOW TIMINGS"); 
-    var editSrc = "./theaterimages/no-man.jpg";
-    $("#editimgsrc").attr('src', editSrc);      
+  
 });   
 $(document).on("click", ".modal-trigger-edit", function () {
-	var movieID = $(this).data('id');
+	var showID = $(this).data('id');
     $.ajax({
-        url: 'components/movies.cfc', 
+        url: 'components/times.cfc', 
         async: false, 
         data: 
             {  
-                method: "getMovieByID",
-                movieID:movieID},
+                method: "getShowByID",
+                showID:showID},
                 success: function(response) {
                     if (response){ 
                         $(".mod-title").html("EDIT SHOW TIMINGS");     
                     //  console.log(typeof response);
                         var dataInJson = JSON.parse(response);
-                        $(".modal-content #fld_moviename").val(dataInJson.items[0].fld_moviename);
-                        $(".modal-content #movieID ").val(dataInJson.items[0].movieID );
-                        $(".modal-content #old_img").val(dataInJson.items[0].fld_poster);
-                        $(".modal-content #fld_details").val(dataInJson.items[0].fld_details);
-                        $(".modal-content #fld_cast").val(dataInJson.items[0].fld_cast);
-                        $(".modal-content #fld_facts").val(dataInJson.items[0].fld_facts);
-                        $(".modal-content #fld_link").val(dataInJson.items[0].fld_link);
-                        $(".modal-content #fld_ratings").val(dataInJson.items[0].fld_ratings);
-                        if(dataInJson.items[0].fld_poster){
-                            var editSrc = "./movies/"+dataInJson.items[0].fld_poster;
-                            $("#editimgsrc").attr('src', editSrc);   
-                        }else{
-                            var editSrc = "./theaterimages/no-man.jpg";
-                            $("#editimgsrc").attr('src', editSrc);   
-                        }
+                        $(".modal-content #theaterID").val(dataInJson.items[0].theaterID);
+                        $(".modal-content #showID").val(dataInJson.items[0].showID );
+                        $(".modal-content #movieID").val(dataInJson.items[0].movieID);
+                       // $(".modal-content #startDate").val(dataInJson.items[0].startDate);
+                       // $(".modal-content #endDate").val(dataInJson.items[0].endDate);
+                        $(".modal-content #startTime").val(dataInJson.items[0].startTime);
+                        $(".modal-content #endTime").val(dataInJson.items[0].endTime);
+                        $(".modal-content #goldFull").val(dataInJson.items[0].goldFull);
+                        $(".modal-content #goldHalf").val(dataInJson.items[0].goldHalf);
+                        $(".modal-content #odcFull").val(dataInJson.items[0].odcFull);
+                        $(".modal-content #odcHalf").val(dataInJson.items[0].odcHalf);
+                        $(".modal-content #box").val(dataInJson.items[0].box);
+                        $(".modal-content #seats").val(dataInJson.items[0].seats);
+                        var now = new Date(dataInJson.items[0].startDate);
+                        var day = ("0" + now.getDate()).slice(-2);
+                        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                        var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+                        $(".modal-content #startDate").val(today);
+                        var now = new Date(dataInJson.items[0].endDate);
+                        var day = ("0" + now.getDate()).slice(-2);
+                        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                        var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+                        $(".modal-content #endDate").val(today);
+
+                      
                     } 
                     else {                  
                         alert('Error!');    
@@ -115,9 +129,6 @@ $(document).on("click", ".modal-trigger-edit", function () {
 $(document).on('hide.bs.modal','#addEmployeeModal', function () {
      $("label.fail-alert" ).remove(); 
     $('input').removeClass('fail-alert');
-    document.getElementById("movie").reset(); 
+    document.getElementById("showtime").reset(); 
     
 });
-function preview() {
-    editimgsrc.src=URL.createObjectURL(event.target.files[0]);
-}

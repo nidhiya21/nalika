@@ -1,96 +1,88 @@
 <cfcomponent  accessors="true" output="false">
-    <cffunction name="insertMovie" access="remote"  hint="add new Movie page"  output="yes"  returntype="any" returnformat="JSON">
+    <cffunction name="insertShow" access="remote"  hint="add new show page"  output="yes"  returntype="any" returnformat="JSON">
         <cfargument name="userID" ype="numeric">
-        <cfargument name="fld_moviename" type="string">
-        <cfargument name="fld_poster" type="string">
-        <cfargument name="fld_details" type="string">
-        <cfargument name="fld_cast" type="string">
-        <cfargument name="fld_facts" type="string">
-        <cfargument name="fld_link" type="string">
-        <cfargument name="fld_ratings" type="string">
-        <cfargument name="old_img" type="string">
-        <cfargument name="movieID" ype="numeric">
+        <cfargument name="theaterID" type="numeric">
+        <cfargument name="movieID" type="numeric">
+        <cfargument name="startDate" type="date">
+        <cfargument name="endDate" type="date">
+        <cfargument name="startTime" type="string">
+        <cfargument name="endTime" type="string"> 
+        <cfargument name="goldFull" type="float">
+        <cfargument name="goldHalf" type="float">
+        <cfargument name="odcFull" type="float"> 
+        <cfargument name="odcHalf" type="float">
+        <cfargument name="box" type="float">
+        <cfargument name="showID" ype="numeric">
+        <cfargument name="seats" ype="numeric">
         <cfset variables.errorMessage= arrayNew(1) />
-        <cfif arguments.fld_moviename EQ ''>
+        <cfif arguments.theaterID EQ ''>
             <cfset arrayAppend(errorMessage, 'Please Enter Name')>
-        </cfif>	
-        <cfif arguments.fld_poster NEQ ''>        
-            <cfset variables.validMimeTypes =  {
-                                            'image/jpeg': {extension: 'jpg'}
-                                            ,'image/png': {extension: 'png'},'image/jpg': {extension: 'jpg'}
-                                            } />
-            <cfset variables.thisPath=expandPath('..') & '/movies/' /> 
-            <cfset variables.f_dir=GetDirectoryFromPath(variables.thisPath)>
-            <cftry>
-                <cffile action="upload" filefield="fld_poster" destination="#variables.f_dir#" mode="777"
-                    accept="#StructKeyList(variables.validMimeTypes)#" strict="true" result="uploadResult"
-                    nameconflict="makeunique">
-                    <cfset variables.poster = #uploadResult.serverFile#>
-                <cfcatch type="any">
-                    <cfif FindNoCase( "No data was received in the uploaded" , cfcatch.message )>
-                        <cfset arrayAppend(errorMessage, 'Zero length file')>
-                    <cfelseif FindNoCase( "The MIME type or the Extension of the uploaded file", cfcatch.message )>
-                        <cfset arrayAppend(errorMessage, 'Invalid file type')>
-                    <cfelseif FindNoCase( "did not contain a file." , cfcatch.message )>
-                        <cfset arrayAppend(errorMessage, 'Empty form field')>
-                    <cfelse>
-                        <cfset arrayAppend(errorMessage, 'Unhandled File Upload Error')>
-                    </cfif> 
-                </cfcatch> 
-            </cftry>
-        <cfelse>
-            <cfset variables.poster = #arguments.old_img#>    	
         </cfif>	   
         <cfif arrayIsEmpty(errorMessage)>	
-            <cfif arguments.movieID NEQ ''>
-                <cfquery name = "updateMovies"  result="res">  
-                    update  movies
+            <cfif arguments.showID NEQ ''>
+                <cfquery name = "updateShows"  result="res">  
+                    update  shows
                     set    
-                    fld_moviename = <cfqueryparam value = "#arguments.fld_moviename#" cfsqltype = "cf_sql_varchar">,  
-                    fld_poster = <cfqueryparam value = "#variables.poster#" cfsqltype = "cf_sql_varchar">,  
-                    fld_details = <cfqueryparam value = "#arguments.fld_details#" cfsqltype = "cf_sql_longvarchar">, 
-                    fld_cast = <cfqueryparam value = "#arguments.fld_cast#" cfsqltype = "cf_sql_longvarchar">, 
-                    fld_facts = <cfqueryparam value = "#arguments.fld_facts#" cfsqltype = "cf_sql_longvarchar">, 
-                    fld_link = <cfqueryparam value = "#arguments.fld_link#" cfsqltype = "cf_sql_varchar">, 
-                    fld_ratings = <cfqueryparam value = "#arguments.fld_ratings#" cfsqltype = "cf_sql_integer">, 
+                    theaterID = <cfqueryparam value = "#arguments.theaterID#" cfsqltype = "cf_sql_integer">,  
+                    movieID = <cfqueryparam value = "#arguments.movieID#" cfsqltype = "cf_sql_integer">,  
+                    startDate = <cfqueryparam value = "#arguments.startDate#" cfsqltype = "CF_SQL_DATE">, 
+                    endDate = <cfqueryparam value = "#arguments.endDate#" cfsqltype = "CF_SQL_DATE">, 
+                    startTime = <cfqueryparam value = "#arguments.startTime#" cfsqltype = "cf_sql_varchar">, 
+                    endTime = <cfqueryparam value = "#arguments.endTime#" cfsqltype = "cf_sql_varchar">, 
+                    goldFull = <cfqueryparam value = "#arguments.goldFull#" cfsqltype = "CF_SQL_FLOAT">, 
+                    goldHalf = <cfqueryparam value = "#arguments.goldHalf#" cfsqltype = "CF_SQL_FLOAT">,
+                    odcFull = <cfqueryparam value = "#arguments.odcFull#" cfsqltype = "CF_SQL_FLOAT">,
+                    odcHalf = <cfqueryparam value = "#arguments.odcHalf#" cfsqltype = "CF_SQL_FLOAT">,
+                    box = <cfqueryparam value = "#arguments.box#" cfsqltype = "CF_SQL_FLOAT">,
                     createdDate = #Now()#,
-                    userID = <cfqueryparam value = "#arguments.userID#" cfsqltype = "cf_sql_integer">
-                    where movieID = <cfqueryparam value = "#arguments.movieID#" cfsqltype = "cf_sql_integer"/>
+                    userID = <cfqueryparam value = "#arguments.userID#" cfsqltype = "cf_sql_integer">,
+                    seats = <cfqueryparam value = "#arguments.seats#" cfsqltype = "cf_sql_integer">
+                    where showID = <cfqueryparam value = "#arguments.showID#" cfsqltype = "cf_sql_integer"/>
                 </cfquery>      	  
             <cfelse>
-                <cfquery name = "insertMoviesDetails" result="res">  
-                    insert into  movies(fld_moviename,fld_poster,fld_details,fld_cast,fld_facts,fld_link,fld_ratings,createdDate,userID) 
+                <cfquery name = "insertShowDetails" result="res">  
+                    insert into  shows(theaterID,movieID,startDate,endDate,startTime,endTime,goldFull,goldHalf,odcFull,
+                    odcHalf,box,createdDate,userID,seats) 
                     values(
-                    <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.fld_moviename#" />  
-                    ,<cfqueryparam cfsqltype="cf_sql_varchar" value="#variables.poster#" />   
-                    ,<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#arguments.fld_details#" />      
-                    ,<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#arguments.fld_cast#" />  
-                    ,<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#arguments.fld_facts#" />     
-                    ,<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.fld_link#" />    
-                    ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.fld_ratings#" />                        
+                    <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.theaterID#" />  
+                    ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.movieID#" />     
+                    ,<cfqueryparam cfsqltype="CF_SQL_DATE" value="#arguments.startDate#" />      
+                    ,<cfqueryparam cfsqltype="CF_SQL_DATE" value="#arguments.endDate#" />  
+                    ,<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.startTime#" />     
+                    ,<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.endTime#" />    
+                    ,<cfqueryparam cfsqltype="CF_SQL_FLOAT" value="#arguments.goldFull#" />  
+                    ,<cfqueryparam cfsqltype="CF_SQL_FLOAT" value="#arguments.goldHalf#" /> 
+                    ,<cfqueryparam cfsqltype="CF_SQL_FLOAT" value="#arguments.odcFull#" />                       
+                    ,<cfqueryparam cfsqltype="CF_SQL_FLOAT" value="#arguments.odcHalf#" /> 
+                    ,<cfqueryparam cfsqltype="CF_SQL_FLOAT" value="#arguments.box#" /> 
                     ,#Now()#
                     ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#" />
+                    ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.seats#" />
                     )
                 </cfquery> 
             </cfif>  
         </cfif> 
             <cfreturn variables.errorMessage />	
     </cffunction> 
-    <cffunction name="getMovies" hint="get movies"  access="public" output="false" >	 
+    <cffunction name="getShows" hint="get Shows"  access="public" output="false" >	 
         <cfargument name="userID" type="numeric" required="yes" >
-        <cfquery name = "moviesList"> 
-            SELECT *
-            FROM movies
-            where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
+        <cfquery name = "showsList"> 
+            SELECT shows.*,theaters.fld_theaterName,movies.fld_moviename
+            FROM shows as shows
+            LEFT JOIN  theaters as theaters
+            ON shows.theaterID = theaters.theaterID
+            LEFT JOIN movies as movies
+            ON shows.movieID  = movies.movieID 
+            where shows.userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#">
         </cfquery>
-        <cfreturn variables.moviesList/>  
+        <cfreturn variables.showsList/>  
     </cffunction> 
-    <cffunction name="deleteMovies" access="remote" returntype="struct" hint="delete Movie" returnformat="json"  output="false">
-        <cfargument name="movieID" type="any" required="true">		     
+    <cffunction name="deleteShows" access="remote" returntype="struct" hint="delete Shows" returnformat="json"  output="false">
+        <cfargument name="showID" type="any" required="true">		     
             <cfquery name="deleteDet" result="deleteResult">
-                delete from movies  where movieID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.movieID#">
+                delete from shows  where showID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.showID#">
             </cfquery>
-            <cfset variables.cfcResults = deleteResult.recordcount>
+            <cfset variables.cfcResults = deleteResult.recordcount> 
             <cfif  variables.cfcResults NEQ 0>
                 <cfset variables.Response.Success = true />   
             <cfelse> 
@@ -98,28 +90,51 @@
             </cfif>
                 <cfreturn variables.Response>
     </cffunction>   
-    <cffunction name="getMovieByID" access="remote"  output="false" hint="get movies by id" returntype="any" returnformat="JSON" >   	 
-        <cfargument name="movieID" type="numeric" required="yes" > 
+    <cffunction name="getShowByID" access="remote"  output="false" hint="get show by id" returntype="any" returnformat="JSON" >   	 
+        <cfargument name="showID" type="numeric" required="yes" > 
             <cfset variables.retVal = ArrayNew(1)>
-            <cfquery name = "movieDetails">  
+            <cfquery name = "showDetails">  
                 SELECT *
-                FROM movies
-                where movieID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.movieID#">
+                FROM shows
+                where showID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.showID#">
             </cfquery>
-            <cfloop query="movieDetails"> 
+            <cfloop query="showDetails"> 
                 <cfset variables.temp = {} />
-                <cfset variables.temp['fld_moviename']=movieDetails.fld_moviename />
-                <cfset variables.temp['movieID']=movieDetails.movieID />
-                <cfset variables.temp['fld_poster']=movieDetails.fld_poster />
-                <cfset variables.temp['fld_details']=movieDetails.fld_details />
-                <cfset variables.temp['fld_cast']=movieDetails.fld_cast />
-                <cfset variables.temp['fld_facts']=movieDetails.fld_facts />
-                <cfset variables.temp['fld_link']=movieDetails.fld_link />
-                <cfset variables.temp['fld_ratings']=movieDetails.fld_ratings />
+                <cfset variables.temp['theaterID']=showDetails.theaterID />
+                <cfset variables.temp['showID']=showDetails.showID />
+                <cfset variables.temp['movieID']=showDetails.movieID />
+                <cfset variables.temp['startDate']=showDetails.startDate />
+                <cfset variables.temp['endDate']=showDetails.endDate />
+                <cfset variables.temp['startTime']=showDetails.startTime />
+                <cfset variables.temp['endTime']=showDetails.endTime />
+                <cfset variables.temp['goldFull']=showDetails.goldFull />
+                <cfset variables.temp['goldHalf']=showDetails.goldHalf />
+                <cfset variables.temp['odcFull']=showDetails.odcFull />
+                <cfset variables.temp['odcHalf']=showDetails.odcHalf />
+                <cfset variables.temp['box']=showDetails.box /> 
+                <cfset variables.temp['seats']=showDetails.seats /> 
                 <cfset ArrayAppend(retval, temp)>
             </cfloop>
             <cfset variables.result = {} />
             <cfset variables.result['items'] = retVal />
         <cfreturn variables.result> 
     </cffunction>  
+    <cffunction name="gettheatreList" hint="get theatre"  access="public" output="false" >	 
+        <cfargument name="userID" type="numeric" required="yes" >
+        <cfquery name = "gettheatre"> 
+            SELECT theaterID,fld_theaterName 
+            FROM theaters
+            where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
+        </cfquery>
+        <cfreturn variables.gettheatre/>  
+    </cffunction> 
+    <cffunction name="getmovieList" hint="get movie"  access="public" output="false" >	 
+        <cfargument name="userID" type="numeric" required="yes" >
+        <cfquery name = "getmovie"> 
+            SELECT movieID,fld_moviename 
+            FROM movies
+            where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
+        </cfquery>
+        <cfreturn variables.getmovie/>  
+    </cffunction> 
 </cfcomponent>     
