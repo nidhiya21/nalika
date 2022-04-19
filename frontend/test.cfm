@@ -430,15 +430,7 @@ $(function() {
 </script>
 </head>
 <body>
-<nav>
-  <h1>Website Title</h1>
-  <ul>
-    <li class="active">Home</li>
-    <li>About</li>
-    <li>Contact Form</li>
-  </ul>
-  <div class="underline"></div>
-</nav>
+
 <div class="container">
   <button>Click Here</button>
 </div>
