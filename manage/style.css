@@ -3348,7 +3348,8 @@ div.online-indicator {
   font-weight: 600;
 }
 .movie-blk{
-    padding-left: 226px;
+    padding-left: 5px;
+    height: 330px;
 }
 .activatebtn{
     background: #24caa1;

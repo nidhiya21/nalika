@@ -94,7 +94,7 @@ html, body, * {
     top: 30px;
     margin: 0;
     width: 100%;
-    height: 450px;
+    height: 520px;
     background-color: #e7e7f6;
     border-radius: 5px;
     z-index: 15;
@@ -229,7 +229,7 @@ html, body, * {
   form label {
     font-size: 1.1em;
     color: #0f3355;
-    margin-left: 23px;
+    margin-left: 23px; 
   }
   
   form.sign-in input {
@@ -259,7 +259,7 @@ html, body, * {
     font-size: 1em;
     border: none;
   }
-  input#regsubmit {
+  input#saveForm {
     background-color: #0f3355;
     color: #fff;
     height: 50px;
