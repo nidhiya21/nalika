@@ -251,7 +251,7 @@ header div.previews .preview div.carousel-image {
 }
 header div.previews .preview div.info {
   background-color: rgba(0, 0, 0, 0.7);
-  bottom: 0;
+  bottom: 70px;
   left: 0;
   padding: 20px 0;
   position: absolute;

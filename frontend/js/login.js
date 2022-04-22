@@ -1,4 +1,4 @@
-$(function() {
+$(function() {  
     //defining all needed variables
     var $overlay = $('.overlay');
     var $mainPopUp = $('.main-popup')

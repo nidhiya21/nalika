@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <script type="text/javascript">
 
         window.lang = {
@@ -72,13 +71,13 @@
     <!-- add styles here -->
     <!-- add suffix to fix bug with multi sites.  The problem was multi sites have different styles, and browser uses incorrect cache styles when user clicks the browser's back' button-->
     <link rel="stylesheet" type="text/css" href="./css/style.css?id=5918fa26abe8803fce83e2b4" />
-    <link rel="stylesheet" type="text/css" href="./css/login.css" />
+    <link rel="stylesheet" type="text/css" href="./css/login.css" /> 
 
     
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
-    <script type="text/javascript" src="./js/login.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script> 
 
 
 
@@ -163,11 +162,15 @@
 
 </head>
 <body>
+
+    <cfset variables.userID=session.stLoggedInUser.userID />
+    <cfset moviesObj=CreateObject("component","components.movies")/>
     <header>
+        <cfoutput>
         <div class="main-menu " >
-            <a href="#" class="menu-icon"></a>
+            <a href="##" class="menu-icon"></a>
             <div class="menu-mobile">
-                <a href="#" class="close-menu">&times;</a>
+                <a href="##" class="close-menu">&times;</a>
 
                 <h2>MENU</h2>
 
@@ -177,7 +180,7 @@
                         <li ><a href="/coming-soon">COMING SOON</a></li>
 
                             <li  ><a href="/prices--specials" >PRICES &amp; SPECIALS</a></li>
-                            <li  ><a href="/newsletter" >NEWSLETTER</a></li>
+                            <li  ><a href="/newsletter" >NEWSLETTER</a><li  >
 
                             <li ><a href="/contact--location" >CONTACT &amp; LOCATION</a></li>
                             <li ><a href="/terms--conditions" >TERMS &amp; CONDITIONS</a></li>
@@ -198,8 +201,6 @@
 
             <div class="logo"><a href="/"><img src="https://yc.cldmlk.com/movie-max-5/1494815331288_1494815105074_MMax.png" alt="Movie Max Digital Cinemas"></a><br />
           </div>
-
-
             <div class="menu-desktop">
                 <div class="social-media-header">
                     
@@ -212,17 +213,20 @@
                     <ul>
                         <li  class="active" ><a href="/">NOW PLAYING</a></li>
                         <li ><a href="/coming-soon">COMING SOON</a></li>
-
+ 
                             <li  ><a href="/prices--specials" >PRICES &amp; SPECIALS</a></li>
-                            <li  ><a href="/newsletter" >NEWSLETTER</a></li>
-
                         <li>
-                            <a href="#" class="more">MORE</a>
-
-                            <nav class="sub-menu">
+                        <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser')  and structKeyExists(session.stLoggedInFrUser, 'emailID')  >
+                            <a href="##" class="more"> #Session.stLoggedInFrUser.emailID#  </a> 
+                        <cfelse>
+                            <a href="##" class="more"><button>LOGIN</button> </a>     
+                        </cfif>
+                            <nav class="sub-menu"> 
                                 <ul>
+                                 <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser') and structKeyExists(session.stLoggedInFrUser, 'emailID') >
                                        <li><a  
-                                       href="/contact--location">CONTACT &amp; LOCATION </a></li>
+                                       href="./logout.cfm">lOGOUT</a></li>
+                                  </cfif>        
                                        <li><a  
                                        href="/terms--conditions">TERMS &amp; CONDITIONS </a></li>
                                        <li><a  
@@ -236,322 +240,58 @@
                 </nav>
             </div>
         </div>
-
-            <div class="previews mobile-hide">
-            <!-- carousel goes here -->
-            <div id="moviePreviews" class="carousel slide" data-ride="carousel" data-interval="5000">
-                <div class="carousel-inner" role="listbox">
-                        <div class="preview item  active  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/the-unbearable-weight-of-massive-talent"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/the-unbearable-weight-of-massive-talent');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648672871450_ubwweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>The Unbearable Weight Of Massive Talent: 21st April </h2>
-                                        <p>Nicolas Cage is Nicolas Cage in this comedy that sees the meme-able star make a paid appearance at a billionaire&#x27;s birthday party, only to become a CIA informant.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/the-unbearable-weight-of-massive-talent"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/the-unbearable-weight-of-massive-talent');">BUY TICKETS</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/elizabeth-a-portrait-in-parts"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/elizabeth-a-portrait-in-parts');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648066752139_elizweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Elizabeth: 21st April</h2>
-                                        <p>From director Roger Michell (Notting Hill), this archive-based documentary explores the multidimensional life of Britain’s Queen Elizabeth II, the longest-serving female head of state in history. 
-Billed as &quot;A celebration... a cinematic mystery-tour up and down the decades&quot;.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/elizabeth-a-portrait-in-parts"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/elizabeth-a-portrait-in-parts');">BUY TICKETS</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/the-lost-city"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/the-lost-city');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648672777755_lcweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>The Lost City: 14th April </h2>
-                                        <p>A reclusive romance novelist (Sandra Bullock) is stuck on a book tour with her cover model (Channing Tatum) only for things to take a weirder turn when a kidnapping attempt throws them into a deadly jungle adventure. </p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/the-lost-city"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/the-lost-city');">BUY TICKETS </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/everything-everywhere-all-at-once"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/everything-everywhere-all-at-once');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648672626373_eeaaoweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Everything Everywhere All At Once: 14th April </h2>
-                                        <p>Michelle Yeoh leads this film as a 55-year-old Chinese immigrant trying to finish her taxes when she&#x27;s suddenly swept up in an adventure involving alternative versions of herself from parallel universes.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/everything-everywhere-all-at-once"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/everything-everywhere-all-at-once');">BUY TICKETS</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/the-bad-guys"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/the-bad-guys');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648672699771_thebadguysweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>The Bad Guys: 14th April </h2>
-                                        <p>This DreamWorks animated heist film centres on a rag-tag group of misfit animals. When their latest caper gets them caught, the gang must learn how to be good guys... or at least look like &quot;good guys.&quot;</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/the-bad-guys"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/the-bad-guys');">BUY TICKETS</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/the-last-bus"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/the-last-bus');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648151159265_thelastbusweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>The Last Bus: 14th April </h2>
-                                        <p>Returning to the past, he found his future.
-The great Timothy Spall leads this British tale as a lone elderly man who travels the country by using only buses, a seemingly simple journey that may end up making him famous.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/the-last-bus"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/the-last-bus');">BUY TICKETS</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/fantastic-beasts-the-secrets-of-dumbledore"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/fantastic-beasts-the-secrets-of-dumbledore');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1649282323915_fb3we.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Fantastic Beasts: The Secrets Of Dumbledore: 7th April </h2>
-                                        <p>The third installment of the Fantastic Beasts series continues the adventures of Newt Scamander. </p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/fantastic-beasts-the-secrets-of-dumbledore"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/fantastic-beasts-the-secrets-of-dumbledore');">BUY TICKETS </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/ambulance"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/ambulance');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648065204877_ambuweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Ambulance: 7th April </h2>
-                                        <p>Michael Bay action film about two brothers who resort to hijacking an ambulance when a robbery doesn&#x27;t go to plan.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/ambulance"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/ambulance');">BUY TICKETS </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/rabbit-academy"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/rabbit-academy');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1647984181754_rabweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Rabbit Academy: 7th April </h2>
-                                        <p>Easter&#x27;s in danger, and a rabbit must trust a fox to save the occasion in this animated family film.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/rabbit-academy"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/rabbit-academy');">BUY TICKETS</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/sonic-the-hedgehog-2"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/sonic-the-hedgehog-2');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1647038053743_sonicweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Sonic The Hedgehog 2: 31st March </h2>
-                                        <p>Tails, Sonic&#x27;s flying sidekick, plays a big part in this sequel to the hit 2020 family adventure based on the classic videogame. Jim Carrey and Ben Schwartz return alongside director Jeff Fowler.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/sonic-the-hedgehog-2"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/sonic-the-hedgehog-2');">BUY TICKETS</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/the-duke"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/the-duke');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1646860084792_dukeweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>The Duke: 31st March </h2>
-                                        <p>Based on a real art theft, the great Jim Broadbent stars as an older taxi driver who stole a priceless portrait from London&#x27;s National Gallery. His ransom? Free television for the elderly. </p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/the-duke"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/the-duke');">BUY TICKETS </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/downton-abbey-a-new-era"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/downton-abbey-a-new-era');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1648672965483_dtaweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Downton Abbey: A New Era: 28th April </h2>
-                                        <p>The much-anticipated cinematic return of the global phenomenon reunites the beloved cast as they go on a grand journey to the South of France to uncover the mystery of the Dowager Countess’ newly inherited villa. </p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/downton-abbey-a-new-era"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/downton-abbey-a-new-era');">MORE/TRAILER</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/a-hero"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/a-hero');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1645476989830_herowebl.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>A Hero: 5th May </h2>
-                                        <p>Grand Prix winner at Cannes 2021 from renowned filmmaker Asghar Farhadi (A Separation), following a man in prison because of unpaid debt. During a two-day leave, he tries to convince his creditor to withdraw the complaint.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/a-hero"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/a-hero');">MORE/TRAILER</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/doctor-strange-in-the-multiverse-of-madness"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/doctor-strange-in-the-multiverse-of-madness');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1649280879774_drstrweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Doctor Strange In The Multiverse Of Madness: 5th May </h2>
-                                        <p>Journey into the unknown with Doctor Strange, who, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/doctor-strange-in-the-multiverse-of-madness"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/doctor-strange-in-the-multiverse-of-madness');">MORE/TRAILER</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/operation-mincemeat"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/operation-mincemeat');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1649280802087_opmmweb.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Operation Mincemeat: 12th May </h2>
-                                        <p>Kelly Macdonald and Colin Firth head up the cast in this John Madden-directed WWII drama depicting the events of the titular Allied Forces operation - a deception effort to hide the invasion of Sicily.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/operation-mincemeat"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/operation-mincemeat');">MORE/TRAILER</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="preview item  ">
-                                <a href="https://www.moviemaxdigital.co.nz/movie/miss-marx"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.moviemaxdigital.co.nz/movie/miss-marx');">
-                            <img src="https://yc.cldmlk.com/movie-max-digital/1642627432951_mmWEB.jpg" alt="">
-                            <div class="carousel-image hidden"></div>
-                                 </a>
-
-                            <div class="info carousel-caption">
-                                <div class="caption-container">
-                                    <div class="caption-details">
-                                        <h2>Miss Marx</h2>
-                                        <p>Bright, intelligent, passionate and free, Eleanor is Karl Marx&#x27;s youngest daughter. Among the first women to link the themes of feminism and socialism, she takes part in the workers&#x27; battles and fights for women&#x27;s rights and the abolition of child labour.</p>
-                                    </div>
-                                    <div class="caption-link">
-                                        <a href="https://www.moviemaxdigital.co.nz/movie/miss-marx"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.moviemaxdigital.co.nz/movie/miss-marx');">MORE/TRAILER</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <a class="left carousel-control" href="#moviePreviews" role="button" data-slide="prev">
-                    <img src="https://yc.cldmlk.com/template_1/img/CarouselArrowLeft@2x.png">
-                </a>
-                <a class="right carousel-control" href="#moviePreviews" role="button" data-slide="next">
-                    <img src="https://yc.cldmlk.com/template_1/img/CarouselArrowRight@2x.png">
-                </a>
-            </div>
+        <div class="main-popup">
+            <div class="popup-header">
+                <div id="popup-close-button"><a href="##"></a></div>
+                    <ul>
+                        <li><a href="##" id="sign-in">Sign In</a></li>
+                        <li><a href="##" id="register">Register</a></li>
+                    </ul>
+            </div><!--.popup-header-->
+            <div class="popup-content">
+                <form name="loginForm" method="post"  class="sign-in" action="./components/contactscript.cfc?method=validateLogin">
+                    <cfif isDefined("session.errormsgLog")>   
+                        <p class="fail-alert">#session.errormsg[1]#</p>
+                    </cfif>
+                    <label for="email">Email:</label>
+                    <input type="text" id="log-email" name="emailID">
+                    <label for="password">Password:</label>
+                    <input type="password" id="log-password" name="password">
+                    <input type="submit" id="submit"  name="login"  value="Submit">
+                </form>
+                <cfparam name="form.emailID" default=""> 
+                <cfparam name="form.phoneNumber" default=""> 
+                <cfparam name="form.password" default=""> 
+                <cfparam name="form.confirmpassword" default=""> 
+                <form name="signup" method="post" id="signup" class="register"  action="./components/contactscript.cfc?method=saveUser">
+                    <cfif isDefined("session.errormsg")> 
+                        <p class="fail-alert">#session.errormsg[1]#</p>
+                    </cfif>
+                    <label for="emailID">Email:</label>
+                    <input type="text" id="emailID" name="emailID">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <label for="confirmpassword">Confirm Password:</label>
+                    <input type="password" id="confirmpassword" name="confirmpassword">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber">
+                    <input type="submit" id="saveForm" value="Create Account" class="myform-btn" name="saveForm">
+                </form>
+            </div><!--.popup-content-->
+        </div><!--.main-popup-->
+        <div class="previews mobile-hide">
+            <cfinclude template="./account.cfm">	
+        </div>
         </div>
     </header>
-
     <section id="homepage">
         <div class="main-content">
             <div class="date-picker">
                 <div class="date-picker-header">
                     <p>
-                        <a href="#" class="theme-selector active" data-theme="by-day"><i class="fa fa-calendar fa-inverse"></i><span>BY DAY</span></a>
-                        <a href="#" class="theme-selector " data-theme="by-movie"><i class="fa fa-film fa-inverse"></i><span>BY TITLE</span></a>
+                        <a href="##" class="theme-selector active" data-theme="by-day"><i class="fa fa-calendar fa-inverse"></i><span>BY DAY</span></a>
+                        <a href="##" class="theme-selector " data-theme="by-movie"><i class="fa fa-film fa-inverse"></i><span>BY TITLE</span></a>
                     </p>
-
                     <div class="order-by-container">
                         <select id="order-by" name="order-by" class="order-by">
                             <option value="release-date" selected>Newest first</option>
@@ -559,33 +299,23 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                             <option value="session-times" >By showtimes</option>
                         </select>
                     </div>
-
-                    <a href="#" class="print-button"><i class="fa fa-print fa-inverse"></i><span>PRINT</span></a>
+                    <a href="##" class="print-button"><i class="fa fa-print fa-inverse"></i><span>PRINT</span></a>
                 </div>
-
                 <!-- sly here displaying date list -->
                 <div class="dates" id="datePicker">
                     <a id="prev" class="disabled" disabled><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowLeft@2x.png"></a>
-
                     <div id="date-scroller" class="frame ">
                         <ul class="slidee">
                             <!-- adding dates -->
                         </ul>
                     </div>
-
                     <a id="next"><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowRight@2x.png"></a>
-
-
                 </div>
             </div>
-
             <div id="movie-list">
                 <!-- display list of movies here -->
             </div>
-
             <div id="session-keys"></div>
-
-
             <ul class="options flex-container flex-container-nowrap flex-centre promotion-footer-ul-">
                         <li class="flex-item-stretch">
                                 <a href="https://www.instagram.com/moviemaxdigital/"  onclick="ga('dTracker.send', 'event', 'promo', 'bottom', 'https://www.instagram.com/moviemaxdigital/');"><img data-src="https://yc.cldmlk.com/movie-max-digital/1535156138185_1511301874547_1510721649368_1492639168133_Bottom-Images-insta.png" alt=""></a>
@@ -597,9 +327,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                                 <a href="https://www.moviemaxdigital.co.nz/newsletter"  onclick="ga('dTracker.send', 'event', 'promo', 'bottom', 'https://www.moviemaxdigital.co.nz/newsletter');"><img data-src="https://yc.cldmlk.com/movie-max-digital/1552338435800_1495506878110_SignUpSecondAlternate.jpg" alt=""></a>
                         </li>
             </ul>
-
         </div>
-
         <aside class="mobile-hide tablet-hide">
                     <a href="https://www.moviemaxdigital.co.nz/"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1564536205311_movie.jpg" class="vertical-advertisement" alt=""></a>
                     <a href="https://www.moviemaxdigital.co.nz/movie/the-lost-city"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/movie/the-lost-city');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1649709403656_MV5BZGY2ZWEzY2YtZDQ5ZS00ODU3LTk4MjEtMzE4ZmViNmYzZWZjXkEyXkFqcGdeQXVyMTA3MDk2NDg2_V1_.jpg" class="vertical-advertisement" alt=""></a>
@@ -621,8 +349,6 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                         <li><a href="/movie/doctor-strange-in-the-multiverse-of-madness">Doctor Strange in the Multiverse of Madness</a></li>
                         <li><a href="/movie/operation-mincemeat">Operation Mincemeat</a></li>
                         <li><a href="/movie/how-to-please-a-woman">How to Please a Woman</a></li>
-                        <li><a href="/movie/the-bobs-burgers-movie">The Bob&#x27;s Burgers Movie</a></li>
-
                     <li><a href="/coming-soon" class="see-all">SEE ALL</a></li>
                 </ul>
             </div>
@@ -632,6 +358,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
     <section id="printArea">
         <h1>Movie Max Digital Cinemas - Movie Times</h1>
     </section>
+    </cfoutput>
     <div id="session-keys-print"></div>
 
     <!-- Get movie data -->
@@ -652,7 +379,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Michael Bay',
                     'actors': 'Jake Gyllenhaal, Eiza González, Yahya Abdul-Mateen II, Moses Ingram, Garret Dillahunt',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '2:45pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92790?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '2:45pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -667,7 +394,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Daniels',
                     'actors': 'Jenny Slate, Jamie Lee Curtis, Michelle Yeoh, Harry Shum Jr., Ke Huy Quan, Stephanie Hsu',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '5:35pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92796?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '5:35pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -682,8 +409,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'David Yates',
                     'actors': 'Eddie Redmayne, Katherine Waterston, Jessica Williams, Jude Law, Ezra Miller, Alison Sudol, Dan Fogler, Claudia Kim',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '2:45pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92792?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '5:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92799?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '2:45pm', 'bookingLink': '', 'attributes': [] },
+                          
                     ]
                 },
                 {
@@ -698,7 +425,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Daniel Espinosa',
                     'actors': 'Jared Leto, Adria Arjona, Matt Smith, Jared Harris, Tyrese Gibson, Al Madrigal',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92795?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -713,7 +440,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Ute von Münchow-Pohl',
                     'actors': '',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '4:00pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92788?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:00pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -728,8 +455,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Jeff Fowler',
                     'actors': 'Ben Schwartz, James Marsden, Jim Carrey, Tika Sumpter',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92793?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '5:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92798?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': '', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '5:40pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -744,7 +471,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Roger Michell',
                     'actors': 'Helen Mirren, Jim Broadbent, Matthew Goode, Aimée Kelly, Fionn Whitehead, Charlotte Spencer, Anna Maxwell Martin',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '5:55pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92794?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '5:55pm', 'bookingLink': '','attributes': [] },
                     ]
                 },
                 {
@@ -759,7 +486,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Gillies MacKinnon',
                     'actors': 'Timothy Spall, Phyllis Logan, Natalie Mitson, Ben Ewing, Patricia Panther, JS Duffy, Saskia Ashdown',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '6:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92800?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:40pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -774,8 +501,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Adam Nee, Aaron Nee',
                     'actors': 'Sandra Bullock, Channing Tatum, Daniel Radcliffe, Patti Harrison, Da&#x27;Vine Joy Randolph, Brad Pitt, Oscar Nunez',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '3:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92791?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '6:10pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92797?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '3:40pm','bookingLink': '', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:10pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
             ],
@@ -793,7 +520,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Michael Bay',
                     'actors': 'Jake Gyllenhaal, Eiza González, Yahya Abdul-Mateen II, Moses Ingram, Garret Dillahunt',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '2:45pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92811?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '2:45pm', 'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -808,7 +535,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Daniels',
                     'actors': 'Jenny Slate, Jamie Lee Curtis, Michelle Yeoh, Harry Shum Jr., Ke Huy Quan, Stephanie Hsu',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '5:35pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92817?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '5:35pm', 'bookingLink': '','attributes': [] },
                     ]
                 },
                 {
@@ -823,9 +550,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'David Yates',
                     'actors': 'Eddie Redmayne, Katherine Waterston, Jessica Williams, Jude Law, Ezra Miller, Alison Sudol, Dan Fogler, Claudia Kim',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '11:50am', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92804?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '2:45pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92813?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '5:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92820?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '11:50am', 'bookingLink': '', 'attributes': [] },
+       
                     ]
                 },
                 {
@@ -840,9 +566,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Ute von Münchow-Pohl',
                     'actors': '',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '11:40am', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92823?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '2:20pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92806?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '4:00pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92809?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '11:40am', 'bookingLink': '', 'attributes': [] },
+                            
                     ]
                 },
                 {
@@ -857,9 +582,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Jeff Fowler',
                     'actors': 'Ben Schwartz, James Marsden, Jim Carrey, Tika Sumpter',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '12:25pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92807?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92814?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '5:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92819?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '12:25pm',  'bookingLink': '', 'attributes': [] },
+
                     ]
                 },
                 {
@@ -874,9 +598,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Pierre Pierfel, Roger Allers, Hendel Butoy, Darrell Rooney, Mark Dindal, Vicky Jenson',
                     'actors': 'Craig Robinson, Sam Rockwell, Awkwafina, Marc Maron',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '11:50am', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92803?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '1:30pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92805?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92816?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '11:50am',  'bookingLink': '', 'attributes': [] },
+
                     ]
                 },
                 {
@@ -891,8 +614,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Roger Michell',
                     'actors': 'Helen Mirren, Jim Broadbent, Matthew Goode, Aimée Kelly, Fionn Whitehead, Charlotte Spencer, Anna Maxwell Martin',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '12:10pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92822?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '5:55pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92815?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '12:10pm',  'bookingLink': '', 'attributes': [] },
+                            
                     ]
                 },
                 {
@@ -907,8 +630,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Gillies MacKinnon',
                     'actors': 'Timothy Spall, Phyllis Logan, Natalie Mitson, Ben Ewing, Patricia Panther, JS Duffy, Saskia Ashdown',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '2:05pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92810?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '6:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92821?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '2:05pm',  'bookingLink': '', 'attributes': [] },
+
                     ]
                 },
                 {
@@ -923,9 +646,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Adam Nee, Aaron Nee',
                     'actors': 'Sandra Bullock, Channing Tatum, Daniel Radcliffe, Patti Harrison, Da&#x27;Vine Joy Randolph, Brad Pitt, Oscar Nunez',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '11:50am', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92808?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '3:40pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92812?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '6:10pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92818?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '11:50am',  'bookingLink': '', 'attributes': [] },
+                          
                     ]
                 },
             ],
@@ -943,7 +665,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Michael Bay',
                     'actors': 'Jake Gyllenhaal, Eiza González, Yahya Abdul-Mateen II, Moses Ingram, Garret Dillahunt',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '8:30pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92902?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '8:30pm',  'bookingLink': '', 'attributes': [] },
                     ]
                 },
                 {
@@ -958,8 +680,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Roger Michell',
                     'actors': '',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '12:10pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92878?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '6:30pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92897?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '12:10pm',  'bookingLink': '', 'attributes': [] },
+                           
                     ]
                 },
                 {
@@ -974,8 +696,8 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
                     'director': 'Daniels',
                     'actors': 'Jenny Slate, Jamie Lee Curtis, Michelle Yeoh, Harry Shum Jr., Ke Huy Quan, Stephanie Hsu',
                     'times': [
-                            { 'isSoldOut': false,'type': '','time': '2:30pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92880?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
-                            { 'isSoldOut': false,'type': '','time': '8:30pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/92901?siteToken&#x3D;y6j4832mam1wt6f1bbv2z1wx88', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '2:30pm',  'bookingLink': '', 'attributes': [] },
+                           
                     ]
                 },
                 {
@@ -5047,19 +4769,7 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
 
     <link rel="stylesheet" type="text/css" media="print" href="https://yc.cldmlk.com/template_1/css/print.css?c=v2.15.8">
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-2530427-38', 'auto');
-        ga('create', 'UA-104063286-4', 'auto', 'dTracker');
-        ga('dTracker.send', 'pageview');
-        ga('send', 'pageview');
-
-    </script>
-
+    
 
 
 
@@ -5151,6 +4861,6 @@ The great Timothy Spall leads this British tale as a lone elderly man who travel
              myLazyLoad = new LazyLoad();
         });
     </script>
-
+ 
 </body>
 </html>

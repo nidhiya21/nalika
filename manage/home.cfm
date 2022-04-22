@@ -62,13 +62,15 @@
                     <div class="panel-body">
                         <cfset movieList=moviesObj.getMovies(variables.userID)/>
                         <cfloop query="movieList">       
-                            <div class="movie-title"> #movieList.fld_moviename# </div>
-                            <cfif movieList.fld_poster NEQ ''>
-                                <img src="./movies/#movieList.fld_poster#" class="home-img"/>
-                            <cfelse> 
-                                    <img src="./img/theaterimages/no-man.jpg" class="home-img">
-                            </cfif>
+                            
                             <div class="movie-blk">
+                                <div class="movie-title"> #movieList.fld_moviename# </div>
+                                <cfif movieList.fld_poster NEQ ''>
+                                    <img src="./movies/#movieList.fld_poster#" class="home-img"/>
+                                <cfelse> 
+                                        <img src="./img/theaterimages/no-man.jpg" class="home-img">
+                                </cfif>
+
                                 <div class="movie-desc">
                                     <span class="movie-top">Details :</span>
                                      #movieList.fld_details#
@@ -85,12 +87,13 @@
                                     <span class="movie-top">Facts :</span>
                                     #movieList.fld_facts#
                                 </div>
+                                <cfset btnContent= ((movieList.displayHome EQ "No") ?"Activate" :"Activated" ) /> 
+                                <cfset btnStatus= ((movieList.displayHome EQ "No") ?"yes" :"No" ) /> 
+                                <button class="btn activatebtn" id="activatebtn" value=#btnStatus# data-id=#movieList.movieID#>
+                                #btnContent# 
+                                </button> 
                             </div>
-                            <cfset btnContent= ((movieList.displayHome EQ "No") ?"Activate" :"Activated" ) /> 
-                            <cfset btnStatus= ((movieList.displayHome EQ "No") ?"yes" :"No" ) /> 
-                            <button class="btn activatebtn" id="activatebtn" value=#btnStatus# data-id=#movieList.movieID#>
-                              #btnContent# 
-                            </button> 
+                           
                         </cfloop>    
                     </div>
                 </div>

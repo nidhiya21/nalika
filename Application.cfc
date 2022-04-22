@@ -1,7 +1,8 @@
 <cfcomponent output="false">
     <cfset this.name = 'CF Address Book'/>
+	<cfset this.clientStorage="Cookie"/> 
 	<cfset this.datasource = 'cf_task_employee'/>  
-	<cfset this.applicationTimeout = createtimespan(0,2,0,0) />    
+	<cfset this.applicationTimeout = createtimespan(0,2,0,0) />   
 	<cfset this.sessionManagement = true />
 	<cfset this.sessionTimeout = createTimespan(0,0,30,0) />  
 	<cfset this.clientManagement = true>
