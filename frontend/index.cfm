@@ -163,128 +163,18 @@
 </head>
 <body>
 
-    <cfset variables.userID=session.stLoggedInUser.userID />
+    <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser')  and structKeyExists(session.stLoggedInFrUser, 'userID')  >
+              <cfset variables.userID=session.stLoggedInFrUser.userID />
+    </cfif>
     <cfset moviesObj=CreateObject("component","components.movies")/>
     <header>
-        <cfoutput>
-        <div class="main-menu " >
-            <a href="##" class="menu-icon"></a>
-            <div class="menu-mobile">
-                <a href="##" class="close-menu">&times;</a>
-
-                <h2>MENU</h2>
-
-                <nav>
-                    <ul>
-                        <li  class="active" ><a href="/">NOW PLAYING</a></li>
-                        <li ><a href="/coming-soon">COMING SOON</a></li>
-
-                            <li  ><a href="/prices--specials" >PRICES &amp; SPECIALS</a></li>
-                            <li  ><a href="/newsletter" >NEWSLETTER</a><li  >
-
-                            <li ><a href="/contact--location" >CONTACT &amp; LOCATION</a></li>
-                            <li ><a href="/terms--conditions" >TERMS &amp; CONDITIONS</a></li>
-                            <li ><a href="/join-our-team" >JOIN OUR TEAM</a></li>
-                            <li ><a href="/movie-ratings" >MOVIE RATINGS</a></li>
-                    </ul>
-                </nav>
-
-                <div class="social-media-header">
-                    <p class="find-us">FIND US</p>
-
-                    
-                    <a href="http://www.twitter.com/MovieMaxDigital" target="_blank" class="twitter-header"></a> 
-                    <a href="http://www.instagram.com/moviemaxdigital" target="_blank" class="instagram-header"></a> 
-                    <a href="https://www.facebook.com/moviemaxdigital" target="_blank" class="facebook-header"></a> 
-                </div>
-            </div>
-
-            <div class="logo"><a href="/"><img src="https://yc.cldmlk.com/movie-max-5/1494815331288_1494815105074_MMax.png" alt="Movie Max Digital Cinemas"></a><br />
-          </div>
-            <div class="menu-desktop">
-                <div class="social-media-header">
-                    
-                    <a href="http://www.twitter.com/MovieMaxDigital" target="_blank" class="twitter-header"></a> 
-                    <a href="http://www.instagram.com/moviemaxdigital" target="_blank" class="instagram-header"></a> 
-                    <a href="https://www.facebook.com/moviemaxdigital" target="_blank" class="facebook-header"></a> 
-                </div>
-
-                <nav>
-                    <ul>
-                        <li  class="active" ><a href="/">NOW PLAYING</a></li>
-                        <li ><a href="/coming-soon">COMING SOON</a></li>
- 
-                            <li  ><a href="/prices--specials" >PRICES &amp; SPECIALS</a></li>
-                        <li>
-                        <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser')  and structKeyExists(session.stLoggedInFrUser, 'emailID')  >
-                            <a href="##" class="more"> #Session.stLoggedInFrUser.emailID#  </a> 
-                        <cfelse>
-                            <a href="##" class="more"><button>LOGIN</button> </a>     
-                        </cfif>
-                            <nav class="sub-menu"> 
-                                <ul>
-                                 <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser') and structKeyExists(session.stLoggedInFrUser, 'emailID') >
-                                       <li><a  
-                                       href="./logout.cfm">lOGOUT</a></li>
-                                  </cfif>        
-                                       <li><a  
-                                       href="/terms--conditions">TERMS &amp; CONDITIONS </a></li>
-                                       <li><a  
-                                       href="/join-our-team">JOIN OUR TEAM </a></li>
-                                       <li><a  
-                                       href="/movie-ratings">MOVIE RATINGS </a></li>
-                                </ul>
-                            </nav>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="main-popup">
-            <div class="popup-header">
-                <div id="popup-close-button"><a href="##"></a></div>
-                    <ul>
-                        <li><a href="##" id="sign-in">Sign In</a></li>
-                        <li><a href="##" id="register">Register</a></li>
-                    </ul>
-            </div><!--.popup-header-->
-            <div class="popup-content">
-                <form name="loginForm" method="post"  class="sign-in" action="./components/contactscript.cfc?method=validateLogin">
-                    <cfif isDefined("session.errormsgLog")>   
-                        <p class="fail-alert">#session.errormsg[1]#</p>
-                    </cfif>
-                    <label for="email">Email:</label>
-                    <input type="text" id="log-email" name="emailID">
-                    <label for="password">Password:</label>
-                    <input type="password" id="log-password" name="password">
-                    <input type="submit" id="submit"  name="login"  value="Submit">
-                </form>
-                <cfparam name="form.emailID" default=""> 
-                <cfparam name="form.phoneNumber" default=""> 
-                <cfparam name="form.password" default=""> 
-                <cfparam name="form.confirmpassword" default=""> 
-                <form name="signup" method="post" id="signup" class="register"  action="./components/contactscript.cfc?method=saveUser">
-                    <cfif isDefined("session.errormsg")> 
-                        <p class="fail-alert">#session.errormsg[1]#</p>
-                    </cfif>
-                    <label for="emailID">Email:</label>
-                    <input type="text" id="emailID" name="emailID">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password">
-                    <label for="confirmpassword">Confirm Password:</label>
-                    <input type="password" id="confirmpassword" name="confirmpassword">
-                    <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber">
-                    <input type="submit" id="saveForm" value="Create Account" class="myform-btn" name="saveForm">
-                </form>
-            </div><!--.popup-content-->
-        </div><!--.main-popup-->
+        <cfinclude template="./header.cfm">	
         <div class="previews mobile-hide">
-            <cfinclude template="./account.cfm">	
-        </div>
+            <cfinclude template="./bannerblock.cfm">	
         </div>
     </header>
     <section id="homepage">
+    <cfoutput>
         <div class="main-content">
             <div class="date-picker">
                 <div class="date-picker-header">
@@ -329,36 +219,25 @@
             </ul>
         </div>
         <aside class="mobile-hide tablet-hide">
-                    <a href="https://www.moviemaxdigital.co.nz/"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1564536205311_movie.jpg" class="vertical-advertisement" alt=""></a>
-                    <a href="https://www.moviemaxdigital.co.nz/movie/the-lost-city"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/movie/the-lost-city');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1649709403656_MV5BZGY2ZWEzY2YtZDQ5ZS00ODU3LTk4MjEtMzE4ZmViNmYzZWZjXkEyXkFqcGdeQXVyMTA3MDk2NDg2_V1_.jpg" class="vertical-advertisement" alt=""></a>
-                    <a href="https://www.moviemaxdigital.co.nz/movie/the-bad-guys"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/movie/the-bad-guys');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1649709452302_bgpos.jpg" class="vertical-advertisement" alt=""></a>
-                    <a href="https://www.moviemaxdigital.co.nz/movie/fantastic-beasts-the-secrets-of-dumbledore"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/movie/fantastic-beasts-the-secrets-of-dumbledore');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1649282475739_fb3po.jpg" class="vertical-advertisement" alt=""></a>
-                    <a href="https://www.moviemaxdigital.co.nz/movie/sonic-the-hedgehog-2"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/movie/sonic-the-hedgehog-2');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1648505204623_7e44309a9441914db6a11acc7d17ab8d_500x735.jpg" class="vertical-advertisement" alt=""></a>
-                    <a href="https://www.moviemaxdigital.co.nz/movie/ambulance"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/movie/ambulance');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1649113295682_AMB_INTL_ONE_SHEET_INTERNATIONAL_ACTION_AUS-Digital_HiRes.jpg" class="vertical-advertisement" alt=""></a>
-                    <a href="https://www.moviemaxdigital.co.nz/movie/the-duke"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/movie/the-duke');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1647893470708_TheDuke_A4poster.jpg" class="vertical-advertisement" alt=""></a>
-                    <a href="https://www.moviemaxdigital.co.nz/newsletter"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.moviemaxdigital.co.nz/newsletter');" ><img data-src="https://yc.cldmlk.com/movie-max-digital/1495506878110_Sign Up Second Alternate.jpg" class="vertical-advertisement" alt=""></a>
-
+            <cfinclude template="./bannerleftblock.cfm">	      
             <div class="coming-soon">
                 <h2>COMING SOON</h2>
-
                 <ul class="coming-soon">
-                        <li><a href="/movie/elizabeth-a-portrait-in-parts">Elizabeth: A Portrait In Parts</a></li>
-                        <li><a href="/movie/the-unbearable-weight-of-massive-talent">The Unbearable Weight of Massive Talent</a></li>
-                        <li><a href="/movie/downton-abbey-a-new-era">Downton Abbey: A New Era</a></li>
-                        <li><a href="/movie/a-hero">A Hero</a></li>
-                        <li><a href="/movie/doctor-strange-in-the-multiverse-of-madness">Doctor Strange in the Multiverse of Madness</a></li>
-                        <li><a href="/movie/operation-mincemeat">Operation Mincemeat</a></li>
-                        <li><a href="/movie/how-to-please-a-woman">How to Please a Woman</a></li>
-                    <li><a href="/coming-soon" class="see-all">SEE ALL</a></li>
+                        <cfset movieList=moviesObj.getUpcomingMovies()/>
+                        <cfloop query="movieList"> 
+                            <li><a href="./detail.cfm?id=#movieList.movieID#&up=yes">#movieList.fld_moviename#</a></li>
+                        </cfloop>
+                       <li><a href="./comingsoon.cfm" class="see-all">SEE ALL</a></li>
                 </ul>
             </div>
         </aside>
+    </cfoutput>    
     </section>
 
     <section id="printArea">
         <h1>Movie Max Digital Cinemas - Movie Times</h1>
     </section>
-    </cfoutput>
+
     <div id="session-keys-print"></div>
 
     <!-- Get movie data -->
@@ -4736,32 +4615,7 @@
     <link rel="stylesheet" type="text/css" media="print" href="https://yc.cldmlk.com/template_1/css/print-times.css">
 
 
-    <footer>
-        <section>
-            <nav>
-                <ul>
-                    <li><a    href="/prices--specials">PRICES &amp; SPECIALS</a></li>
-                    <li><a    href="/newsletter">NEWSLETTER</a></li>
-                    <li><a    href="/contact--location">CONTACT &amp; LOCATION</a></li>
-                    <li><a    href="/terms--conditions">TERMS &amp; CONDITIONS</a></li>
-                    <li><a    href="/movie-ratings">MOVIE RATINGS</a></li>
-                    <li><a    href="/join-our-team">JOIN OUR TEAM</a></li>
-                </ul>
-            </nav>
-
-            <hr />
-
-
-            <div class="social-media">
-                
-                <a href="http://www.twitter.com/MovieMaxDigital" target="_blank" class="twitter-footer"></a> 
-                <a href="http://www.instagram.com/moviemaxdigital" target="_blank" class="instagram-footer"></a> 
-                <a href="https://www.facebook.com/moviemaxdigital" target="_blank" class="facebook-footer"></a> 
-
-                <p class="copyright">Website &copy; 2019 <a href="https://www.flicks.co.nz" target="_blank">Flicks Ltd</a></p>
-            </div>
-        </section>
-    </footer>
+        <cfinclude template="./footer.cfm">  
 
     <!-- include main script file -->
     <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/main.js?c=v2.15.8"></script>
@@ -4770,15 +4624,6 @@
     <link rel="stylesheet" type="text/css" media="print" href="https://yc.cldmlk.com/template_1/css/print.css?c=v2.15.8">
 
     
-
-
-
-
-
-
-
-
-
 
      <script type="text/javascript">
         var myLazyLoad,
@@ -4861,6 +4706,7 @@
              myLazyLoad = new LazyLoad();
         });
     </script>
+    
  
 </body>
 </html>
