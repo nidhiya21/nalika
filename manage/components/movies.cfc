@@ -152,6 +152,13 @@
             where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"   >
         </cfquery>
         <cfreturn variables.getTeaterCount/>  
-    </cffunction>    
+    </cffunction>  
+     <cffunction name="getUserCounts" hint="get User Count"  access="public" output="false" >	 
+        <cfquery name = "getUserCount"> 
+            SELECT COUNT(*) as cnt
+            FROM user
+        </cfquery>
+        <cfreturn variables.getUserCount/>  
+    </cffunction>  
 
 </cfcomponent>     

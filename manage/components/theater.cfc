@@ -102,5 +102,25 @@
             <cfset variables.result = {} />
             <cfset variables.result['items'] = retVal />
         <cfreturn variables.result> 
-    </cffunction>  
+    </cffunction> 
+    <cffunction name="getUsers" hint="get Users"  access="public" output="false" >	 
+        <cfquery name = "userList"> 
+            SELECT *
+            FROM user 
+        </cfquery>
+        <cfreturn variables.userList/>  
+    </cffunction>
+    <cffunction name="deleteUser" access="remote" returntype="struct" hint="delete user" returnformat="json"  output="false">
+        <cfargument name="userID" type="any" required="true">		     
+            <cfquery name="deleteDet" result="deleteResult">
+                delete from user  where userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#">
+            </cfquery>
+            <cfset variables.cfcResults = deleteResult.recordcount>
+            <cfif  variables.cfcResults NEQ 0>
+                <cfset variables.Response.Success = true />   
+            <cfelse> 
+                <cfset variables.Response.Success = false />            
+            </cfif>
+                <cfreturn variables.Response>
+    </cffunction>     
 </cfcomponent>     

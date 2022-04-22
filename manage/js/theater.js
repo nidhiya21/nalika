@@ -109,3 +109,23 @@ $(document).on('hide.bs.modal','#addEmployeeModal', function () {
 function preview() {
     editimgsrc.src=URL.createObjectURL(event.target.files[0]);
 }
+$(document).on("click", ".deleteuserSubmit", function () {
+	var userID =$(this).data('id'); 
+	$.ajax({
+    url: 'components/theater.cfc', 
+    async: false,
+    dataType: "json",
+    data: 
+        { 
+            method: "deleteUser",
+            userID:userID},
+            success: function(objResponse ) {
+                if (objResponse.SUCCESS){ 
+                    alert('Theater deleted successfully');           
+                } 
+                else {                  
+                    alert('Error in deletion,Please try again!');    
+                }                    
+        }
+    }); 
+});

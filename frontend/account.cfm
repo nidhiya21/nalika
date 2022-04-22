@@ -9,7 +9,7 @@
     <body>
     <cfoutput>
         <header>
-        <cfinclude template="./header.cfm">	 
+            <cfinclude template="./header.cfm">	 
         </header>
         <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser')  and structKeyExists(session.stLoggedInFrUser, 'userID')  >
             <cfset variables.userID=session.stLoggedInFrUser.userID />
@@ -59,21 +59,25 @@
                             <div class="form_main col-md-4 col-sm-5 col-xs-7">
                                 <h4 class="heading"><strong>Personal </strong> Contact <span></span></h4>
                                 <div class="form">
-                                    <form action="" method="" id="contactFrm" name="contactFrm">
+                                    <cfparam name="form.userName" default=""> 
+                                    <cfparam name="form.emailID" default=""> 
+                                    <cfparam name="form.phoneNumber" default=""> 
+                                    <cfparam name="form.password" default=""> 
+                                    <form name="contactFrm"  id="contactFrm"  method="post" action="components/movies.cfc?method=updateProfile">
                                         <input type="text"  placeholder="Name" name="userName" value=#result.userName# class="txt">
                                         <input type="text" placeholder="Email"  name="emailID" value=#result.emailID# class="txt">
                                         <input type="text" placeholder="Phone Number"  name="phoneNumber" value=#result.phoneNumber# class="txt">
                                         <input type="password" placeholder="Change Password" name="password" class="txt"><br>
                                         </br>
-                                        </br>
-                                        <button type="button" class="btn btn-default">Update</button>
+                                        </br> 
+                                        <input type="Submit" value="Update"   class="btn btn-default">
                                     </form>
                                 </div>
                             </div>
                         </div>
 		            </div>
 	            </div>
-            </div>
+                </div>
             </div>
             </div>
             <aside class="mobile-hide tablet-hide">
