@@ -20,10 +20,10 @@
                         <cfset movieList=moviesObj.getUpcomingMovies()/>
                         <cfloop query="movieList"> 
                             <div class="movie flex-item-stretch">
-                                <a href="./detail.cfm?id=#movieList.movieID#&up=yes">
+                                <a href="./details.cfm?id=#movieList.movieID#">
                                 <img src="../manage/movies/#movieList.fld_poster#" class="poster-portrait mobile-hide"></a>
                                 <div class="movie-info upcoming">
-                                    <a href="./detail.cfm?id=#movieList.movieID#&up=yes"><h2>#movieList.fld_moviename#</h2></a>
+                                    <a href="./details.cfm?id=#movieList.movieID#"><h2>#movieList.fld_moviename#</h2></a>
                                     <p class="release-date">#dateTimeFormat(movieList.STARTDATE, "medium")#</p>
                                 </div>
                             </div>

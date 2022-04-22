@@ -3310,3 +3310,42 @@ section.details-container div.movie-details div.social-media-share .facebook-sha
   max-width: 100% !important;
   margin: 10px auto 0 !important;
 }
+.movie-title {
+color: #000000;
+font-family: 'Lato', sans-serif;
+font-weight: 700;
+font-size: 1.6em;
+margin: 5px;
+text-transform: uppercase;
+}
+
+.duration-rating {
+color: #6a6a6a;
+font-family: 'Lato', sans-serif;
+font-weight: 400;
+margin: 5px;
+}
+.actors-mobile-hide{
+color: #000000;
+font-family: 'Lato', sans-serif;
+font-weight: 400;
+margin-left: 5px;
+}
+.poster-portrait {
+  display: inline-block;
+  height: 235px;
+  vertical-align: top;
+  width: 300px;
+}
+.movie-info {
+  margin-left: 15px;
+  vertical-align: top;
+  width: 300px;
+  display: inline-block;
+}
+.movie {
+  margin: 20px 0 30px;
+}
+.poster-filim{
+  height:400px;
+}

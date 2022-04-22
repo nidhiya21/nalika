@@ -24,7 +24,7 @@
                             <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser') and structKeyExists(session.stLoggedInFrUser, 'emailID') >
                                 <li><a  href="./logout.cfm">lOGOUT</a></li>
                             </cfif>        
-                                <li><a  href="/terms--conditions">TERMS &amp; CONDITIONS </a></li>   
+                                <li><a  href="/terms.cfm">TERMS &amp; CONDITIONS </a></li>   
                         </ul>
                     </nav>
                 </li>
@@ -42,9 +42,7 @@
 </div><!--.popup-header-->
 <div class="popup-content">
     <form name="loginForm" method="post"  class="sign-in" action="./components/contactscript.cfc?method=validateLogin">
-        <cfif isDefined("session.errormsgLog")>   
-            <p class="fail-alert">#session.errormsg[1]#</p>
-        </cfif>
+      
         <label for="email">Email:</label>
         <input type="text" id="log-email" name="emailID">
         <label for="password">Password:</label>
@@ -52,13 +50,14 @@
         <input type="submit" id="submit"  name="login"  value="Submit">
     </form>
     <cfparam name="form.emailID" default=""> 
+    <cfparam name="form.userName" default=""> 
     <cfparam name="form.phoneNumber" default=""> 
     <cfparam name="form.password" default=""> 
     <cfparam name="form.confirmpassword" default=""> 
     <form name="signup" method="post" id="signup" class="register"  action="./components/contactscript.cfc?method=saveUser">
-        <cfif isDefined("session.errormsg")> 
-            <p class="fail-alert">#session.errormsg[1]#</p>
-        </cfif>
+      
+        <label for="userName">Username:</label>
+        <input type="text" id="userName" name="userName">
         <label for="emailID">Email:</label>
         <input type="text" id="emailID" name="emailID">
         <label for="password">Password:</label>
