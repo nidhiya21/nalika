@@ -4,6 +4,7 @@ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themefores
 Licensed under MIT
 ***/
 
+
 body {
     background: #F1F3FA;
   }
@@ -12,7 +13,9 @@ body {
   .profile {
     margin: 20px 0;
   }
-  
+  #titles { 
+    text-transform: capitalize!important;
+    }
   /* Profile sidebar */
   .profile-sidebar {
     padding: 20px 0 10px 0;
@@ -116,29 +119,7 @@ body {
     background: #fff;
     min-height: 460px;
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   a, button, code, div, img, input, label, li, p, pre, select, span, svg, table, td, textarea, th, ul {
       -webkit-border-radius: 0!important;
       -moz-border-radius: 0!important;
@@ -212,10 +193,7 @@ body {
       color: #abb6c4;
       margin-right: 5px;
   }
-  
-  
-  
-  
+
   body {
     background: #F1F3FA;
   }
@@ -431,5 +409,99 @@ body {
       color: #abb6c4;
       margin-right: 5px;
   }
+  .profile-content1 { 
+  width: 1012px;
+  }
+  table {
+    width: 750px;
+    border-collapse: collapse;
+    /* margin: 50px auto; */
+  }
+  
+  /* Zebra striping */
+  tr:nth-of-type(odd) {
+    background: #eee;
+  }
+  
+  th {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+  }
+  
+  td,
+  th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  /* 
+  Max width before this PARTICULAR table gets nasty
+  This query will take effect for any screen smaller than 760px
+  and also iPads specifically.
+  */
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    table {
+      width: 100%;
+    }
+  
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+  
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    tr {
+      border: 1px solid #ccc;
+    }
+  
+    td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      
+    }
+   
+    td:before {
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      /* Label the data */
+      content: attr(data-column);
+  
+      color: #000;
+      font-weight: bold;
+    }
+  }
+.svg-pdf{
+  width: 28px;
+  height: 23px;
+  fill: red;
+  margin-top: -28px;
+  margin-left: 68px;
+  margin-bottom: 10px;
+}
+  
   
     

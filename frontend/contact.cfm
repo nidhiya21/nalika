@@ -35,5 +35,6 @@
             </aside>
         </section>
         <cfinclude template="./footer.cfm">	
+        <script type="text/javascript" src="./js/main.js"></script>   
     </body>
 </html>

@@ -153,12 +153,19 @@
         </cfquery>
         <cfreturn variables.getTeaterCount/>  
     </cffunction>  
-     <cffunction name="getUserCounts" hint="get User Count"  access="public" output="false" >	 
+    <cffunction name="getUserCounts" hint="get User Count"  access="public" output="false" >	 
         <cfquery name = "getUserCount"> 
             SELECT COUNT(*) as cnt
             FROM user
         </cfquery>
         <cfreturn variables.getUserCount/>  
+    </cffunction>  
+    <cffunction name="getBookingCountS" hint="get booking Count"  access="public" output="false" >	 
+        <cfquery name = "getBookingCountS"> 
+            SELECT COUNT(*) as cnt
+            FROM cart
+        </cfquery>
+        <cfreturn variables.getBookingCountS/>  
     </cffunction>  
 
 </cfcomponent>     

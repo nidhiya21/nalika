@@ -122,5 +122,21 @@
                 <cfset variables.Response.Success = false />            
             </cfif>
                 <cfreturn variables.Response>
-    </cffunction>     
+    </cffunction>  
+     <cffunction name="getOrderDetails" hint="get order details"  access="public" output="false" >	 
+        <cfquery name = "orderDet" result="pageResult" > 
+            SELECT cart.*,payment.nameOnCard,movies.fld_moviename,user.userName,theaters.fld_theaterName 
+            FROM cart as cart
+            LEFT JOIN payment as payment
+            ON cart.cartID  = payment.cartID 
+            LEFT JOIN user as user
+            ON cart.userID   = user.userID  
+            LEFT JOIN movies as movies
+            ON cart.movieID  = movies.movieID 
+            LEFT JOIN theaters as theaters
+            ON cart.theaterID  = theaters.theaterID 
+            where 1
+        </cfquery>
+        <cfreturn variables.orderDet/>  
+    </cffunction>    
 </cfcomponent>     

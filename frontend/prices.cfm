@@ -27,43 +27,43 @@
                         </tr>
                         <tr>
                             <td><strong>Gold Full</strong></td>
-                            <td><i class="fa fa-inr"></i>30.00</td>
+                            <td><span> &#x20b9;</span> 300.00</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td><strong>Gold Half</strong></td>
-                            <td><i class="fa fa-inr"></i>200.00</td>
+                            <td><span> &#x20b9;</span>200.00</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td><strong>ODC Full</strong></td>
-                            <td><i class="fa fa-inr"></i>200.00</td>
+                            <td><span> &#x20b9;</span>200.00</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td><strong>ODC Half</strong></td>
-                            <td><i class="fa fa-inr"></i>100.00</td>
+                            <td><span> &#x20b9;</span>100.00</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td><strong>Box</strong></td>
-                            <td><i class="fa fa-inr"></i>100.00</td>
+                            <td><span> &#x20b9;</span>100.00</td>
                             <td>&nbsp;</td>
                         </tr>
                         </tbody>
                     </table>
                     <hr id="c1087" />
-                    <h2>Cinema Hire</h2>
-                    <p>Cinema hire available, please <a href="mailto:events@moviemaxdigital.co.nz">contact us</a> for more information.</p>
+                        <h2>Cinema Hire</h2>
+                        <p>Cinema hire available, please <a href="mailto:events@moviemaxdigital.co.nz">contact us</a> for more information.</p>
                     <hr id="c1112" />
-                    <h2>Phone Bookings</h2>
-                    <p>Payment via Credit Card is required at the time of booking.</p>
+                        <h2>Phone Bookings</h2>
+                        <p>Payment via Credit Card is required at the time of booking.</p>
                     <hr id="c1124" />
-                    <h2>Internet Bookings</h2>
-                    <p>To use the internet booking facility please click on the session time you would like to see and follow the instructions to confirm your booking. &nbsp;A $1.20 booking fee is charged for each ticket purchased.</p>
+                        <h2>Internet Bookings</h2>
+                        <p>To use the internet booking facility please click on the session time you would like to see and follow the instructions to confirm your booking. &nbsp;A <span> &#x20b9;</span>1.20 booking fee is charged for each ticket purchased.</p>
                     <hr id="c1136" />
-                    <h2>Terms and Conditions</h2>
-                    <p>Movie Max Digital Terms and Conditions can be found <a href="./terms.cfm" target="_self">here</a>.</p>
+                        <h2>Terms and Conditions</h2>
+                        <p>Movie Max Digital Terms and Conditions can be found <a href="./terms.cfm" target="_self">here</a>.</p>
                 </div>
             </div>
             <aside class="mobile-hide tablet-hide">
@@ -83,6 +83,7 @@
                 </div>
             </aside>
         </section>
-        <cfinclude template="./footer.cfm">	    
+        <cfinclude template="./footer.cfm">	 
+        <script type="text/javascript" src="./js/main.js"></script>   
     </body>
 </html>

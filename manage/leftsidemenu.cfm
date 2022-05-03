@@ -7,7 +7,7 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="manage/index.cfm"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+            <a href="./index.cfm"><img class="main-logo" src="../frontend/images/logo.png" alt="" /></a>
             <strong><img src="img/logo/logosn.png" alt="" /></strong>
         </div>
         <div class="nalika-profile">
