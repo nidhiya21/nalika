@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Users|  Movie Max Digital </title>
+    <title>Bookings| Movie Max Digital </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <cfinclude template="common.cfm"> 
@@ -40,8 +40,8 @@
 												<i class="icon nalika-home"></i>
 											</div>
 											<div class="breadcomb-ctn">
-												<h2>Manage Users</h2>
-												<p>List all User</p>
+												<h2>Booking History</h2>
+												<p>List all Bookings</p>
 											</div>
 										</div>
                                     </div>                                   
@@ -57,29 +57,38 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
-                            <h4>List all User</h4>
-                            <cfset userList=theaterObj.getUsers()/>                          
+                            <h4>List all Bookings</h4>
+                            <cfset bookingList=theaterObj.getOrderDetails()/>                          
                             <table>
                                 <tr>
                                     <th>S.No</th>
                                     <th>User Name</th>
-                                    <th>EmailID</th> 
-                                    <th>Phone Number</th>
-                                    <th>Action</th>
+                                    <th>Theater</th> 
+                                    <th>Movie</th>
+                                    <th>Date</th>
+                                    <th>Total Seats</th>
+                                    <th>Amount</th>
+                                    <th>Payment Status</th>
+                                    <th>Created Date</th>
                                 </tr> 
-                                <cfloop query="userList"> 
+                                <cfloop query="bookingList"> 
                                     <tr>
-                                        <td>#userList.CurrentRow#</td>
-                                        <td>#userList.userName# </td>
-                                        <td>#userList.emailID# </td>
+                                        <td>#bookingList.CurrentRow#</td>
+                                        <td>#bookingList.userName# </td>
+                                        <td>#bookingList.fld_theaterName# </td>
                                         <td> 
-                                            #userList.phoneNumber#
+                                            #bookingList.fld_moviename#
                                         </td>
                                         <td> 
-                                            <a href="" class="delete modal-trigger icon-clr"   data-toggle="modal" data-id=#userList.userID# data-target=".deleteEmployeeModal">
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </a>
+                                           #bookingList.bookedDate#   #bookingList.bookedTime# 
                                         </td>
+                                        <td> 
+                                        <cfset grandTotal = bookingList.goldFullCount+bookingList.goldHalfCount+bookingList.odcFullCount+bookingList.odcHalfCount+bookingList.boxCount/>
+                                              #grandTotal#
+                                        </td>
+                                        <td>#bookingList.orderAmount# </td>    
+                                        <td>#bookingList.paymentStatus# </td>
+                                        <td>#bookingList.createdDate# </td>  
                                     </tr>
                                 </cfloop>    
                             </table>

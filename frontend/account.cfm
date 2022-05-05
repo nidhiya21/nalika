@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PRICES & SPECIALS, Movie Max Digital Cinemas</title>
+        <title>Profile Edit, Movie Max Digital Cinemas</title>
         <cfinclude template="./common.cfm">
         <link rel="stylesheet" type="text/css" href="./css/profile.css" /> 
     </head>
     <body>
-    <cfoutput>
+    <cfoutput> 
         <header>
             <cfinclude template="./header.cfm">	 
         </header>
@@ -18,6 +18,9 @@
         <cfset result=moviesObj.getUserDetails(userID)/>   
         <section id="basic-page">
             <div class="main-content">
+            <div class="alert alert-success hide">
+                <strong>Success!</strong> Profile updated.
+            </div>
                 <div class="staticPage">
                     <div class="container">
                         <div class="row profile">
@@ -42,7 +45,7 @@
                                                 Account Settings </a>
                                             </li>
                                             <li class="active">
-                                                <a href="##">
+                                                <a href="./booking.cfm">
                                                 <i class="glyphicon glyphicon-home"></i>
                                                 Booking History </a>
                                             </li>
@@ -97,7 +100,8 @@
                 </div>
             </aside>
         </section>
-        <cfinclude template="./footer.cfm">	
+            <cfinclude template="./footer.cfm">	
+            <script type="text/javascript" src="./js/main.js"></script>   
         </cfoutput>    
     </body>
 </html>

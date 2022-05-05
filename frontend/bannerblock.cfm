@@ -20,6 +20,47 @@
                                 <div class="caption-details">
                                     <h2>#movieList.fld_moviename# </h2>
                                     <p>#movieList.fld_details#</p>
+                                    <cfif movieList.fld_ratings EQ 1> 
+                                        <div class="small-ratings">
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    <cfelseif movieList.fld_ratings EQ 2> 
+                                        <div class="small-ratings">
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    <cfelseif movieList.fld_ratings EQ 3> 
+                                        <div class="small-ratings">
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    <cfelseif movieList.fld_ratings EQ 4> 
+                                        <div class="small-ratings">
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    <cfelseif movieList.fld_ratings EQ 5> 
+                                        <div class="small-ratings">
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                            <i class="fa fa-star rating-color"></i>
+                                        </div>
+                                    </cfif>    
                                 </div>
                                 <div class="caption-link">
                                     <a href="./detail.cfm?id=#movieList.movieID#&up=no"  >BUY TICKETS</a>

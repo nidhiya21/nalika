@@ -22,7 +22,8 @@ $(document).on("click", ".formTheaterSubmit", function () {
     var userID = $('#userID').val();
     var fld_theaterName = $('#fld_theaterName').val();
     var theaterID = $('#theaterID').val();
-    var theater = new FormData(document.getElementById("theater"));
+    var fileData = new FormData($('#theater')[0]);
+    var fileData = fileData.append("fld_theaterName", fld_theaterName); 
     $.ajax({ 
         url: "components/theater.cfc?method=insertTheater",
         type: "POST",
@@ -33,9 +34,9 @@ $(document).on("click", ".formTheaterSubmit", function () {
     }).done(function(objResponse) { 
         if (!$.trim(objResponse)){  
         
-            alert('Theater Updated successfully');    
+           // alert('Theater Updated successfully');    
         }else{
-            alert("ok");
+            alert('Theater Updated successfully');    
         }
     })  
     	

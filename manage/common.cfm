@@ -8,7 +8,7 @@
 <cfheader name="expires" value="#getHttpTimeString(now())#">
 <!-- favicon
     ============================================ -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="../frontend/images/logo.png"> 
 <!-- Google Fonts
     ============================================ -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">

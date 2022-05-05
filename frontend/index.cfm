@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>Movie Max Digital Cinemas - movie times &amp; tickets</title>
-        <meta name="description" content="Timaru&#x27;s home of great movies.">
+        <meta name="description" content="Home of great movies.">
         <script type="text/javascript" src="./js/common.js"></script> 
-        <link rel="stylesheet" type="text/css" href="./css/style.css?id=5918fa26abe8803fce83e2b4" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <cfinclude template="./common.cfm">
+        <script type="text/javascript" src="./js/index.js"></script>  
     </head>
     <body>
         <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser')  and structKeyExists(session.stLoggedInFrUser, 'userID')  >
@@ -38,13 +38,13 @@
                         </div>
                         <!-- sly here displaying date list -->
                         <div class="dates" id="datePicker">
-                            <a id="prev" class="disabled" disabled><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowLeft@2x.png"></a>
+                            <a id="prev" class="disabled" disabled><img src="./images/right.png"></a>
                             <div id="date-scroller" class="frame ">
                                 <ul class="slidee">
                                     <!-- adding dates -->
                                 </ul>
                             </div>
-                            <a id="next"><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowRight@2x.png"></a>
+                            <a id="next"><img src="./images/left.png"></a>
                         </div>
                     </div>
                     <div id="movie-list3">
@@ -59,7 +59,7 @@
                             <a href="https://www.facebook.com/moviemaxdigital"  onclick="ga('dTracker.send', 'event', 'promo', 'bottom', 'https://www.facebook.com/moviemaxdigital');"><img data-src="https://yc.cldmlk.com/movie-max-digital/1535156369081_1511301799145_1501648220313_Bottom-Images.png" alt=""></a>
                         </li>
                         <li class="flex-item-stretch">
-                            <a href="https://www.moviemaxdigital.co.nz/newsletter"  onclick="ga('dTracker.send', 'event', 'promo', 'bottom', 'https://www.moviemaxdigital.co.nz/newsletter');"><img data-src="https://yc.cldmlk.com/movie-max-digital/1552338435800_1495506878110_SignUpSecondAlternate.jpg" alt=""></a>
+                            <a href="##" ><img data-src="./images/banner7.jpg" alt=""></a>
                         </li>
                     </ul>
                 </div>

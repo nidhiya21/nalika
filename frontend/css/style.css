@@ -190,6 +190,7 @@ header nav.sub-menu {
   right: 0;
   z-index: 11;
   display: none;
+  height: 100px;
 }
 header nav.sub-menu ul {
   padding: 0;
@@ -416,7 +417,7 @@ div.date-picker div.dates {
   background-color: #0F3355;
   position: relative;
   text-align: center;
-  z-index: 0;
+  /* z-index: 0; */
 }
 div.date-picker div.dates #date-scroller {
   display: inline-block;
@@ -617,512 +618,9 @@ div.staticPage div.movie,
   /*                 Styles for With Synopsis layout                   */
   /* ----------------------------------------------------------------- */
 }
-#movie-list div.movie:after,
-#printArea div.movie:after,
-div.staticPage div.movie:after,
-#wrapper div.movie:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-#movie-list div.movie div.movie-details,
-#printArea div.movie div.movie-details,
-div.staticPage div.movie div.movie-details,
-#wrapper div.movie div.movie-details {
-  display: inline-block;
-  position: relative;
-}
-#movie-list div.movie img,
-#printArea div.movie img,
-div.staticPage div.movie img,
-#wrapper div.movie img {
-  margin: 0;
-  position: relative;
-}
-#movie-list div.movie img:hover,
-#printArea div.movie img:hover,
-div.staticPage div.movie img:hover,
-#wrapper div.movie img:hover {
-  /* next 3 statements are for IE, cannot darken using css filter. */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
-  opacity: 0.8 \9;
-  /* \9 is to affect ie only. */
-  -webkit-filter: brightness(0.8);
-  filter: brightness(0.8);
-}
-#movie-list div.movie img.poster-portrait,
-#printArea div.movie img.poster-portrait,
-div.staticPage div.movie img.poster-portrait,
-#wrapper div.movie img.poster-portrait {
-  display: inline-block;
-  height: 235px;
-  vertical-align: top;
-  width: 165px;
-}
-#movie-list div.movie div.movie-info,
-#printArea div.movie div.movie-info,
-div.staticPage div.movie div.movie-info,
-#wrapper div.movie div.movie-info,
-#movie-list div.movie div.time,
-#printArea div.movie div.time,
-div.staticPage div.movie div.time,
-#wrapper div.movie div.time {
-  display: inline-block;
-}
-#movie-list div.movie div.movie-info,
-#printArea div.movie div.movie-info,
-div.staticPage div.movie div.movie-info,
-#wrapper div.movie div.movie-info {
-  margin-left: 15px;
-  vertical-align: top;
-  width: 300px;
-}
-#movie-list div.movie div.movie-info a,
-#printArea div.movie div.movie-info a,
-div.staticPage div.movie div.movie-info a,
-#wrapper div.movie div.movie-info a {
-  text-decoration: none;
-}
-#movie-list div.movie div.movie-info h2,
-#printArea div.movie div.movie-info h2,
-div.staticPage div.movie div.movie-info h2,
-#wrapper div.movie div.movie-info h2 {
-  color: #000000;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 1.6em;
-  margin: 5px;
-  text-transform: uppercase;
-}
-#movie-list div.movie div.movie-info h2:hover,
-#printArea div.movie div.movie-info h2:hover,
-div.staticPage div.movie div.movie-info h2:hover,
-#wrapper div.movie div.movie-info h2:hover {
-  text-decoration: underline;
-}
-#movie-list div.movie div.movie-info p.duration-rating,
-#printArea div.movie div.movie-info p.duration-rating,
-div.staticPage div.movie div.movie-info p.duration-rating,
-#wrapper div.movie div.movie-info p.duration-rating,
-#movie-list div.movie div.movie-info p.release-date,
-#printArea div.movie div.movie-info p.release-date,
-div.staticPage div.movie div.movie-info p.release-date,
-#wrapper div.movie div.movie-info p.release-date {
-  color: #6a6a6a;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  margin: 5px;
-}
-#movie-list div.movie div.movie-info div.director,
-#printArea div.movie div.movie-info div.director,
-div.staticPage div.movie div.movie-info div.director,
-#wrapper div.movie div.movie-info div.director,
-#movie-list div.movie div.movie-info div.synopsis,
-#printArea div.movie div.movie-info div.synopsis,
-div.staticPage div.movie div.movie-info div.synopsis,
-#wrapper div.movie div.movie-info div.synopsis,
-#movie-list div.movie div.movie-info div.actors,
-#printArea div.movie div.movie-info div.actors,
-div.staticPage div.movie div.movie-info div.actors,
-#wrapper div.movie div.movie-info div.actors {
-  color: #000000;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  margin-left: 5px;
-  margin-top: 5px;
-}
-#movie-list div.movie div.movie-info div.actors,
-#printArea div.movie div.movie-info div.actors,
-div.staticPage div.movie div.movie-info div.actors,
-#wrapper div.movie div.movie-info div.actors {
-  margin-top: 0;
-}
-#movie-list div.movie div.movie-info div.director b,
-#printArea div.movie div.movie-info div.director b,
-div.staticPage div.movie div.movie-info div.director b,
-#wrapper div.movie div.movie-info div.director b,
-#movie-list div.movie div.movie-info div.actors b,
-#printArea div.movie div.movie-info div.actors b,
-div.staticPage div.movie div.movie-info div.actors b,
-#wrapper div.movie div.movie-info div.actors b {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-}
-#movie-list div.movie div.movie-info.upcoming,
-#printArea div.movie div.movie-info.upcoming,
-div.staticPage div.movie div.movie-info.upcoming,
-#wrapper div.movie div.movie-info.upcoming {
-  width: 580px;
-}
-#movie-list div.movie div.movie-times,
-#printArea div.movie div.movie-times,
-div.staticPage div.movie div.movie-times,
-#wrapper div.movie div.movie-times {
-  display: inline-block;
-  float: right;
-  vertical-align: top;
-  width: 285px;
-}
-#movie-list div.movie div.movie-times div.session-container,
-#printArea div.movie div.movie-times div.session-container,
-div.staticPage div.movie div.movie-times div.session-container,
-#wrapper div.movie div.movie-times div.session-container {
-  display: inline-block;
-  padding: 2px;
-}
-#movie-list div.movie div.movie-times a,
-#printArea div.movie div.movie-times a,
-div.staticPage div.movie div.movie-times a,
-#wrapper div.movie div.movie-times a,
-#movie-list div.movie div.movie-times div.attributes,
-#printArea div.movie div.movie-times div.attributes,
-div.staticPage div.movie div.movie-times div.attributes,
-#wrapper div.movie div.movie-times div.attributes,
-#movie-list div.movie div.movie-times div.no-booking-link,
-#printArea div.movie div.movie-times div.no-booking-link,
-div.staticPage div.movie div.movie-times div.no-booking-link,
-#wrapper div.movie div.movie-times div.no-booking-link {
-  background-color: #ffffff;
-  color: #60c5f0;
-  display: inline-block;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  height: 46px;
-}
-#movie-list div.movie div.movie-times a,
-#printArea div.movie div.movie-times a,
-div.staticPage div.movie div.movie-times a,
-#wrapper div.movie div.movie-times a,
-#movie-list div.movie div.movie-times div.no-booking-link,
-#printArea div.movie div.movie-times div.no-booking-link,
-div.staticPage div.movie div.movie-times div.no-booking-link,
-#wrapper div.movie div.movie-times div.no-booking-link {
-  border: 1px solid #60c5f0;
-  font-size: 1.5em;
-  overflow: hidden;
-  position: relative;
-  text-decoration: none;
-  vertical-align: middle;
-}
-#movie-list div.movie div.movie-times div.no-booking-link,
-#printArea div.movie div.movie-times div.no-booking-link,
-div.staticPage div.movie div.movie-times div.no-booking-link,
-#wrapper div.movie div.movie-times div.no-booking-link {
-  height: 43px;
-}
-#movie-list div.movie div.movie-times a:after,
-#printArea div.movie div.movie-times a:after,
-div.staticPage div.movie div.movie-times a:after,
-#wrapper div.movie div.movie-times a:after {
-  background-color: #60c5f0;
-  bottom: 0;
-  color: #ffffff;
-  content: 'Book';
-  left: 0;
-  line-height: 46px;
-  padding: 0 10px;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 100%;
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-#movie-list div.movie div.movie-times a:hover:after,
-#printArea div.movie div.movie-times a:hover:after,
-div.staticPage div.movie div.movie-times a:hover:after,
-#wrapper div.movie div.movie-times a:hover:after {
-  top: 0;
-}
-#movie-list div.movie div.movie-times .time,
-#printArea div.movie div.movie-times .time,
-div.staticPage div.movie div.movie-times .time,
-#wrapper div.movie div.movie-times .time {
-  display: inline-block;
-  padding: 7px 15px;
-  vertical-align: middle;
-}
-#movie-list div.movie div.movie-times .sold-out,
-#printArea div.movie div.movie-times .sold-out,
-div.staticPage div.movie div.movie-times .sold-out,
-#wrapper div.movie div.movie-times .sold-out {
-  text-decoration: line-through;
-}
-#movie-list div.movie div.movie-times div.attributes,
-#printArea div.movie div.movie-times div.attributes,
-div.staticPage div.movie div.movie-times div.attributes,
-#wrapper div.movie div.movie-times div.attributes {
-  background-color: #60c5f0;
-  border: 1px solid #60c5f0;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 0.7em;
-  cursor: pointer;
-  padding: 16px 8px;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-#movie-list div.movie.layout-by-movie,
-#printArea div.movie.layout-by-movie,
-div.staticPage div.movie.layout-by-movie,
-#wrapper div.movie.layout-by-movie {
-  margin-bottom: 50px;
-}
-#movie-list div.movie.layout-by-movie div.posters,
-#printArea div.movie.layout-by-movie div.posters,
-div.staticPage div.movie.layout-by-movie div.posters,
-#wrapper div.movie.layout-by-movie div.posters {
-  display: inline-block;
-  margin-right: 15px;
-  position: relative;
-  vertical-align: top;
-  width: 30%;
-}
-#movie-list div.movie.layout-by-movie div.posters img,
-#printArea div.movie.layout-by-movie div.posters img,
-div.staticPage div.movie.layout-by-movie div.posters img,
-#wrapper div.movie.layout-by-movie div.posters img {
-  height: auto;
-  margin: 0;
-  width: 100%;
-}
-#movie-list div.movie.layout-by-movie div.posters div.movie-info,
-#printArea div.movie.layout-by-movie div.posters div.movie-info,
-div.staticPage div.movie.layout-by-movie div.posters div.movie-info,
-#wrapper div.movie.layout-by-movie div.posters div.movie-info {
-  display: none;
-}
-#movie-list div.movie.layout-by-movie div.movie-details,
-#printArea div.movie.layout-by-movie div.movie-details,
-div.staticPage div.movie.layout-by-movie div.movie-details,
-#wrapper div.movie.layout-by-movie div.movie-details {
-  width: 66%;
-}
-#movie-list div.movie.layout-by-movie div.movie-info,
-#printArea div.movie.layout-by-movie div.movie-info,
-div.staticPage div.movie.layout-by-movie div.movie-info,
-#wrapper div.movie.layout-by-movie div.movie-info {
-  display: block;
-  margin: 0;
-  margin-bottom: 25px;
-  width: 100%;
-}
-#movie-list div.movie.layout-by-movie div.movie-info h2,
-#printArea div.movie.layout-by-movie div.movie-info h2,
-div.staticPage div.movie.layout-by-movie div.movie-info h2,
-#wrapper div.movie.layout-by-movie div.movie-info h2 {
-  margin-top: 0;
-}
-#movie-list div.movie.layout-by-movie div.movie-info a.details-page-link,
-#printArea div.movie.layout-by-movie div.movie-info a.details-page-link,
-div.staticPage div.movie.layout-by-movie div.movie-info a.details-page-link,
-#wrapper div.movie.layout-by-movie div.movie-info a.details-page-link {
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  color: #000000;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  display: inline-block;
-  margin-top: 10px;
-  padding: 11px 20px;
-}
-#movie-list div.movie.layout-by-movie div.movie-info a.details-page-link:hover,
-#printArea div.movie.layout-by-movie div.movie-info a.details-page-link:hover,
-div.staticPage div.movie.layout-by-movie div.movie-info a.details-page-link:hover,
-#wrapper div.movie.layout-by-movie div.movie-info a.details-page-link:hover {
-  background-color: #ffffff;
-  border: 1px solid #60c5f0;
-  color: #60c5f0;
-}
-#movie-list div.movie.layout-by-movie div.movie-times,
-#printArea div.movie.layout-by-movie div.movie-times,
-div.staticPage div.movie.layout-by-movie div.movie-times,
-#wrapper div.movie.layout-by-movie div.movie-times {
-  width: 100%;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row {
-  border-bottom: 1px solid grey;
-  padding: 14px 0 8px;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div {
-  display: inline-block;
-  vertical-align: top;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div span.day,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div span.day,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div span.day,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div span.day {
-  color: #000000;
-  display: inline-block;
-  font-family: 'Lato', sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1;
-  vertical-align: text-top;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div a,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div a,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div a,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div a,
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link {
-  background-color: transparent;
-  border: none;
-  font-size: 17px;
-  height: auto;
-  line-height: 1;
-  margin: 2px 6px 10px;
-  overflow: visible;
-  padding: 0;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  width: 80px;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div a:after,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div a:after,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div a:after,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div a:after,
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link:after,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link:after,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link:after,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div div.no-booking-link:after {
-  display: none;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div .time,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div .time,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div .time,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div .time,
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div div.attributes,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div div.attributes,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div div.attributes,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div div.attributes {
-  color: #000000;
-  display: inline-block;
-  font-family: 'Lato', sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  height: auto;
-  line-height: 1;
-  padding: 0;
-  position: relative;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div .time,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div .time,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div .time,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div .time {
-  vertical-align: top;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div .time:before,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div .time:before,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div .time:before,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div .time:before {
-  content: "";
-  border-bottom: 1px solid #000000;
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div .sold-out,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div .sold-out,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div .sold-out,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div .sold-out {
-  text-decoration: line-through;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div div.attributes,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div div.attributes,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div div.attributes,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div div.attributes {
-  background-color: transparent;
-  border: none;
-  font-size: 10px;
-  margin-bottom: 2px;
-  vertical-align: bottom;
-  width: auto;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes,
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes {
-  width: auto;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes:before,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes:before,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes:before,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes:before,
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes:before,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes:before,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes:before,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes:before {
-  content: "";
-  border-bottom: 1px solid #000000;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes .time:before,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes .time:before,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes .time:before,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div a.has-attributes .time:before,
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes .time:before,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes .time:before,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes .time:before,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row div div.has-attributes .time:before {
-  display: none;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row > div:first-child,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row > div:first-child,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row > div:first-child,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row > div:first-child {
-  width: 45%;
-}
-#movie-list div.movie.layout-by-movie div.movie-times div.session-row > div:last-child,
-#printArea div.movie.layout-by-movie div.movie-times div.session-row > div:last-child,
-div.staticPage div.movie.layout-by-movie div.movie-times div.session-row > div:last-child,
-#wrapper div.movie.layout-by-movie div.movie-times div.session-row > div:last-child {
-  width: 54%;
-}
-#movie-list div.movie.with-synopsis,
-#printArea div.movie.with-synopsis,
-div.staticPage div.movie.with-synopsis,
-#wrapper div.movie.with-synopsis {
-  margin-bottom: 30px;
-}
-#movie-list div.movie.with-synopsis div.movie-info h2,
-#printArea div.movie.with-synopsis div.movie-info h2,
-div.staticPage div.movie.with-synopsis div.movie-info h2,
-#wrapper div.movie.with-synopsis div.movie-info h2 {
-  margin-left: 0;
-  margin-top: 20px;
-}
-#movie-list div.movie.with-synopsis div.posters,
-#printArea div.movie.with-synopsis div.posters,
-div.staticPage div.movie.with-synopsis div.posters,
-#wrapper div.movie.with-synopsis div.posters {
-  width: 25%;
-}
-#movie-list div.movie.with-synopsis div.movie-details,
-#printArea div.movie.with-synopsis div.movie-details,
-div.staticPage div.movie.with-synopsis div.movie-details,
-#wrapper div.movie.with-synopsis div.movie-details {
-  width: 70%;
-}
+
+
+
 #wrapper div.movie div.movie-times a:hover:after {
   display: none;
 }
@@ -3348,4 +2846,61 @@ margin-left: 5px;
 }
 .poster-filim{
   height:400px;
+}
+#datePicker{
+  display:inline-block!important;
+}
+.poster-portraits {
+  display: inline-block;
+  height: 80px;
+  vertical-align: top;
+  width: 80px;
+}
+.movie-times {
+  display: inline-block;
+  float: right;
+  vertical-align: top;
+  width: 285px;
+  margin-top: -77px;
+}
+.session-container {
+  display: inline-block;
+  padding: 2px;
+}
+.time {
+  display: inline-block;
+  padding: 7px 15px;
+  vertical-align: middle;
+}
+.slot-link {
+  border: 1px solid #60c5f0;
+  font-size: 1.5em;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: #ffffff;
+  color: #60c5f0;
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  height: 46px;
+}
+.footer-area{
+  margin-left: -169px;
+}
+.footer-links{
+  width: 1693px;
+}
+.filim{
+  font-size: 18px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #000000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+.poster-portrait{
+width: 157px!important;
+height: 244px!important;
 }

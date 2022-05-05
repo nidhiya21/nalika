@@ -1,478 +1,387 @@
+<cfset moviesObj=CreateObject("component","components.movies")/>
+<cfif structKeyExists(URL,'id')>
+    <cfif URL.id NEQ "">
+        <cfset variables.movieID = URL.id/>
+        <cfset result=moviesObj.getMoviesById(movieID)/>   
+    </cfif>
+    <cfif URL.tid NEQ "">
+        <cfset variables.theaterID = URL.tid/>
+        <cfset res=moviesObj.getTheaterByID(theaterID)/>   
+    </cfif>
+</cfif>
 <html>
-<head>
-<style>
-html, body, * {
-  box-sizing: border-box;
-}
 
-nav {
-  height: 60px;
-}
+     <head>
+        <meta name="viewport" content="width=device-width">
+        <title><cfoutput>#result.FLD_MOVIENAME#</cfoutput> - Movie Max Digital</title> 
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link href="./css/font.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/site.css" />
+        <link rel="stylesheet" type="text/css" href="./css/purchase.css" />
+        <link type="text/css" href="./css/custom.css" rel="stylesheet" />
+       
+    </head>
 
-nav h1 {
-  float: left;
-  margin: 10px 0 0 30px;
-  font-size: 2em;
-}
+    <body>
+        <img class="body-background film-poster"></img>
+        <img class="body-background film-backdrop"></img>
+<div id="container">
+            <header>
+                <a href="./index.cfm">
+                    <img src="./images/banner.jpg" alt="" />
+                </a>
+            </header>
+            <div id="page-body" >
+                <cfoutput>
+                <input type="hidden" id="movieID" name="movieID" value= "#URL.id#"/>
+                <input type="hidden" id="theaterID" name="theaterID" value= "#URL.tid#"/>
+                <input type="hidden" id="bookedTime" name="bookedTime" value= "#URL.slot#"/>
+                <input type="hidden" id="bookedDate" name="bookedDate" value= "#URL.date#"/>
+                <input type="hidden" id="userID" name="userID"  value="#session.stLoggedInFrUser.userID#"/> 
+                <section id="session-overview">
+                    <section class="session-details ">
+                        <div class="poster-container">
+                                <img class="poster" src="../manage/movies/#result.FLD_POSTER#" alt=#result.FLD_MOVIENAME# />
+                        </div>
+                        <section class="film-details">
+                            <div class="film-details-header">
+                                <div class="movie-title-container">
+                                    <h3>
+                                        <span>#result.FLD_MOVIENAME#</span>
+                                    </h3>
+                                </div>                              
+                                <div> 
+                                    <span> #result.fld_details#</span></br>  
+                                </div>
+                            </div>
+                            <div class="film-details-body">
+                                <div class="showtime-info">
+                                    <label for="ShowingTime">Date</label>
+                                    <text>#URL.date#</text>
+                                </div>
+                                <div class="showtime-info">
+                                    <label for="FilmLength">Time</label>
+                                    <text for="FilmLength">
+                                       #URL.slot#
+                                    </text>
+                                </div>
+                                <div class="showtime-info">
+                                    <label for="SiteName">Theater Name</label>
+                                    <text for="SiteName"> #res.fld_theaterName#</text>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+                <div class="synopsis">
+                    <p> #result.fld_cast#</p>
+                </div>
+                </cfoutput>   
+                <section id="ticket-section">
+                    <div class="underlined">
+                        <div class="page-heading highlight-foreground">
+                            Select tickets
+                        </div>
+                    </div>
+                    <div id="ticket-table-container">
+                        <div class="ticket-table">
+                            <div id="placeHolder" class="highlight-background"></div>
+                            <table id="ticket-table" data-max-quantity="10">
+                                <thead>
+                                    <tr class="desktop-only">
+                                        <th></th>
+                                        <th class="desktop-only">Price</th>
+                                        <th class="quantity">Quantity</th>
+                                        <th class="subtotal">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tr data-max-quantity="10" 
+                                    data-code="0001" 
+                                    data-recognitionid=""
+                                    data-price="300.0000" 
+                                    data-bookingfee="" 
+                                    data-isrewardticket="False"
+                                    data-isForAllocatedArea="True" 
+                                    data-cardNumber="" 
+                                    data-voucherBarcode=""
+                                    property="offers" 
+                                    typeof="Offer" 
+                                    class="">
+                                        <td class="name" property="name">
+                                            <div class="ticket-name">
+                                                Gold Full                </div>
+                                            <div class="ticket-table-member">
+                                                <span class="price mobile-only" property="price">
+                                                  <span> &#x20b9;</span> 300.00
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="desktop-only">
+                                            <span class="price" property="price">
+                                                  <span> &#x20b9;</span> 300.00
+                                            </span>
+                                        </td>
+                                        <td class="quantity">
+                                            <div>
+                                                <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                                                <input type="tel" name="goldFullCount"  id="goldFullCount" class="short numeric" value="0" />
+                                                <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        <div class="subtotal">
+                                                <span class="subtotal-currency">
+                                                  <span> &#x20b9;</span> 
+                                                </span>
+                                                <span class="subtotal-value-money">
+                                                    0.00
+                                                </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-max-quantity="10" 
+                                    data-code="0002" 
+                                    data-recognitionid=""
+                                    data-price="200.0000" 
+                                    data-bookingfee="" 
+                                    data-isrewardticket="False"
+                                    data-isForAllocatedArea="True" 
+                                    data-cardNumber="" 
+                                    data-voucherBarcode=""
+                                    property="offers" 
+                                    typeof="Offer" 
+                                    class="">
+                                    
+                                        <td class="name" property="name">
+                                            <div class="ticket-name"> Gold Half</div>
+                                            <div class="ticket-table-member">
+                                                <span class="price mobile-only" property="price">
+                                                      <span> &#x20b9;</span> 200.00
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="desktop-only">
+                                            <span class="price" property="price">
+                                                  <span> &#x20b9;</span> 200.00
+                                            </span>
+                                        </td>
+                                    
+                                        <td class="quantity">
+                                            <div>
+                                                <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                                                <input type="tel" name="goldHalfCount"  id="goldHalfCount" class="short numeric" value="0" />
+                                                <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                                            </div>
+                                        </td>
+                                    <td>
+                                        <div class="subtotal">
+                                                <span class="subtotal-currency">
+                                                      <span> &#x20b9;</span> 
+                                                </span>
+                                                <span class="subtotal-value-money">
+                                                    0.00
+                                                </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-max-quantity="10" 
+                                    data-code="0003" 
+                                    data-recognitionid=""
+                                    data-price="200.0000" 
+                                    data-bookingfee="" 
+                                    data-isrewardticket="False"
+                                    data-isForAllocatedArea="True" 
+                                    data-cardNumber="" 
+                                    data-voucherBarcode=""
+                                    property="offers" 
+                                    typeof="Offer" 
+                                    class="">
+                                    
+                                        <td class="name" property="name">
+                                            <div class="ticket-name">ODC Full</div>
+                                            <div class="ticket-table-member">
+                                                <span class="price mobile-only" property="price">
+                                                      <span> &#x20b9;</span> 200.00
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="desktop-only">
+                                            <span class="price" property="price">
+                                                   <span> &#x20b9;</span> 200.00
+                                            </span>
+                                        </td>
+                                    
+                                        <td class="quantity">
+                                            <div>
+                                                <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                                                <input type="tel"  name="odcFullCount"  id="odcFullCount" class="short numeric" value="0" />
+                                                <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                                            </div>
+                                        </td>
+                                    <td>
+                                        <div class="subtotal">
+                                                <span class="subtotal-currency">
+                                                      <span> &#x20b9;</span> 
+                                                </span>
+                                                <span class="subtotal-value-money">
+                                                    0.00
+                                                </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-max-quantity="10" 
+                                    data-code="0004" 
+                                    data-recognitionid=""
+                                    data-price="100.0000" 
+                                    data-bookingfee="" 
+                                    data-isrewardticket="False"
+                                    data-isForAllocatedArea="True" 
+                                    data-cardNumber="" 
+                                    data-voucherBarcode=""
+                                    property="offers" 
+                                    typeof="Offer" 
+                                    class="">
+                                    
+                                        <td class="name" property="name">
+                                            <div class="ticket-name">ODC Half </div>
+                                            <div class="ticket-table-member">
+                                                <span class="price mobile-only" property="price">
+                                                      <span> &#x20b9;</span> 100.00
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="desktop-only">
+                                            <span class="price" property="price">
+                                                  <span> &#x20b9;</span> 100.00
+                                            </span>
+                                        </td>
+                                    
+                                        <td class="quantity">
+                                            <div>
+                                                <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                                                <input type="tel"   name="odcHalfCount"  id="odcHalfCount" class="short numeric" value="0" />
+                                                <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                                            </div>
+                                        </td>
+                                    <td>
+                                        <div class="subtotal">
+                                                <span class="subtotal-currency">
+                                                       <span> &#x20b9;</span> 
+                                                </span>
+                                                <span class="subtotal-value-money">
+                                                    0.00
+                                                </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-max-quantity="10" 
+                                    data-code="0017" 
+                                    data-recognitionid=""
+                                    data-price="100.0000" 
+                                    data-bookingfee="" 
+                                    data-isrewardticket="False"
+                                    data-isForAllocatedArea="True" 
+                                    data-cardNumber="" 
+                                    data-voucherBarcode=""
+                                    property="offers" 
+                                    typeof="Offer" 
+                                    class="">
+                                    
+                                        <td class="name" property="name">
+                                            <div class="ticket-name">Box          </div>
+                                            <div class="ticket-table-member">
+                                                <span class="price mobile-only" property="price">
+                                                      <span> &#x20b9;</span> 100.00
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="desktop-only">
+                                            <span class="price" property="price">
+                                                  <span> &#x20b9;</span> 100.00
+                                            </span>
+                                        </td>
+                                    
+                                        <td class="quantity">
+                                            <div>
+                                                <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                                                <input type="tel"  name="boxCount"  id="boxCount" class="short numeric" value="0" />
+                                                <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                                            </div>
+                                        </td>
+                                    <td>
+                                        <div class="subtotal">
+                                                <span class="subtotal-currency">
+                                                      <span> &#x20b9;</span> 
+                                                </span>
+                                                <span class="subtotal-value-money">
+                                                    0.00
+                                                </span>
+                                        </div>
+                                    </td>
+                                </tr>
 
-nav ul {
-  float: right;
-}
+                                </table>
+                            </div>
+                    </div>
+                    <div id="price-summary">
+                            <div>
+                                <span>Booking fee</span>
+                                <div class="booking-fee-value"><span>0.00</span></div>
+                            </div>
+                        <div>
+                            <span class="total-label">Total price</span>
+                            <div class="total-value">
+                            <span id="total">   <span> &#x20b9;</span> 0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ticket-actionss">
+                            <button class="action highlight-background next">
+                                <span><a href="./payment.cfm" class="pay">Select seats</a></span>
+                            </button>
+                    </div>
+                </section>
+                <section id="seat-selection">
+                    <div class="underlined">
+                        <div class="page-heading highlight-foreground">
+                            Select seats
+                        </div>
+                    </div>
+                    <span class="countdown">
+                        <em>
+                            <span>Time remaining: </span>
+                            <span class="time highlight-foreground"></span>
+                        </em>
+                    </span>
+                    <div class="Seating-Control layout"></div>
+                    <div class="underlined">
+                        <div class="page-heading highlight-foreground">
+                            
+                        </div>
+                    </div>
+                    <div id="seating-actions">
+                        <button class="action-secondary-button highlight-border-medium back">
+                            <span class="highlight-foreground">Back</span>
+                        </button>
+                        <button class="action highlight-background next">
+                            <span>Next</span>
+                        </button>
+                    </div>
+                </section>
+                <section id="error-section">
+                    <h2><em class="highlight-foreground">Sorry!</em></h2>
+                    <p></p>
+                    <div id="error-actions">
+                        <button class="action highlight-background retry">
+                            <span>Retry</span>
+                        </button>
+                    </div>
+                </section>
 
-nav ul li {
-  display: inline-block;
-  list-style: none;
-  margin: 0 0 3px 0;
-  padding-right: 10px;
-  cursor: pointer;
-  color: #ccc;
-  transition: all 0.5s ease;
-}
-
-nav ul li:hover {
-  color: #000;
-}
-
-nav ul li:last-child {
-  margin-right: 20px;
-}
-
-nav ul li.active {
-  color: #000;
-}
-
-.underline {
-  position: absolute;
-  height: 4px;
-  background-color: #ceaee8;
-  transition: all 0.5s ease;
-}
-
-.container {
-  width: 100%;
-  height: 100vh;
-  background-color: #e7e7f6;
-  border-radius: 5px;
-  z-index: 2;
-}
-
-button {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  height: 70px;
-  width: 200px;
-  margin: -35px 0 0 -100px;
-  padding: 15px 30px;
-  border-radius: 5px;
-  background-color: #ceaee8;
-  color: #fff;
-  font-size: 1.5em;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  outline: none;
-}
-
-button:hover {
-  opacity 0.8;
-  box-shadow: 0 2px 5px #9a9a9a;
-}
-
-.overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 10;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .5s ease;
-}
-
-.overlay.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.main-popup {
-  position: fixed;
-  left: 0;
-  top: 30px;
-  margin: 0;
-  width: 100%;
-  height: 450px;
-  background-color: #e7e7f6;
-  border-radius: 5px;
-  z-index: 15;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px);
-  transition: all .5s ease;
-  /*overflow: hidden;*/
-}
-
-.main-popup.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(10px);
-  transition: all .5s ease;
-}
-
-@media (min-width: 500px) {
-  .main-popup {
-    width: 500px;
-    left: 50%;
-    margin: 0 0 0 -250px;
-  }
-}
-
-.popup-header {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  height: 62px;
-  width: 100%;
-}
-
-#popup-close-button a {
-  position: absolute;
-  right: 10px;
-  top: -30px;
-  width: 22px;
-  height: 22px;
-}
-
-#popup-close-button a::before {
-  content: '';
-  position: absolute;
-  right: 10px;
-  top: 0;
-  width: 3px;
-  height: 25px;
-  background-color: #fff;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-#popup-close-button a::after {
-  content: '';
-  position: absolute;
-  right: 10px;
-  top: 0;
-  width: 3px;
-  height: 25px;
-  background-color: #fff;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
-.popup-header ul {
-  margin: 0;
-  padding: 0;
-}
-
-.popup-header ul li {
-  text-align: center;
-  list-style: none;
-  width: 50%;
-  float: left;
-}
-
-.popup-header ul li a {
-  display: block;
-  padding: 20px 0;
-  margin: 0;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-
-#sign-in {
-  background-color: #ceaee8;
-  color: #fff;
-  border-radius: 5px 0 0 0;
-}
-
-#sign-in.active {
-  color: #ceaee8;
-  background-color: transparent;
-}
-
-#register {
-  background-color: #ceaee8;
-  color: #fff;
-  border-radius: 0 5px 0 0;
-}
-
-#register.active {
-  color: #ceaee8;
-  background-color: transparent;
-}
-
-
-form.sign-in {
-  position: relative; 
-  top: 40px;
-  left: 0;
-  font-size: 1em;
-  opacity: 1;
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  -o-transition: all .35s;
-  transition: all .35s;
-}
-
-form.sign-in.move-left {
-  opacity: 0;
-  transform: translateX(-450px);
-}
-
-form label {
-  font-size: 1.1em;
-  color: #ceaee8;
-  margin-left: 23px;
-}
-
-form.sign-in input {
-  border-radius: 5px;
-  width: 90%;
-  height: 40px;
-  margin: 5px 5% 30px 5%;
-  padding: 10px;
-  font-size: 1em;
-  color: #ceaee8;
-  outline: none;
-  border: none;
-}
-
-input#submit {
-  background-color: #ceaee8;
-  color: #fff;
-  height: 50px;
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 25px;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
-  border-radius: 5px;
-  font-size: 1em;
-  border: none;
-}
-
-form.register {
-  position: relative; 
-  top: -280px;
-  left: 0;
-  font-size: 1em;
-  opacity: 0;
-  transform: translateX(450px);
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  -o-transition: all .35s;
-  transition: all .35s;
-}
-
-form.register.move-left {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-form.register input {
-  border-radius: 5px;
-  width: 90%;
-  height: 40px;
-  margin: 5px 5% 15px 5%;
-  padding: 10px;
-  font-size: 1em;
-  color: #ceaee8;
-  outline: none;
-  border: none;
-}
-
-p.check-mark {
-  position: relative;
-  left: 50%;
-  width: 200px;
-  margin: 0 0 0 -100px;
-  padding: 0;
-  text-align: center;
-  color: #ceaee8;
-  font-size: .8em;
-}
-
-p.check-mark a {
-  color: #a48bb9;
-}
-
-p.check-mark input {
-  border-radius: 0;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  font-size: 2em;
-  color: #ceaee8;
-  outline: none;
-  border: none;
-}
-
-p.check-mark label {
-  margin-left: 5px;
-}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-$(function() {
-  //defining all needed variables
-  var $overlay = $('.overlay');
-  var $mainPopUp = $('.main-popup')
-  var $signIn = $('#sign-in');
-  var $register = $('#register');
-  var $formSignIn = $('form.sign-in');
-  var $formRegister = $('form.register');
-  
-  var $firstChild = $('nav ul li:first-child');
-  var $secondChild = $('nav ul li:nth-child(2)');
-  var $thirdChild = $('nav ul li:nth-child(3)');
-  
-  //defining function to create underline initial state on document load
-  function initialState() {
-    $('.underline').css({
-      "width": $firstChild.width(),
-      "left": $firstChild.position().left,
-      "top": $firstChild.position().top + $firstChild.outerHeight(true) + 'px'
-    });
-  }
-  initialState(); //() used after calling function to call function immediately on doc load
-  
-  //defining function to change underline depending on which li is active
-  function changeUnderline(el) {
-    $('.underline').css({
-      "width": el.width(),
-      "left": el.position().left,
-      "top": el.position().top + el.outerHeight(true) + 'px'
-    });
-  } //note: have not called the function...don't want it called immediately
-  
-  $firstChild.on('click', function(){
-    var el = $firstChild;
-    changeUnderline(el); //call the changeUnderline function with el as the perameter within the called function
-    $secondChild.removeClass('active');
-    $thirdChild.removeClass('active');
-    $(this).addClass('active');
-  });
-  
-  $secondChild.on('click', function(){
-    var el = $secondChild;
-    changeUnderline(el); //call the changeUnderline function with el as the perameter within the called function
-    $firstChild.removeClass('active');
-    $thirdChild.removeClass('active');
-    $(this).addClass('active');
-  });
-  
-  $thirdChild.on('click', function(){
-    var el = $thirdChild;
-    changeUnderline(el); //call the changeUnderline function with el as the perameter within the called function
-    $firstChild.removeClass('active');
-    $secondChild.removeClass('active');
-    $(this).addClass('active');
-  });
-  
-  
-  $('button').on('click', function(){
-    $overlay.addClass('visible');
-    $mainPopUp.addClass('visible');
-    $signIn.addClass('active');
-    $register.removeClass('active');
-    $formRegister.removeClass('move-left');
-    $formSignIn.removeClass('move-left');
-  });
-  $overlay.on('click', function(){
-    $(this).removeClass('visible');
-    $mainPopUp.removeClass('visible');
-  });
-  $('#popup-close-button a').on('click', function(e){
-    e.preventDefault();
-    $overlay.removeClass('visible');
-    $mainPopUp.removeClass('visible');
-  });
-  
-  $signIn.on('click', function(){
-    $signIn.addClass('active');
-    $register.removeClass('active');
-    $formSignIn.removeClass('move-left');
-    $formRegister.removeClass('move-left');
-  });
-  
-  $register.on('click', function(){
-    $signIn.removeClass('active');
-    $register.addClass('active');
-    $formSignIn.addClass('move-left');
-    $formRegister.addClass('move-left');
-  });
-  
-  $('input').on('submit', function(e){
-    e.preventDefault(); //used to prevent submission of form...remove for real use
-  });
-});
-</script>
-</head>
-<body>
-
-<div class="container">
-  <button>Click Here</button>
-</div>
-<div class="overlay">
-</div>
-<div class="main-popup">
-  <div class="popup-header">
-    <div id="popup-close-button"><a href="#"></a></div>
-    <ul>
-      <li><a href="#" id="sign-in">Sign In</a></li>
-      <li><a href="#" id="register">Register</a></li>
-    </ul>
-  </div><!--.popup-header-->
-  <div class="popup-content">
-    <form action="#" class="sign-in">
-      <label for="email">Email:</label>
-      <input type="text" id="email">
-      <label for="password">Password:</label>
-      <input type="password" id="password">
-      <p class="check-mark">
-        <input type="checkbox" id="remember-me">
-        <label for="remember-me">Remember me</label>
-      </p>
-      <input type="submit" id="submit" value="Submit">
-    </form>
-   
-    <form action="#" class="register">
-      <label for="email-register">Email:</label>
-      <input type="text" id="email-register">
-      <label for="password-register">Password:</label>
-      <input type="password" id="password-register">
-      <label for="password-confirmation">Confirm Password:</label>
-      <input type="password-confirmation" id="password-confirmation">
-      <p class="check-mark">
-        <input type="checkbox" id="accept-terms">
-        <label for="accept-terms">I agree to the <a href="#">Terms</a></label>
-      </p>
-      <input type="submit" id="submit1" value="Create Account">
-    </form>
-  </div><!--.popup-content-->
-</div><!--.main-popup-->
-
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-</body>
+            </div>
+        </div>
+        <script language="javascript" type="text/javascript" src="./js/date.js"></script> datejs
+        <script type="text/javascript" src="./js/site.js"></script> 
+        <script type="text/javascript" src="./js/purchase.js"></script>  
+    </body>
 </html>

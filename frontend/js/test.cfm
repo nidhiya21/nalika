@@ -1,379 +1,687 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie8"><![endif]-->
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
 <html>
-<head>
-<style>
+    <!--<![endif]-->
+    <head>
+        <!--[if lt IE 9]>
+            <script language="javascript" type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <![endif]-->
+        <meta name="viewport" content="width=device-width">
+        <title>Doctor Strange in the Multiverse of Madness - Wed 4 May 6:10 PM - Movie Max Digital</title>
+            <script defer>
+                (function(apiKey){
+                    (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
+                    v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
+                        o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+                        y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+                        z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+                        // Call this whenever information about your visitors becomes available
+                        // Please use Strings, Numbers, or Bools for value types.
+                        pendo.initialize({
+                            visitor: {
+                                id:    '12-y6j4832mam1wt6f1bbv2z1wx88',
+                                client_type:    'VTix',
+                                full_name: '',
+                                cinema: 'Movie Max Digital',
+                                country: 'New Zealand'
+                            },
+                            account: {
+                                id: '12', // Highly recommended
+                                name: 'Movie Max Digital',        // Optional
+                                companyName: ''
+                            }
+                        });
+                })("f63c9cc5-1d33-447d-4c5e-1338be1dff5e");
+            </script>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/Content/CSS/site_043A26305E19090DB0B219DC56CECD40.css" />
+        
+    <link rel="stylesheet" type="text/css" href="/Content/CSS/Views/purchase_032CE0BA2C11046E4DCFC0CE17715027.css" />
 
-body {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-    color: #666;
-}
+            <link type="text/css" href="https://veeziustaskscm.blob.core.windows.net/veezi-ticketing-assets/y6j4832mam1wt6f1bbv2z1wx88/custom.css?201909172229" rel="stylesheet" />
+        
+    <meta name="description" content="Buy tickets to Doctor Strange in the Multiverse of Madness at Movie Max Digital on Wednesday, May 4, 2022 6:10 PM" />
 
-h1 {
-    text-align: center;
-    margin-bottom: 0;
-    margin-top: 60px;
-}
+    </head>
 
-#lean_overlay {
-    position: fixed;
-    z-index: 100;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    background: #000;
-    display: none;
-}
-
-.popupContainer {
-    position: absolute;
-    width: 330px;
-    height: auto;
-    left: 45%;
-    top: 60px;
-    background: #FFF;
-}
-
-#modal_trigger {
-    margin: 40px auto;
-    width: 200px;
-    display: block;
-    border: 1px solid #DDD;
-    border-radius: 4px;
-}
-
-.btn {
-    padding: 10px 20px;
-    background: #F4F4F2;
-}
-
-.btn_red {
-    background: #ED6347;
-    color: #FFF;
-}
-
-.btn:hover {
-    background: #E4E4E2;
-}
-
-.btn_red:hover {
-    background: #C12B05;
-}
-
-a.btn {
-    color: #666;
-    text-align: center;
-    text-decoration: none;
-}
-
-a.btn_red {
-    color: #FFF;
-}
-
-.one_half {
-    width: 50%;
-    display: block;
-    float: left;
-}
-
-.one_half.last {
-    width: 45%;
-    margin-left: 5%;
-}
-/* Popup Styles*/
-
-.popupHeader {
-    font-size: 16px;
-    text-transform: uppercase;
-}
-
-.popupHeader {
-    background: #F4F4F2;
-    position: relative;
-    padding: 10px 20px;
-    border-bottom: 1px solid #DDD;
-    font-weight: bold;
-}
-
-.popupHeader .modal_close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 10px 15px;
-    background: #E4E4E2;
-    cursor: pointer;
-    color: #aaa;
-    font-size: 16px;
-}
-
-.popupBody {
-    padding: 20px;
-}
-/* Social Login Form */
-
-.social_login {}
-
-.social_login .social_box {
-    display: block;
-    clear: both;
-    padding: 10px;
-    margin-bottom: 10px;
-    background: #F4F4F2;
-    overflow: hidden;
-}
-
-.social_login .icon {
-    display: block;
-    width: 10px;
-    padding: 5px 10px;
-    margin-right: 10px;
-    float: left;
-    color: #FFF;
-    font-size: 16px;
-    text-align: center;
-}
-
-.social_login .fb .icon {
-    background: #3B5998;
-}
-
-.social_login .google .icon {
-    background: #DD4B39;
-}
-
-.social_login .icon_title {
-    display: block;
-    padding: 5px 0;
-    float: left;
-    font-weight: bold;
-    font-size: 16px;
-    color: #777;
-}
-
-.social_login .social_box:hover {
-    background: #E4E4E2;
-}
-
-.centeredText {
-    text-align: center;
-    margin: 20px 0;
-    clear: both;
-    overflow: hidden;
-    text-transform: uppercase;
-}
-
-.action_btns {
-    clear: both;
-    overflow: hidden;
-}
-
-.action_btns a {
-    display: block;
-}
-/* User Login Form */
-
-.user_login {
-    display: none;
-}
-
-.user_login label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.user_login input[type="text"],
-.user_login input[type="email"],
-.user_login input[type="password"] {
-    display: block;
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #DDD;
-    color: #666;
-}
-
-.user_login input[type="checkbox"] {
-    float: left;
-    margin-right: 5px;
-}
-
-.user_login input[type="checkbox"]+label {
-    float: left;
-}
-
-.user_login .checkbox {
-    margin-bottom: 10px;
-    clear: both;
-    overflow: hidden;
-}
-
-.forgot_password {
-    display: block;
-    margin: 20px 0 10px;
-    clear: both;
-    overflow: hidden;
-    text-decoration: none;
-    color: #ED6347;
-}
-/* User Register Form */
-
-.user_register {
-    display: none;
-}
-
-.user_register label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.user_register input[type="text"],
-.user_register input[type="email"],
-.user_register input[type="password"] {
-    display: block;
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #DDD;
-    color: #666;
-}
-
-.user_register input[type="checkbox"] {
-    float: left;
-    margin-right: 5px;
-}
-
-.user_register input[type="checkbox"]+label {
-    float: left;
-}
-
-.user_register .checkbox {
-    margin-bottom: 10px;
-    clear: both;
-    overflow: hidden;
-}
-</style>
-<script>
-$("#modal_trigger").leanModal({
-    top: 100,
-    overlay: 0.6,
-    closeButton: ".modal_close"
-});
-
-$(function() {
-    // Calling Login Form
-    $("#login_form").click(function() {
-        $(".social_login").hide();
-        $(".user_login").show();
-        return false;
-    });
-
-    // Calling Register Form
-    $("#register_form").click(function() {
-        $(".social_login").hide();
-        $(".user_register").show();
-        $(".header_title").text('Register');
-        return false;
-    });
-
-    // Going back to Social Forms
-    $(".back_btn").click(function() {
-        $(".user_login").hide();
-        $(".user_register").hide();
-        $(".social_login").show();
-        $(".header_title").text('Login');
-        return false;  
-    });
-});
-</script>
-</head>
-<body>
-<div class="container">
-    <h1>Popup Login & Signup with jQuery</h1>
-    <a id="modal_trigger" href="#modal" class="btn">Click here to Login or register</a>
-
-    <div id="modal" class="popupContainer" style="display:none;">
-        <header class="popupHeader">
-            <span class="header_title">Login</span>
-            <span class="modal_close"><i class="fa fa-times"></i></span>
-        </header>
-
-        <section class="popupBody">
-            <!-- Social Login -->
-            <div class="social_login">
-                <div class="">
-                    <a href="#" class="social_box fb">
-                        <span class="icon"><i class="fa fa-facebook"></i></span>
-                        <span class="icon_title">Connect with Facebook</span>
-
-                    </a>
-
-                    <a href="#" class="social_box google">
-                        <span class="icon"><i class="fa fa-google-plus"></i></span>
-                        <span class="icon_title">Connect with Google</span>
-                    </a>
-                </div>
-
-                <div class="centeredText">
-                    <span>Or use your Email address</span>
-                </div>
-
-                <div class="action_btns">
-                    <div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
-                    <div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+    <body>
+        <img class="body-background film-poster"></img>
+        <img class="body-background film-backdrop"></img>
+        <div id="container">
+            <div id="browser_support_banner_container">
+                <div class="browser_support_banner">
+                    <div class="browser_support_banner__message">
+                        <p><b>We will be phasing out support for your browser.</b></p>
+                        <p>Please upgrade to one of these more modern browsers.</p>
+                    </div>
+                    <div class="browser_support_banner__suggestions">
+                        <a class="firefox-logo logo-img" href="https://www.mozilla.org/en-US/"></a>
+                        <a class="chrome-logo logo-img" href="https://www.google.com/chrome/?brand=CHBD&gclid=EAIaIQobChMI0ZWklaiK4gIVjBWPCh30HwOLEAAYASAAEgL1tvD_BwE&gclsrc=aw.ds"></a>
+                        <a class="edge-logo logo-img" href="https://www.microsoft.com/en-nz/windows/microsoft-edge"></a>
+                    </div>
+                    <div>
+                        <a href="#" id="close_banner">Close</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Username & Password Login form -->
-            <div class="user_login">
-                <form>
-                    <label>Email / Username</label>
-                    <input type="text" />
-                    <br />
+                <header>
+                    <a href="http://www.moviemaxdigital.co.nz">
+                        <img src="https://veeziustaskscm.blob.core.windows.net/veezi-ticketing-assets/y6j4832mam1wt6f1bbv2z1wx88/banner?201909172229" alt="" />
+                    </a>
+                </header>
+            <div id="page-body" >
+                
 
-                    <label>Password</label>
-                    <input type="password" />
-                    <br />
 
-                    <div class="checkbox">
-                        <input id="remember" type="checkbox" />
-                        <label for="remember">Remember me on this computer</label>
-                    </div>
 
-                    <div class="action_btns">
-                        <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                        <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
-                    </div>
-                </form>
+<section id="session-overview">
+    <section class="session-details ">
 
-                <a href="#" class="forgot_password">Forgot password?</a>
+        <div class="poster-container">
+                <img class="poster" src="/Media/Poster?siteToken=y6j4832mam1wt6f1bbv2z1wx88&amp;code=0000004877" alt="Doctor Strange in the Multiverse of Madness" />
+        </div>
+        <section class="film-details">
+            <div class="film-details-header">
+                <div class="movie-title-container">
+                    <h3>
+                        <span>Doctor Strange in the Multiverse of Madness</span>
+                    </h3>
+                </div>
+                <div>
+                    <em>
+                        M
+                    </em>
+                    <span>
+                        Violence
+                    </span>
+                </div>
             </div>
 
-            <!-- Register Form -->
-            <div class="user_register">
-                <form>
-                    <label>Full Name</label>
-                    <input type="text" />
-                    <br />
+            <div class="film-details-body">
+                <div class="showtime-info">
+                    <label for="ShowingTime">Date</label>
+                    <text> Wednesday, May 4</text>
+                </div>
+                <div class="showtime-info">
+                    <label for="FilmLength">Time</label>
+                    <text for="FilmLength">
+                        6:10 PM
+                        (127 minutes)
+                    </text>
+                </div>
+                <div class="showtime-info">
+                    <label for="SiteName">Location</label>
+                    <text for="SiteName"> Movie Max Digital</text>
+                </div>
 
-                    <label>Email Address</label>
-                    <input type="email" />
-                    <br />
+                <div class="showtime-info">
+                    <label for="ScreenName">Screen</label>
+                    <text for="ScreenName"> Cinema 2</text>
+                </div>
 
-                    <label>Password</label>
-                    <input type="password" />
-                    <br />
-
-                    <div class="checkbox">
-                        <input id="send_updates" type="checkbox" />
-                        <label for="send_updates">Send me occasional email updates</label>
-                    </div>
-
-                    <div class="action_btns">
-                        <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                        <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
-                    </div>
-                </form>
             </div>
         </section>
+    </section>
+</section>
+
+<div class="synopsis">
+    <p>In Marvel Studios’ Doctor Strange in the Multiverse of Madness, the MCU unlocks the Multiverse and pushes its boundaries further than ever before. Journey into the unknown with Doctor Strange, who, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary. </p><p>Doctor Strange in the Multiverse of Madness stars Benedict Cumberbatch, Chiwetel Ejiofor, Elizabeth Olsen, Benedict Wong, Xochitl Gomez, with Michael Stühlbarg, and Rachel McAdams. The film is directed by Sam Raimi, and Kevin Feige is the producer. Louis D’Esposito, Victoria Alonso, Eric </p><p>Hauserman Carroll and Jamie Christopher serve as executive producers. The screenplay was written by Michael Waldron.</p>
+</div>
+
+
+<section id="ticket-section">
+    <div class="underlined">
+    <div class="page-heading highlight-foreground">
+        Select tickets
     </div>
 </div>
-</body>
+
+
+
+    <div id="ticket-table-container">
+
+            <div class="ticket-table">
+                <div id="placeHolder" class="highlight-background"></div>
+                <table id="ticket-table" data-max-quantity="10">
+                    <thead>
+                        <tr class="desktop-only">
+                            <th></th>
+                            <th class="desktop-only">Price</th>
+                            <th class="quantity">Quantity</th>
+                            <th class="subtotal">Subtotal</th>
+                        </tr>
+                    </thead>
+
+
+
+
+    <tr data-max-quantity="10" 
+        data-code="0001" 
+        data-recognitionid=""
+        data-price="16.0000" 
+        data-bookingfee="" 
+        data-isrewardticket="False"
+        data-isForAllocatedArea="True" 
+        data-cardNumber="" 
+        data-voucherBarcode=""
+        property="offers" 
+        typeof="Offer" 
+        class="">
+        
+            <td class="name" property="name">
+                <div class="ticket-name">
+Adult                </div>
+                <div class="ticket-table-member">
+                    <span class="price mobile-only" property="price">
+                        $16.00
+                    </span>
+                </div>
+            </td>
+            <td class="desktop-only">
+                <span class="price" property="price">
+                    $16.00
+                </span>
+            </td>
+        
+            <td class="quantity">
+                <div>
+                    <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                    <input type="tel" class="short numeric" value="0" />
+                    <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                </div>
+            </td>
+        <td>
+            <div class="subtotal">
+                    <span class="subtotal-currency">
+                        $
+                    </span>
+                    <span class="subtotal-value-money">
+                        0.00
+                    </span>
+            </div>
+        </td>
+    </tr>
+    <tr data-max-quantity="10" 
+        data-code="0002" 
+        data-recognitionid=""
+        data-price="15.0000" 
+        data-bookingfee="" 
+        data-isrewardticket="False"
+        data-isForAllocatedArea="True" 
+        data-cardNumber="" 
+        data-voucherBarcode=""
+        property="offers" 
+        typeof="Offer" 
+        class="">
+        
+            <td class="name" property="name">
+                <div class="ticket-name">
+Student                </div>
+                <div class="ticket-table-member">
+                    <span class="price mobile-only" property="price">
+                        $15.00
+                    </span>
+                </div>
+            </td>
+            <td class="desktop-only">
+                <span class="price" property="price">
+                    $15.00
+                </span>
+            </td>
+        
+            <td class="quantity">
+                <div>
+                    <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                    <input type="tel" class="short numeric" value="0" />
+                    <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                </div>
+            </td>
+        <td>
+            <div class="subtotal">
+                    <span class="subtotal-currency">
+                        $
+                    </span>
+                    <span class="subtotal-value-money">
+                        0.00
+                    </span>
+            </div>
+        </td>
+    </tr>
+    <tr data-max-quantity="10" 
+        data-code="0003" 
+        data-recognitionid=""
+        data-price="10.0000" 
+        data-bookingfee="" 
+        data-isrewardticket="False"
+        data-isForAllocatedArea="True" 
+        data-cardNumber="" 
+        data-voucherBarcode=""
+        property="offers" 
+        typeof="Offer" 
+        class="">
+        
+            <td class="name" property="name">
+                <div class="ticket-name">
+Child                </div>
+                <div class="ticket-table-member">
+                    <span class="price mobile-only" property="price">
+                        $10.00
+                    </span>
+                </div>
+            </td>
+            <td class="desktop-only">
+                <span class="price" property="price">
+                    $10.00
+                </span>
+            </td>
+        
+            <td class="quantity">
+                <div>
+                    <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                    <input type="tel" class="short numeric" value="0" />
+                    <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                </div>
+            </td>
+        <td>
+            <div class="subtotal">
+                    <span class="subtotal-currency">
+                        $
+                    </span>
+                    <span class="subtotal-value-money">
+                        0.00
+                    </span>
+            </div>
+        </td>
+    </tr>
+    <tr data-max-quantity="10" 
+        data-code="0004" 
+        data-recognitionid=""
+        data-price="13.0000" 
+        data-bookingfee="" 
+        data-isrewardticket="False"
+        data-isForAllocatedArea="True" 
+        data-cardNumber="" 
+        data-voucherBarcode=""
+        property="offers" 
+        typeof="Offer" 
+        class="">
+        
+            <td class="name" property="name">
+                <div class="ticket-name">
+Senior Citizen                </div>
+                <div class="ticket-table-member">
+                    <span class="price mobile-only" property="price">
+                        $13.00
+                    </span>
+                </div>
+            </td>
+            <td class="desktop-only">
+                <span class="price" property="price">
+                    $13.00
+                </span>
+            </td>
+        
+            <td class="quantity">
+                <div>
+                    <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                    <input type="tel" class="short numeric" value="0" />
+                    <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                </div>
+            </td>
+        <td>
+            <div class="subtotal">
+                    <span class="subtotal-currency">
+                        $
+                    </span>
+                    <span class="subtotal-value-money">
+                        0.00
+                    </span>
+            </div>
+        </td>
+    </tr>
+    <tr data-max-quantity="10" 
+        data-code="0017" 
+        data-recognitionid=""
+        data-price="42.0000" 
+        data-bookingfee="" 
+        data-isrewardticket="False"
+        data-isForAllocatedArea="True" 
+        data-cardNumber="" 
+        data-voucherBarcode=""
+        property="offers" 
+        typeof="Offer" 
+        class="">
+        
+            <td class="name" property="name">
+                <div class="ticket-name">
+Family Pass (1Ad &amp; 3Ch)                </div>
+                <div class="ticket-table-member">
+                    <span class="price mobile-only" property="price">
+                        $42.00
+                    </span>
+                </div>
+            </td>
+            <td class="desktop-only">
+                <span class="price" property="price">
+                    $42.00
+                </span>
+            </td>
+        
+            <td class="quantity">
+                <div>
+                    <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                    <input type="tel" class="short numeric" value="0" />
+                    <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                </div>
+            </td>
+        <td>
+            <div class="subtotal">
+                    <span class="subtotal-currency">
+                        $
+                    </span>
+                    <span class="subtotal-value-money">
+                        0.00
+                    </span>
+            </div>
+        </td>
+    </tr>
+    <tr data-max-quantity="10" 
+        data-code="0009" 
+        data-recognitionid=""
+        data-price="46.0000" 
+        data-bookingfee="" 
+        data-isrewardticket="False"
+        data-isForAllocatedArea="True" 
+        data-cardNumber="" 
+        data-voucherBarcode=""
+        property="offers" 
+        typeof="Offer" 
+        class="">
+        
+            <td class="name" property="name">
+                <div class="ticket-name">
+Family Pass (2Ad &amp; 2Ch)                </div>
+                <div class="ticket-table-member">
+                    <span class="price mobile-only" property="price">
+                        $46.00
+                    </span>
+                </div>
+            </td>
+            <td class="desktop-only">
+                <span class="price" property="price">
+                    $46.00
+                </span>
+            </td>
+        
+            <td class="quantity">
+                <div>
+                    <button class="icon-button icon_circle_minus highlight-foreground"></button>
+                    <input type="tel" class="short numeric" value="0" />
+                    <button class="icon-button icon_circle_plus highlight-foreground"></button>
+                </div>
+            </td>
+        <td>
+            <div class="subtotal">
+                    <span class="subtotal-currency">
+                        $
+                    </span>
+                    <span class="subtotal-value-money">
+                        0.00
+                    </span>
+            </div>
+        </td>
+    </tr>
+
+                </table>
+            </div>
+    </div>
+    <div id="price-summary">
+            <div>
+                <span>Booking fee</span>
+                <div class="booking-fee-value"><span>0.00</span></div>
+            </div>
+        <div>
+            <span class="total-label">Total price</span>
+            <div class="total-value"><span>$0.00</span></div>
+        </div>
+    </div>
+    <div id="ticket-actions">
+            <button class="action highlight-background next"><span>Select seats</span></button>
+    </div>
+
+</section>
+
+<section id="seat-selection">
+    <div class="underlined">
+    <div class="page-heading highlight-foreground">
+        Select seats
+    </div>
+</div>
+
+
+<span class="countdown">
+    <em>
+        <span>Time remaining: </span>
+        <span class="time highlight-foreground"></span>
+    </em>
+</span>
+<div class="Seating-Control layout"></div>
+
+<div class="underlined">
+    <div class="page-heading highlight-foreground">
+        
+    </div>
+</div>
+
+
+<div id="seating-actions">
+    <button class="action-secondary-button highlight-border-medium back">
+        <span class="highlight-foreground">Back</span>
+    </button>
+    <button class="action highlight-background next">
+        <span>Next</span>
+    </button>
+</div>
+
+</section>
+
+    <section id="personal-details-section" class="personal-details-section">
+        <div class="row underlined">
+    <div class="page-heading highlight-foreground">
+        Your details
+    </div>
+
+    <div class="timer-holder">
+        <span class="countdown">
+    <em>
+        <span>Time remaining: </span>
+        <span class="time highlight-foreground"></span>
+    </em>
+</span>
+    </div>
+</div>
+
+<form action="/Payment/BeginPayment" id="Form" method="post"><div class="personal-details-section-form">
+    
+
+    <div class="input-container">
+        <input class="inline-textbox long" data-val="true" data-val-regex="The field Email is not a valid email address" data-val-regex-pattern="^((([a-zA-Z]|\d|[!#\$%&amp;&#39;\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-zA-Z]|\d|[!#\$%&amp;&#39;\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$" data-val-required="The field Email is required" id="CustomerEmail" name="CustomerEmail" placeholder="Email" type="email" value="" />
+        <span class="field-validation-valid" data-valmsg-for="CustomerEmail" data-valmsg-replace="true"></span>
+    </div>
+
+
+    <div class="input-container">
+        <input class="inline-textbox long" data-val="true" data-val-required="The field First Name is required" id="CustomerFirstName" name="CustomerFirstName" placeholder="First Name" type="text" value="" />
+        <span class="field-validation-valid" data-valmsg-for="CustomerFirstName" data-valmsg-replace="true"></span>
+    </div>
+    <div class="input-container">
+        <input class="inline-textbox long" data-val="true" data-val-required="The field Last Name is required" id="CustomerLastName" name="CustomerLastName" placeholder="Last Name" type="text" value="" />
+        <span class="field-validation-valid" data-valmsg-for="CustomerLastName" data-valmsg-replace="true"></span>
+    </div>
+
+            <div class="input-container">
+                <input class="inline-textbox long" data-val="true" data-val-length="The field Mobile Phone Number must have a length less than 30" data-val-length-max="30" id="CustomerPhoneNumber" name="CustomerPhoneNumber" placeholder="Phone Number" type="tel" value="" />
+                <span class="field-validation-valid" data-valmsg-for="CustomerPhoneNumber" data-valmsg-replace="true"></span>
+            </div>
+    
+
+    <div id="emailMismatchValidation">Emails entered do not match.</div>
+    <div id="emailInvalidValidation">Emails entered are not valid.</div>
+
+        <div class="item pre-payment-message">
+            <p>Tickets purchased via this website are sold for a specific session only and are sold on a strict no-refund no-exchange and no-transfer basis unless required by law. Tickets are valid for the show time listed on the ticket only and are non-refundable.  This includes where you simply change your mind, when a member of you party does not show up, or where you do not have a receipt for the product or services.</p>
+        </div>
+
+        <div class="item capture-email">
+            <div class="capture-container">
+                <label>
+                    <input id="CaptureEmail" name="CaptureEmail" type="checkbox" value="true" /><input name="CaptureEmail" type="hidden" value="false" />
+                    <div class="checkmark"></div>
+                    <label for="CaptureEmail">Join our mailing list</label>
+                </label>
+            </div>
+        </div>
+
+        <div class="item terms">
+            <div class="terms-container">
+                <label>
+                    <input data-val="true" data-val-required="The field I agree to the Terms and Conditions is required" id="AcceptTerms" name="AcceptTerms" type="checkbox" value="true" /><input name="AcceptTerms" type="hidden" value="false" />
+                    <div class="checkmark checkmark--required"></div>
+                    <span>I agree to the <a target="_blank" href="http://www.moviemaxdigital.co.nz/page-terms---conditions.php">Terms and Conditions</a></span>
+                </label>
+            </div>
+        </div>
+
+
+    <input id="PageInstanceId" name="PageInstanceId" type="hidden" value="cc37194b66ca4db780eb0e9427eae40b" />
+    <input data-val="true" data-val-number="The field SessionCode must be a number." id="SessionCode" name="SessionCode" type="hidden" value="93149" />
+    <input id="IsBookingFeeTotalZero" name="IsBookingFeeTotalZero" type="hidden" value="False" />
+</div>
+</form>
+<div id="personal-details-actions">
+    <button class="action-secondary highlight-border-medium back action">
+        <span class="highlight-foreground">Back</span>
+    </button>
+    <button id="goToPaymentPage" class="action highlight-background next">
+        <span>Pay</span>
+    </button>
+</div>
+
+    </section>
+
+
+<section id="error-section">
+    <h2><em class="highlight-foreground">Sorry!</em></h2>
+    <p></p>
+    <div id="error-actions">
+        <button class="action highlight-background retry">
+            <span>Retry</span>
+        </button>
+    </div>
+</section>
+
+            </div>
+        </div>
+        <script language="javascript" type="text/javascript" src="/Content/Scripts/External/localization/datejs-en-US.js"></script>
+        <script type="text/javascript" src="/Content/Scripts/site_D825C76FE2897D5CB97EC3DF47EE308D.js"></script>
+        <script language="javascript" type="text/javascript" src="/Content/Scripts/External/localization/globalize.culture.en-us.js"></script>
+        <script language="javascript" type="text/javascript"> var Language = {"Payment_CartEmptyMessage":"Cannot proceed to payment with an empty cart","SessionList_Empty":"No shows currently scheduled","Seatinglayout_NoSeatSelectionForTicketType":"Selected ticket type does not allow seat selection","SiteDescription_Show":"Expand","SiteDescription_Hide":"Collapse","PersonalDetails_TermConditionRequired":"Please agree to the Terms and Conditions to continue","Ticketing_NumberSessionExceeds":"The number of sessions in the cart exceeds the maximum allowed limit.","CartItem_RemoveMessage":"Are you sure you want to remove this item from your cart?","SessionList_Hide":"Hide Future Dates","SessionList_Show":"Show Future Dates","MonthShortNames":"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec","MonthNames":"January|February|March|April|May|June|July|August|September|October|November|December","DayShortNames":"Sun|Mon|Tue|Wed|Thu|Fri|Sat","DayNames":"Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"}</script>
+        <script type="text/javascript" src="/jstext.js.axd?cultureId=en-US"></script>
+        
+    <script type="text/javascript" src="/Content/Scripts/purchase_0783BE953E3197F8A72791B0A20444D9.js"></script>
+
+    <script type="text/javascript">
+    $(function () {
+        var timer = new Countdown({ container: $(".session-list-cart").find('.countdown'), duration: 300, timeoutUrl: '/Error/CartTimeout?siteToken=y6j4832mam1wt6f1bbv2z1wx88&pageInstanceId=cc37194b66ca4db780eb0e9427eae40b' });
+
+        var args = {
+            currencySymbol: '$',
+            selectTicketsUrl: '/Ticketing/SelectTickets?siteToken=y6j4832mam1wt6f1bbv2z1wx88&sessionCode=93149',
+            loadSeatingUrl: '/Seating/SeatingLayout?sessionCode=93149',
+            selectSeatsUrl: '/Seating/SelectSeats',
+            updateCartUrl: '/Ticketing/UpdateCartView',
+            removeFromCartUrl: '/Ticketing/RemoveSessionFromCart',
+            sessionHasAllocatedSeating: true,
+            timeoutUrl: '/Error/Timeout?sessionCode=93149&siteToken=y6j4832mam1wt6f1bbv2z1wx88&pageInstanceId=cc37194b66ca4db780eb0e9427eae40b',
+            timeoutDuration: 300,
+            bookingFee: Globalize.parseFloat('1.20'),
+            bookingFeePercentage: Globalize.parseFloat('0.00'),
+            pageInstanceId: 'cc37194b66ca4db780eb0e9427eae40b',
+            selectableTickets: ["0001","0002","0003","0004","0017","0009"],
+            sessionCode: 93149,
+            currentViewingFilmTitle: 'Doctor Strange in the Multiverse of Madness',
+			isShoppingCartTurnedOn: false,
+            maximumNumberSession: 20,
+            maxBookingFee: Globalize.parseFloat('100,000,000.00'),
+            sessionPageUrl: '/sessions/y6j4832mam1wt6f1bbv2z1wx88',
+            orderSummaryPageUrl: '/Ticketing/CurrentCart?pageInstanceId=cc37194b66ca4db780eb0e9427eae40b',
+            timer: timer,
+            addShowRedirectionUrl: 'https://ticketing.oz.veezi.com/sessions/?siteToken=Kl4OANqZcUyl8VCYN6K%2bgg%3d%3d',
+            isLoyaltyTurnedOn: false,
+            shouldInitialiseCardChecker: false,
+            cardNumberCheckerUrl: '/CardNumber/CheckCardNumber',
+            siteToken: 'y6j4832mam1wt6f1bbv2z1wx88',
+            showMoreLocalized: 'Show More',
+            showLessLocalized: 'Show Less',
+            filmPosterGraphicImage: 'https://cdn.oz.veezi.com/media/data/v2/get/FilmPosterGraphic/n7hswvx43fw30g4xw4rhbfjv24/ST00004367',
+            filmBackdropImage: 'https://cdn.oz.veezi.com/media/data/v2/get/FilmBackdrop/n7hswvx43fw30g4xw4rhbfjv24/ST00004367'
+        };
+
+        new PurchasePage(args);
+
+		if (0 > 0) {
+		    timer.start();
+		}
+
+        ShoppingCartControl(args);
+    });
+    </script>
+    <script type="application/ld+json">
+        {"@type":"VisualArtsEvent","startDate":"2022-05-04T18:10:00+12:00","duration":"PT2H7M","location":{"@type":"Place","address":"Canon St, Timaru, New Zealand","name":"Movie Max Digital"},"offers":[{"@type":"Offer","price":16.0000,"priceCurrency":"NZD","name":"Adult"},{"@type":"Offer","price":15.0000,"priceCurrency":"NZD","name":"Student"},{"@type":"Offer","price":10.0000,"priceCurrency":"NZD","name":"Child"},{"@type":"Offer","price":13.0000,"priceCurrency":"NZD","name":"Senior Citizen"},{"@type":"Offer","price":42.0000,"priceCurrency":"NZD","name":"Family Pass (1Ad & 3Ch)"},{"@type":"Offer","price":46.0000,"priceCurrency":"NZD","name":"Family Pass (2Ad & 2Ch)"}],"name":"Doctor Strange in the Multiverse of Madness","description":"In Marvel Studios’ Doctor Strange in the Multiverse of Madness, the MCU unlocks the Multiverse and pushes its boundaries further than ever before. Journey into the unknown with Doctor Strange, who, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary. \r\nDoctor Strange in the Multiverse of Madness stars Benedict Cumberbatch, Chiwetel Ejiofor, Elizabeth Olsen, Benedict Wong, Xochitl Gomez, with Michael Stühlbarg, and Rachel McAdams. The film is directed by Sam Raimi, and Kevin Feige is the producer. Louis D’Esposito, Victoria Alonso, Eric \r\nHauserman Carroll and Jamie Christopher serve as executive producers. The screenplay was written by Michael Waldron.","@context":"http://schema.org"}
+    </script>
+
+            <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] ||
+                    function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-58627106-3', 'auto');
+            ga('send', 'pageview');
+
+            </script>
+
+        <script type="text/javascript">
+        if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1)) {
+            if ($('#browser_support_banner_container')) {
+                $('#browser_support_banner_container').show();
+            }
+        }
+        $(function() {
+            viewjs('en-US');
+            if ($('#close_banner')) {
+                $('#close_banner').click(function() {
+                    if ($('#browser_support_banner_container')) {
+                        $('#browser_support_banner_container').hide();
+                    }
+                });
+            }
+        });
+        </script>
+    </body>
 </html>

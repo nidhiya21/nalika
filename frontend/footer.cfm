@@ -1,5 +1,5 @@
 <footer>
-    <section>
+    <section class="footer-area">
         <nav>
             <ul>
                 <li><a  href="./prices.cfm">PRICES &amp; SPECIALS</a></li>
@@ -8,14 +8,12 @@
                 <li><a  href="##">JOIN OUR TEAM</a></li>
             </ul>
         </nav>
-        <hr>
+        <hr class="footer-links">
         <div class="social-media">
-            
             <a href="##" target="_blank" class="twitter-footer"></a> 
             <a  href="##" target="_blank" class="instagram-footer"></a> 
             <a  href="##" target="_blank" class="facebook-footer"></a> 
-
-            <p class="copyright">Website &copy; 2019 <a href="https://www.flicks.co.nz" target="_blank">Flicks Ltd</a></p>
+            <p class="copyright">Website &copy; 2019 <a href="##" target="_blank">Flicks Ltd</a></p>
         </div>
     </section>
 </footer>
