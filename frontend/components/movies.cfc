@@ -102,6 +102,7 @@
             <cfset variables.temp['startTime']=theaterDet.startTime /> 
             <cfset variables.temp['movieID']=theaterDet.movieID />
             <cfset variables.temp['theaterID']=theaterDet.theaterID />
+            <cfset variables.temp['showID']=theaterDet.showID />
             <cfset ArrayAppend(retval, temp)>
         </cfloop>
         <cfset variables.result = {} />
@@ -121,6 +122,7 @@
         <cfargument name="userID" ype="numeric">
         <cfargument name="theaterID" type="numeric">
         <cfargument name="movieID" type="numeric">
+        <cfargument name="showID" type="numeric">
         <cfargument name="bookedDate" type="string">
         <cfargument name="bookedTime" type="string">
         <cfargument name="goldFullCount" type="string">
@@ -130,9 +132,10 @@
         <cfargument name="boxCount" type="string">
         <cfargument name="orderAmount" type="string">         
             <cfquery name = "insertBooking" result="pageResult">  
-                insert into cart(userID,theaterID,movieID,bookedDate,bookedTime,goldFullCount,goldHalfCount,odcFullCount,odcHalfCount,boxCount,createdDate,orderAmount,paymentStatus)
+                insert into cart(userID,showID,theaterID,movieID,bookedDate,bookedTime,goldFullCount,goldHalfCount,odcFullCount,odcHalfCount,boxCount,createdDate,orderAmount,paymentStatus,seats)
                 values(
                 <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#" />
+                ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.showID#" />
                 ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.theaterID#" />
                 ,<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.movieID#" />
                 ,<cfqueryparam cfsqltype="cf_sql_date" value="#arguments.bookedDate#" />
@@ -145,10 +148,11 @@
                 ,#Now()#
                 ,<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.orderAmount#"/>
                 ,"Success" 
+                ,"" 
                 ) 
             </cfquery>
             <cfset variables.getNumberOfRecords = #pageResult.generated_key#>   
-            <cfset session.cart = {'cart'=true, 'cartID' = getNumberOfRecords,
+            <cfset session.cart = {'cart'=true, 'cartID' = getNumberOfRecords,'showID' = #arguments.showID#,
                                    'userID' = #session.stLoggedInFrUser.userID#} />
             <cfreturn variables.getNumberOfRecords>
     </cffunction> 
@@ -161,7 +165,7 @@
         </cfquery>
         <cfreturn variables.cartDet/>  
     </cffunction> 
-    <cffunction name="insertPayment" access="remote"  hint="add payment"  returnformat="JSON">
+    <cffunction name="insertPayment" access="remote"  hint="add payment"  returntype="struct" returnformat="json" output="false"> 
         <cfargument name="nameOnCard" ype="string">
         <cfargument name="creditCardNumber" type="numeric">
         <cfargument name="expiryDate" type="string">
@@ -181,14 +185,14 @@
                 ,#Now()#
                 ) 
             </cfquery>
-            <cfset variables.getNumberOfRecords = #pageResult.generated_key#>  
-          
-            <cfif getNumberOfRecords GT 0>
-                 
-            <cfelse>
-           
-            </cfif>
-            
+            <cfmail
+                from="rincekthomas@gmail.com"
+                to="#session.stLoggedInFrUser.emailID#"
+                subject="Thank you for movie booking">
+                    Thank you for movie booking
+            </cfmail>
+            <cfset variables.Response.Success = true />
+            <cfreturn variables.Response />   
     </cffunction> 
     <cffunction name="getPaymentDetails" hint="get payment details"  access="public" output="false" >	 
         <cfargument name="cartID" type="numeric" required="yes" >
@@ -203,7 +207,7 @@
             ON cart.movieID  = movies.movieID 
             LEFT JOIN theaters as theaters
             ON cart.theaterID  = theaters.theaterID  
-            where cart.cartID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.cartID#"> 
+            where cart.cartID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.cartID#">  GROUP BY cart.cartID 
         </cfquery>
         <cfreturn variables.paymentDet/>  
     </cffunction> 
@@ -220,7 +224,7 @@
             ON cart.movieID  = movies.movieID 
             LEFT JOIN theaters as theaters
             ON cart.theaterID  = theaters.theaterID 
-            where cart.userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"> AND payment.orderStatus ="Success"  AND cart.paymentStatus ="Success"
+            where cart.userID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.userID#"> AND payment.orderStatus ="Success"  AND cart.paymentStatus ="Success"  GROUP BY cart.cartID
         </cfquery>
         <cfreturn variables.orderDet/>  
     </cffunction> 
@@ -233,5 +237,33 @@
             where shows.endDate >= CURDATE() ORDER BY shows.startDate   
         </cfquery>
         <cfreturn variables.moviesList/>  
+    </cffunction> 
+    <cffunction name="insertSeat" access="remote" hint="update seats " returntype="struct" returnformat="json" output="false" >
+       <cfargument name="seats" type="string"  >	
+        <cfquery name = "insertSeat" result="res">  
+            update cart 
+            set   
+            seats= <cfqueryparam value="#arguments.seats#"  cfsqltype = "cf_sql_varchar">
+            where cartID= <cfqueryparam value = "#session.cart.cartID#" cfsqltype = "cf_sql_integer">
+        </cfquery> 
+        <cfset variables.Response.Success = true />
+        <cfreturn variables.Response />
+	</cffunction>
+    <cffunction name="selectBookedSeat" hint="get seat details"  access="remote"  returntype="any" returnformat="JSON" output="false" >	 
+        <cfargument name="showID" type="numeric" required="yes" >
+        <cfset variables.retVal = ArrayNew(1)>
+        <cfquery name = "seatDet" result="pageResult" > 
+            SELECT GROUP_CONCAT(seats) as seats
+            FROM cart
+            where showID=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.showID#"> AND paymentStatus ="Success"
+        </cfquery>
+        <cfloop query="seatDet"> 
+            <cfset variables.temp = {} />
+            <cfset variables.temp['seats']=seatDet.seats /> 
+            <cfset ArrayAppend(retval, temp)>
+        </cfloop>
+        <cfset variables.result = {} />
+        <cfset variables.result['items'] = retVal />
+        <cfreturn variables.result/> 
     </cffunction> 
 </cfcomponent>     

@@ -33,6 +33,7 @@
                 <cfoutput>
                 <input type="hidden" id="movieID" name="movieID" value= "#URL.id#"/>
                 <input type="hidden" id="theaterID" name="theaterID" value= "#URL.tid#"/>
+                <input type="hidden" id="showID" name="showID" value= "#URL.sid#"/> 
                 <input type="hidden" id="bookedTime" name="bookedTime" value= "#URL.slot#"/>
                 <input type="hidden" id="bookedDate" name="bookedDate" value= "#URL.date#"/>
                 <input type="hidden" id="userID" name="userID"  value="#session.stLoggedInFrUser.userID#"/> 
@@ -335,7 +336,7 @@
                     </div>
                     <div id="ticket-actionss">
                             <button class="action highlight-background next">
-                                <span><a href="./payment.cfm" class="pay">Select seats</a></span>
+                                <span><a href="./seat.cfm" class="pay">Select seats</a></span>
                             </button>
                     </div>
                 </section>
@@ -378,7 +379,7 @@
 
             </div>
         </div>
-        <script language="javascript" type="text/javascript" src="./js/date.js"></script> datejs
+        <script language="javascript" type="text/javascript" src="./js/date.js"></script>  
         <script type="text/javascript" src="./js/site.js"></script> 
         <script type="text/javascript" src="./js/purchase.js"></script>
     </body>

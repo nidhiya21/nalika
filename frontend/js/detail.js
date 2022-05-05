@@ -29,7 +29,7 @@ $(document).ready(function() {
                         }  
                         else{   
                             textToInsert +=
-                        '<div class="movie"> <div class="movie-details"><img class="poster-portraits  loaded" alt="" src="../manage/img/theaterimages/'+value['fld_theaterImage']+'" data-was-processed="true"> <div class="movie-info"><h2 class="movie-title">'+value['fld_theaterName']+'</h2>  </div></div><div class="movie-times"><div class="session-container"><a href="./purchase.cfm?id='+value['movieID']+'&tid='+value['theaterID']+'&slot='+value['startTime']+'&date='+dateVal+'" class="slot-link"  ><span class="time ">'+value['startTime']+'</span></a></div></div></div>';  
+                        '<div class="movie"> <div class="movie-details"><img class="poster-portraits  loaded" alt="" src="../manage/img/theaterimages/'+value['fld_theaterImage']+'" data-was-processed="true"> <div class="movie-info"><h2 class="movie-title">'+value['fld_theaterName']+'</h2>  </div></div><div class="movie-times"><div class="session-container"><a href="./purchase.cfm?id='+value['movieID']+'&tid='+value['theaterID']+'&sid='+value['showID']+'&slot='+value['startTime']+'&date='+dateVal+'" class="slot-link"  ><span class="time ">'+value['startTime']+'</span></a></div></div></div>';  
                         }     
                     });
   
@@ -60,12 +60,12 @@ $(document).ready(function() {
                         $.each(dataInJson['items'], function(index, value) {
                             if (typeof userID === 'undefined'){ 
                                 textToInsert +=
-                                '<div class="movie"> <div class="movie-details"><img class="poster-portraits  loaded" alt="" src="../manage/img/theaterimages/'+value['fld_theaterImage']+'" data-was-processed="true"> <div class="movie-info"><h2 class="movie-title">'+value['fld_theaterName']+'</h2>  </div></div><div class="movie-times"><div class="session-container"><span class="slot-link"  ><span class="time ">'+value['startTime']+'</span></span></div></div></div>';  
+                                '<div class="movie"> <div class="movie-details"><img class="poster-portraits  loaded" alt="" src="../manage/img/theaterimages/'+value['fld_theaterImage']+'" data-was-processed="true"> <div class="movie-info"><h2 class="movie-title">'+value['fld_theaterName']+'</h2>  </div></div><div class="movie-times"><div class="session-container"><span class="slot-link"  ><span class="time ">'+value['startTime']+'</span></span></div></div></div>';   
                             }  
                             else{   
                                 textToInsert +=
-                            '<div class="movie"> <div class="movie-details"><img class="poster-portraits  loaded" alt="" src="../manage/img/theaterimages/'+value['fld_theaterImage']+'" data-was-processed="true"> <div class="movie-info"><h2 class="movie-title">'+value['fld_theaterName']+'</h2>  </div></div><div class="movie-times"><div class="session-container"><a href="./purchase.cfm?id='+value['movieID']+'&tid='+value['theaterID']+'&slot='+value['startTime']+'&date='+dateVal+'" class="slot-link"  ><span class="time ">'+value['startTime']+'</span></a></div></div></div>';  
-                            }    
+                            '<div class="movie"> <div class="movie-details"><img class="poster-portraits  loaded" alt="" src="../manage/img/theaterimages/'+value['fld_theaterImage']+'" data-was-processed="true"> <div class="movie-info"><h2 class="movie-title">'+value['fld_theaterName']+'</h2>  </div></div><div class="movie-times"><div class="session-container"><a href="./purchase.cfm?id='+value['movieID']+'&tid='+value['theaterID']+'&sid='+value['showID']+'&slot='+value['startTime']+'&date='+dateVal+'" class="slot-link"  ><span class="time ">'+value['startTime']+'</span></a></div></div></div>';  
+                        }   
                     });
                     textToInsert += '</div>';
                     $('#movie-list3').html(textToInsert);

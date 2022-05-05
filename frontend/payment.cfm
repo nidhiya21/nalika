@@ -8,8 +8,6 @@
     <head>
         <meta name="viewport" content="width=device-width">
         <title>Payment - Movie Max Digital</title>
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./css/site.css" />
         <link rel="stylesheet" type="text/css" href="./css/purchase.css" />
         <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -20,7 +18,7 @@
         <script src="./js/jquery.validate.min.js"></script>
     </head>
     <body>
-        <img class="body-background film-poster"></img>
+        <img class="body-background film-poster"></img> 
         <img class="body-background film-backdrop"></img>
         <div id="container">
             <header>
@@ -87,6 +85,6 @@
                 </section> 
             </div>
         </div>
-        <script type="text/javascript" src="./js/purchase.js"></script>
+        <script type="text/javascript" src="./js/payment.js"></script>
     </body>
 </html>

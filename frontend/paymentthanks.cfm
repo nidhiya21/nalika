@@ -38,6 +38,7 @@
                             <div class="check-shadow"></div>
                         </div>
                     </div>
+                    <p class="thnx-body">Thank you for booking movie.Please download your ticket<a href="./pdf.cfm"> Download</a> or check your mail. </p>
                     <div class="cardWrap">
                         <cfoutput>
                             <div class="card cardLeft">
@@ -51,7 +52,7 @@
                                     <span>name</span>
                                 </div>
                                 <div class="seat">
-                                    <h2>156</h2>
+                                    <h2>#result.seats#</h2>
                                     <span>seat</span>
                                 </div>
                                 <div class="time">
@@ -60,11 +61,10 @@
                                 </div>
                             </div>
                             <div class="card cardRight">
-                                <div class="eye"></div>
-                                <div class="number">
-                                <h3>156</h3>
-                                <span>seat</span>
-                                </div>
+                                <div class="eye"></div></br>
+                                    <div class="number">
+                                        <span></span>
+                                    </div>
                                 <div class="barcode"></div>
                             </div>
                         </cfoutput>

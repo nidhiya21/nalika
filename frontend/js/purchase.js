@@ -1,3 +1,24 @@
+$(function () {
+    var timer = new Countdown({ container: $(".session-list-cart").find('.countdown'), duration: 300, timeoutUrl: '/Error/CartTimeout?siteToken=y6j4832mam1wt6f1bbv2z1wx88&pageInstanceId=b5c37b953bcf4eed86e86a0588627d25' });
+    var args = {
+        currencySymbol: '',
+        
+        bookingFee: Globalize.parseFloat('1.20'),
+        bookingFeePercentage: Globalize.parseFloat('0.00'),
+        maximumNumberSession: 20,
+        maxBookingFee: Globalize.parseFloat('100,000,000.00'),
+        timer: timer,
+        showMoreLocalized: 'Show More',
+        showLessLocalized: 'Show Less'
+        
+    };
+    new PurchasePage(args);
+    if (0 > 0) {
+        timer.start();
+    }
+    ShoppingCartControl(args);
+});
+
 function PurchasePage(n) {
     function c() {
         var k, a, y, o, d, b, s, r, c;
@@ -11,8 +32,14 @@ function PurchasePage(n) {
         t.push({
             constructor: TicketSection
         });
-        
-       
+        n.sessionHasAllocatedSeating && t.push({
+            constructor: SeatingSection
+        });
+        n.isShoppingCartTurnedOn ? t.push({
+            constructor: CartControl
+        }) : t.push({
+            constructor: PaymentSection
+        });
         k = t[0].instance = new t[0].constructor(n);
         h(k);
         k.navigateTo();
@@ -128,8 +155,12 @@ function PurchasePage(n) {
     }
 
     function h(n) {
-
-
+        n.onNext.clearListeners();
+        n.onBack.clearListeners();
+        n.onError.clearListeners();
+        n.onNext.subscribe(o);
+        n.onBack.subscribe(s);
+        n.onError.subscribe(y);
         n.init()
     }
 
@@ -146,7 +177,17 @@ function PurchasePage(n) {
     c()
 }
 
-
+function PurchasePageSection() {
+    this.init = $.noop;
+    this.navigateTo = $.noop;
+    this.hide = function() {
+        this.element.hide()
+    };
+    this.onNext = new CustomEvent;
+    this.onBack = new CustomEvent;
+    this.onError = new CustomEvent;
+    this.navigateReady = new CustomEvent
+};
 
 function TicketSection(n) {
     function c() {
@@ -276,7 +317,7 @@ function TicketSection(n) {
         i, t, e, o, u, s, h;
     this.init = function() {
         i = new TicketGrid(n);
-
+        i.ticketsChangedEvent.subscribe(y);
         n.shouldInitialiseCardChecker && (h = new CardSection(n.cardNumberCheckerUrl, n.pageInstanceId, n.siteToken), h.init());
         t = $("#ticket-actions .action.next");
         u = $("#ticket-section");
@@ -286,7 +327,7 @@ function TicketSection(n) {
         s.on("click", ".show-description", k)
     };
     this.navigateTo = function() {
-        i.setEnabled(!0); 
+        i.setEnabled(!0);
         i.selectedTicketCount() > 0 && t.show();
         t.removeClass("action-disabled").click(c)
     };
@@ -295,7 +336,7 @@ function TicketSection(n) {
         return Globalize.format(n, "C").replace(r.CurrencyRegex, "").trim()
     }
 }
-
+TicketSection.prototype = new PurchasePageSection;
 var TicketGrid = function(n) {
     function h() {
         $(".icon_circle_minus").addClass(t);
@@ -324,7 +365,7 @@ var TicketGrid = function(n) {
         };
         h.text(Globalize.format(f * r, "N"));
         c.text(Globalize.format(f * r, "N0"));
-
+        i.ticketsChangedEvent.fire(u)
     }
 
     function c(n) {
@@ -400,7 +441,7 @@ var TicketGrid = function(n) {
         s, u = {},
         r, n, t = "icon-button--disabled";
     this.element = null;
-
+    this.ticketsChangedEvent = new CustomEvent;
     this.setEnabled = function(t) {
         i.element.find(".icon_circle_plus, .icon_circle_minus").css("visibility", t ? "visible" : "hidden");
         t ? (i.element.find("input").removeAttr("disabled"), n.removeOverlay($("#ticket-section")), $("#ticket-section :input").removeAttr("disabled")) : (i.element.find("input").attr("disabled", "disabled"), n.addOverlay($("#ticket-section")), $("#ticket-section :input").attr("disabled", "disabled"))
@@ -500,6 +541,143 @@ var CardSection = function(n, t, i) {
     }
 };
 
+function SeatingSection(n) {
+    function f() {
+        var n = setTimeout(function() {
+            seatingLoaded && (u.start(), t.find(".countdown").show(), $("html,body").animate({
+                scrollTop: t.offset().top
+            }, "slow"), t.find(".action-secondary-button.back").click(o).removeClass("action-disabled").end().find(".action.next").click(e).removeClass("action-disabled").end(), clearTimeout(n))
+        }, 100)
+    }
+
+    function e() {
+        window.validateSeating() && (u.stop(), t.find(".countdown").hide(), t.find(".action-secondary-button.back, .action.next").addClass("action-disabled").off("click"), t.find(".Seating-Area").off("click"), h())
+    }
+
+    function o() {
+        r.empty();
+        t.hide();
+        u.stop();
+        s();
+        i.onBack.fire()
+    }
+
+    function s() {
+        $.ajax({
+            type: "POST",
+            url: n.removeFromCartUrl,
+            data: JSON.stringify({
+                sessionId: n.sessionCode,
+                currentViewingFilm: ""
+            }),
+            async: !0,
+            headers: {
+                PageInstanceId: n.pageInstanceId
+            },
+            contentType: "application/json; charset=utf-8",
+            traditional: !0,
+            error: function(n) {
+                var i = "",
+                    t;
+                try {
+                    t = JSON.parse(n.responseText);
+                    t.message ? i = t.message : t.Message && (i = t.Message)
+                } catch (r) {
+                    i = r
+                }
+                console.log(i)
+            },
+            timeout: 6e4
+        })
+    }
+
+    function h() {
+        $.ajax({
+            type: "POST",
+            url: n.selectSeatsUrl,
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                PageInstanceId: n.pageInstanceId
+            },
+            traditional: !0,
+            data: JSON.stringify({
+                seatSelection: $("#seatSelection").val(),
+                sessionCode: n.sessionCode
+            }),
+            success: function() {
+                i.onNext.fire();
+                c()
+            },
+            error: function(n) {
+                var t = !1,
+                    r = "Something went wrong while trying to order your seats. Please refresh the page and try again.";
+                n.status == 500 && (n.responseJSON && n.responseJSON.message ? (t = !0, r = n.responseJSON.message) : (t = !0, r = "Something went wrong while trying to order your seats. Please go back and choose new seats."));
+                i.onError.fire({
+                    message: r,
+                    allowRetry: t,
+                    parent: i
+                })
+            },
+            timeout: 6e4
+        })
+    }
+
+    function c() {
+        $("#seating-actions").hide();
+        n.addOverlay($("#seat-selection"))
+    }
+    var i = this,
+        r, u, n, t;
+    this.init = function() {
+        t = $("#seat-selection");
+        r = t.find(".layout");
+        u = new Countdown({
+            container: t.find(".countdown"),
+            duration: n.timeoutDuration,
+            timeoutUrl: n.timeoutUrl
+        })
+    };
+    this.showThisSection = function(t) {
+        for (var r = !1, i = 0; i < t.length; i++)
+            if ($.inArray(t[i].code.toString(), n.selectableTickets) != -1 && t[i].quantity > 0) {
+                r = !0;
+                break
+            } return this.wasSkipped = !r, r
+    };
+    this.wasSkipped = !1;
+    this.navigateTo = function() {
+        $("#seating-actions").show();
+        n.removeOverlay($("#seat-selection"));
+        t.show();
+        t.find(".countdown").hide();
+        r.empty().append($('<div id="loading-indicator"><\/div>'));
+        $("html,body").animate({
+            scrollTop: t.offset().top
+        }, "slow");
+        t.find(".action-secondary-button.back").addClass("action-disabled").off("click").end().find(".action.next").addClass("action-disabled").off("click").end();
+        $.ajax({
+            type: "GET",
+            cache: !1,
+            url: n.loadSeatingUrl,
+            headers: {
+                PageInstanceId: n.pageInstanceId
+            },
+            success: function(n) {
+                r.html(n);
+                f()
+            },
+            error: function() {
+                i.onError.fire({
+                    message: "Something went wrong loading the seat layout. Please try again.",
+                    allowRetry: !0,
+                    parent: i
+                })
+            },
+            timeout: 6e4
+        })
+    }
+}
+SeatingSection.prototype = new PurchasePageSection;
 
 function PaymentSection(n) {
     function f() {
@@ -570,7 +748,7 @@ function PaymentSection(n) {
         t.find("input").first().select()
     }
 }
-
+PaymentSection.prototype = new PurchasePageSection;
 
 function ErrorSection() {
     function i() {
@@ -591,27 +769,131 @@ function ErrorSection() {
         }, "slow")
     }
 }
-$(function () {
-    var timer = new Countdown({ container: $(".session-list-cart").find('.countdown'), duration: 300, timeoutUrl: '/Error/CartTimeout?siteToken=y6j4832mam1wt6f1bbv2z1wx88&pageInstanceId=b5c37b953bcf4eed86e86a0588627d25' });
+ErrorSection.prototype = new PurchasePageSection;
 
-    var args = {
-    currencySymbol: '',
-        bookingFee:'1.20',
-        bookingFeePercentage: '0.00',
-        maxBookingFee: '100,000,000.00',
-        timer: timer,
-        showMoreLocalized: 'Show More',
-        showLessLocalized: 'Show Less',
-    
-    };
-
-    new PurchasePage(args);
-
-    if (0 > 0) {
-        timer.start();
+function ShoppingCartControl(n) {
+    function e() {
+        var n = 50;
+        $("header").length > 0 && (n = $("header").height());
+        $(".session-list-cart").css("top", n);
+        $(window).scroll(function() {
+            $(".session-list-cart").css("top", n)
+        })
     }
 
-});
+    function r() {
+        $("span[data-sessionid].delete-btn").click(function() {
+            var n = parseInt($(this).attr("data-sessionid")),
+                t = confirm(Language.CartItem_RemoveMessage);
+            t === !0 && (n === i ? u(n, f) : u(n, o))
+        });
+        $("span.place-holder.bin-icon").click(function() {
+            var n = parseInt(i);
+            isNaN(n) || f()
+        })
+    }
+
+    function u(i, r) {
+        $(".loading-image").show();
+        $.ajax({
+            type: "POST",
+            url: n.removeFromCartUrl,
+            data: JSON.stringify({
+                sessionId: i,
+                currentViewingFilm: t
+            }),
+            async: !0,
+            headers: {
+                PageInstanceId: n.pageInstanceId
+            },
+            contentType: "application/json; charset=utf-8",
+            traditional: !0,
+            success: r,
+            error: function(n) {
+                var i = "",
+                    t;
+                try {
+                    t = JSON.parse(n.responseText);
+                    t.message ? i = t.message : t.Message && (i = t.Message)
+                } catch (r) {
+                    i = r
+                }
+                console.log(i);
+                $(".loading-image").hide()
+            },
+            timeout: 6e4
+        })
+    }
+
+    function f() {
+        var t = window.location.href;
+        t = $(".in-basket").length > 0 ? n.orderSummaryPageUrl : n.addShowRedirectionUrl;
+        window.location = t
+    }
+
+    function o(i) {
+        t ? ($(".shopping-cart").replaceWith(i), r(), $(".loading-image").hide()) : window.location = n.addShowRedirectionUrl
+    }
+    var s = this,
+        h = n.removeFromCartUrl,
+        t = n.currentViewingFilmTitle,
+        i = n.sessionCode;
+    this.init = function() {
+        e();
+        r()
+    };
+    init()
+};
+
+function CartControl(n) {
+    function i() {
+        $.ajax({
+            type: "POST",
+            url: n.updateCartUrl,
+            async: !0,
+            headers: {
+                PageInstanceId: n.pageInstanceId
+            },
+            contentType: "application/json; charset=utf-8",
+            traditional: !0,
+            success: function(t) {
+                $(".shopping-cart").replaceWith(t);
+                ShoppingCartControl(n);
+                n.timer.restart(600)
+            },
+            error: function(n) {
+                var i = "",
+                    t;
+                try {
+                    t = JSON.parse(n.responseText);
+                    t.message ? i = t.message : t.Message && (i = t.Message)
+                } catch (r) {
+                    i = r
+                }
+                console.log(i)
+            },
+            timeout: 6e4
+        }).always(function() {
+            $(".loading-image").hide()
+        })
+    }
+    var r = this,
+        n = n,
+        t;
+    this.init = function() {
+        t = $("#cart-action-controls-section")
+    };
+    this.navigateTo = function() {
+        i();
+        t.show();
+        $(".loading-image").show();
+        this.wasSkipped = !0;
+        $("html,body").animate({
+            scrollTop: t.offset().top
+        }, "slow")
+    }
+}
+CartControl.prototype = new PurchasePageSection;
 Countdown = function(n) {
     function c() {
         (t = !0, clearInterval(r), i = $(n.container).find(".time"), i.length) && (t = !1, f = new Date, o = n.timeoutUrl, e = n.duration, r = setInterval(u, s), u())
@@ -644,28 +926,30 @@ Countdown = function(n) {
         n.duration = t;
         c()
     }
-};
-$(document).on("click", ".pay", function () {
+}; 
+$(document).on("click", ".pay", function () { 
     var movieID = $('#movieID').val();
     var theaterID = $('#theaterID').val();
+    var showID = $('#showID').val(); 
     var bookedDate = $('#bookedDate').val();
     var bookedTime = $('#bookedTime').val();
     var userID      = $('#userID').val();
     var goldFullCount = $('#goldFullCount').val();
     var goldHalfCount = $('#goldHalfCount').val();
     var odcFullCount = $('#odcFullCount').val();
-    var odcHalfCount = $('#odcHalfCount').val();
+    var odcHalfCount = $('#odcHalfCount').val(); 
     var boxCount = $('#boxCount').val();
     var orderAmount = document.getElementById("total").innerText;
 	$.ajax({
     type:"POST",   
-    url: 'components/movies.cfc', 
+    url: 'components/movies.cfc',  
     async: false,
     dataType: "json",  
     data: {
             method: "insertBooking",
             userID: userID,
             theaterID: theaterID,
+            showID: showID, 
             movieID: movieID,
             bookedDate: bookedDate,
             bookedTime: bookedTime,
@@ -676,79 +960,9 @@ $(document).on("click", ".pay", function () {
             boxCount: boxCount,
             orderAmount: orderAmount
         },
-        success: function(objResponse) { 
+        success: function(objResponse) {  
             
                          
         }
     }); 
 });
-$(document).on("click", ".paymentBtn", function () {
-    var nameOnCard = $('#nameOnCard').val();
-    var creditCardNumber = $('#creditCardNumber').val();
-    var expiryDate = $('#expiryDate').val();
-    var securityCode = $('#securityCode').val();
-    var zipCode      = $('#zipCode').val();
-	$.ajax({
-    type:"POST",   
-    url: 'components/movies.cfc', 
-    async: false,
-    dataType: "json",  
-    data: {
-            method: "insertPayment",
-            nameOnCard: nameOnCard,
-            creditCardNumber: creditCardNumber,
-            expiryDate: expiryDate,
-            securityCode: securityCode,
-            zipCode: zipCode 
-        },
-        success: function(data) {    
-                         
-        }
-    }); 
-});
-$("#payment").validate({
-    errorClass: "fail-alert",
-    rules: {
-        nameOnCard: "required",
-        creditCardNumber: {
-            required: true,
-            number: true
-            
-        },
-      
-        expiryDate: {
-            required: true
-           
-        },
-        securityCode: {
-            required: true
-            
-        }, 
-        zipCode: {
-            required: true,
-            number: true
-            
-        }
-    },
-    messages: { 
-        nameOnCard: "Please enter your Name ",
- 
-        creditCardNumber: {
-            required: "Please enter a credit CardNumber ",
-            number: "Must be number",
-           
-        },
-        expiryDate: {
-            required: "Please enter  expiry Date",
-           
-        },
-        securityCode: {
-            required: "Please enter security Code ",
-          
-        }, 
-        zipCode:{ 
-            required:"Please enter a  zip Code ",
-            number: "Must be number",
-        },
-   } 
-});   

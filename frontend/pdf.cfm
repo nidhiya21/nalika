@@ -38,7 +38,7 @@
                         <div class="card cardRight">
                             <div class="eye"></div>
                             <div class="number">
-                                <h3>156</h3>
+                                <h3>#result.seats#</h3>
                                 <span>seat</span>
                             </div>
                             <div class="barcode"></div>
