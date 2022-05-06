@@ -37,7 +37,12 @@
                             <span class="amex"></span>
                             <span class="discover"></span>
                         </div>
-                         <form name="payment" method="post" id="payment">
+                        <cfparam name="form.nameOnCard" default=""> 
+                        <cfparam name="form.creditCardNumber" default=""> 
+                        <cfparam name="form.expiryDate" default=""> 
+                        <cfparam name="form.securityCode" default=""> 
+                        <cfparam name="form.zipCode" default=""> 
+                        <form name="payment" method="post" id="payment">
                             <div class="form-group">
                                 <label for="PaymentAmount">Payment amount</label>
                                 <div class="amount-placeholder">
@@ -73,7 +78,7 @@
                                 <div class="input-container">
                                     <input id="zipCode"  name="zipCode" class="form-control" type="text" maxlength="10"></input>
                                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="left" data-content="Enter the ZIP/Postal code for your credit card billing address."><i class="fa fa-question-circle"></i></a>
-                                </div>
+                                </div> 
                             </div>                        
                             <button id="PayButton" class="btn btn-block btn-success submit-button paymentBtn" name="PayButton"  ><span class="submit-button-lock"></span>
                                 <span class="align-middle">Pay <span> &#x20b9;</span> 

@@ -13,9 +13,8 @@
                 <font size="-3">Page #cfdocument.currentpagenumber#</font> 
             </cfdocumentitem>         
             <div class="cardWrap">
-             <cfoutput>
-                <cfloop query="result">
-             
+                <cfoutput>
+                    <cfloop query="result">
                         <div class="card cardLeft">
                             <h1>Movie Max <span>Digital</span></h1>
                             <div class="title">
@@ -43,11 +42,10 @@
                             </div>
                             <div class="barcode"></div>
                         </div>
-                  
-                </cfloop>
-                  </cfoutput>
+                    </cfloop>
+                </cfoutput>
             </div>
-            </cfdocumentsection>  
+        </cfdocumentsection>  
     </cfdocument> 
 <cfheader name="Content-Disposition" value="attachment; filename=ticket.pdf">
 <cfcontent type="application/pdf"  file="#expandPath('.')#\ticket.pdf"><cfdocument format="PDF">Some text.</cfdocument>

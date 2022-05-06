@@ -12,7 +12,7 @@ $(document).ready(function() {
 });
 $(document).on("click", ".formTheaterSubmit", function () {
     if ($('#fld_theaterImage').val()!='') {
-        var theaterImageVal = $('#fld_theaterImage').val();
+        var theaterImageVal = $('#fld_theaterImage').val(); 
     } else if ($('#old_img').val()!='') {
         var theaterImageVal = $('#old_img').val(); 
     } else {
@@ -33,7 +33,7 @@ $(document).on("click", ".formTheaterSubmit", function () {
         contentType: false
     }).done(function(objResponse) { 
         if (!$.trim(objResponse)){  
-        
+
            // alert('Theater Updated successfully');    
         }else{
             alert('Theater Updated successfully');    
@@ -73,36 +73,36 @@ $(document).on("click", ".myform-btnVal", function () {
 $(document).on("click", ".modal-trigger-edit", function () {
 	var theaterID = $(this).data('id');
     $.ajax({
-        url: 'components/theater.cfc', 
-        async: false,
-        data: 
-            {  
-                method: "getTheaterByID",
-                theaterID:theaterID},
-                success: function(response) {
-                    if (response){ 
-                        $(".mod-title").html("EDIT THEATER");    
-                    //  console.log(typeof response);
-                        var dataInJson = JSON.parse(response);
-                        $(".modal-content #fld_theaterName").val(dataInJson.items[0].fld_theaterName);
-                        $(".modal-content #theaterID").val(dataInJson.items[0].theaterID);
-                        $(".modal-content #old_img").val(dataInJson.items[0].fld_theaterImage);
-                        if(dataInJson.items[0].fld_theaterName){
-                            var editSrc = "./img/theaterimages/"+dataInJson.items[0].fld_theaterImage;
-                            $("#editimgsrc").attr('src', editSrc);   
-                        }else{
-                            var editSrc = "./img/theaterimages/no-man.jpg";
-                            $("#editimgsrc").attr('src', editSrc);   
-                        }
-                    } 
-                    else {                  
-                        alert('Error!');    
-                    }                    
-            } 
+    url: 'components/theater.cfc', 
+    async: false,
+    data: 
+    {  
+        method: "getTheaterByID",
+        theaterID:theaterID},
+        success: function(response) {
+        if (response){ 
+            $(".mod-title").html("EDIT THEATER");    
+        //  console.log(typeof response);
+            var dataInJson = JSON.parse(response);
+            $(".modal-content #fld_theaterName").val(dataInJson.items[0].fld_theaterName);
+            $(".modal-content #theaterID").val(dataInJson.items[0].theaterID);
+            $(".modal-content #old_img").val(dataInJson.items[0].fld_theaterImage);
+            if(dataInJson.items[0].fld_theaterName){
+                var editSrc = "./img/theaterimages/"+dataInJson.items[0].fld_theaterImage;
+                $("#editimgsrc").attr('src', editSrc);   
+            }else{
+                var editSrc = "./img/theaterimages/no-man.jpg";
+                $("#editimgsrc").attr('src', editSrc);   
+            }
+        } 
+        else {                  
+            alert('Error!');    
+        }                    
+    } 
      }); 
 });
 $(document).on('hide.bs.modal','#addEmployeeModal', function () {
-     $("label.fail-alert" ).remove(); 
+    $("label.fail-alert" ).remove(); 
     $('input').removeClass('fail-alert');
     document.getElementById("theater").reset();
     
@@ -117,16 +117,16 @@ $(document).on("click", ".deleteuserSubmit", function () {
     async: false,
     dataType: "json",
     data: 
-        { 
-            method: "deleteUser",
-            userID:userID},
-            success: function(objResponse ) {
-                if (objResponse.SUCCESS){ 
-                    alert('Theater deleted successfully');           
-                } 
-                else {                  
-                    alert('Error in deletion,Please try again!');    
-                }                    
-        }
+    { 
+        method: "deleteUser",
+        userID:userID},
+        success: function(objResponse ) {
+            if (objResponse.SUCCESS){ 
+                alert('Theater deleted successfully');           
+            } 
+            else {                  
+                alert('Error in deletion,Please try again!');    
+            }                    
+    }
     }); 
 });

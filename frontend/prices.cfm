@@ -7,7 +7,7 @@
     </head>
     <body>
         <header>
-        <cfinclude template="./header.cfm">	 
+            <cfinclude template="./header.cfm">	 
         </header>
         <section id="basic-page">
             <div class="main-content">

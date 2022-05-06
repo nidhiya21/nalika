@@ -117,8 +117,6 @@ $(document).on("click", ".modal-trigger-edit", function () {
                         var month = ("0" + (now.getMonth() + 1)).slice(-2);
                         var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
                         $(".modal-content #endDate").val(today);
-
-                      
                     } 
                     else {                  
                         alert('Error!');    
@@ -127,7 +125,7 @@ $(document).on("click", ".modal-trigger-edit", function () {
      }); 
 });
 $(document).on('hide.bs.modal','#addEmployeeModal', function () {
-     $("label.fail-alert" ).remove(); 
+    $("label.fail-alert" ).remove(); 
     $('input').removeClass('fail-alert');
     document.getElementById("showtime").reset(); 
     

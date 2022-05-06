@@ -33,7 +33,6 @@
                 ArrayAppend(errorMessage,"emailID Already exists","true");       
             }
             if  (arrayIsEmpty(errorMessage)){
-
                 qService = new query();
                 qService.setName("qInsert");
                 qService.addParam(name="emailID", value="#trim(form.emailID)#", cfsqltype="cf_sql_varchar");

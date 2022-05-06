@@ -14,7 +14,7 @@
                     <div class="print-title"><h1>CONTACT &amp; LOCATION, Movie Max Digital Cinemas</h1></div>
                     <h1>CONTACT &amp; LOCATION</h1>
                     <iframe id="c220"  width="100%" height="450" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDIwdoJS1mh4IHsRyiKV-XOUJh4uIpJ6t8&q=Movie+Max">
-                    </iframe><p></p><p>Movie Max Digital is on the Corner of Sophia and Canon Streets Timaru</p><p><b> Email</b> <br/><a href="mailto: info@moviemaxdigital.co.nz">info@moviemaxdigital.co.nz</a></p><p><b>Phone<br/></b>Movie Information Line: 03-684-6987<br/></p><p><b data-highlightable="1">Fundraising, Cinema Hires and Group Bookings</b> <br data-highlightable="1"/>info@moviemaxdigital.co.nz</p><style>body{margin:0;}#c220{border:0;}div.staticPage #c220{border:0;}</style>
+                    </iframe><p></p><p>Movie Max Digital is on the Corner of Sophia and Canon Streets</p><p><b> Email</b> <br/><a href="mailto: info@moviemaxdigital.com">info@moviemaxdigital.com</a></p><p><b>Phone<br/></b>Movie Information Line: 03-684-6987<br/></p><p><b data-highlightable="1">Fundraising, Cinema Hires and Group Bookings</b> <br data-highlightable="1"/>info@moviemaxdigital.com</p><style>body{margin:0;}#c220{border:0;}div.staticPage #c220{border:0;}</style>
                 </div>
             </div>
             <aside class="mobile-hide tablet-hide">

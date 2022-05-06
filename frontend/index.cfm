@@ -6,7 +6,9 @@
         <script type="text/javascript" src="./js/common.js"></script> 
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <cfinclude template="./common.cfm">
-        <script type="text/javascript" src="./js/index.js"></script>  
+        <script type="text/javascript" src="./js/index.js"></script> 
+        <script src="./js/jquery.validate.min.js"></script> 
+        <script type="text/javascript" src="./js/auth.js"></script>  
     </head>
     <body>
         <cfif isDefined("session") and structKeyExists(session, 'stLoggedInFrUser')  and structKeyExists(session.stLoggedInFrUser, 'userID')  >
@@ -25,8 +27,8 @@
                     <div class="date-picker">
                         <div class="date-picker-header">
                             <p>
-                                <a href="##" class="theme-selector active" data-theme="by-day"><i class="fa fa-calendar fa-inverse"></i><span>BY DAY</span></a>
-                                <a href="##" class="theme-selector " data-theme="by-movie"><i class="fa fa-film fa-inverse"></i><span>BY TITLE</span></a>
+                                <a href="##" class="theme-selector by-day active" data-theme="by-day"><i class="fa fa-calendar fa-inverse"></i><span>BY DAY</span></a>
+                                <a href="##" class="theme-selector  by-movie" data-theme="by-movie"><i class="fa fa-film fa-inverse"></i><span>BY TITLE</span></a>
                             </p>
                             <div class="order-by-container">
                                 <select id="order-by" name="order-by" class="order-by">
@@ -50,6 +52,9 @@
                     <div id="movie-list3">
                         <!-- display list of movies here -->
                     </div>
+                    <div id="movie-listTitle"> 
+                        <!-- display list of movies here -->
+                    </div>
                     <div id="session-keys"></div>
                     <ul class="options flex-container flex-container-nowrap flex-centre promotion-footer-ul-">
                         <li class="flex-item-stretch">
@@ -62,9 +67,9 @@
                             <a href="##" ><img data-src="./images/banner7.jpg" alt=""></a>
                         </li>
                     </ul>
+                    <cfinclude template="./recommended.cfm">
                 </div>
-                <aside class="mobile-hide tablet-hide">
-                    <cfinclude template="./bannerleftblock.cfm">	      
+                <aside class="mobile-hide tablet-hide">  	      
                     <div class="coming-soon">
                         <h2>COMING SOON</h2>
                         <ul class="coming-soon">
