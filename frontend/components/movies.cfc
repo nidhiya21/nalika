@@ -72,6 +72,7 @@
             <cfset variables.temp['fld_details']=moviesDet.fld_details />
             <cfset variables.temp['fld_cast']=moviesDet.fld_cast />
             <cfset variables.temp['fld_poster']=moviesDet.fld_poster />
+            <cfset variables.temp['startTime']=moviesDet.startTime />
             <cfset variables.temp['movieID']=moviesDet.movieID />
             <cfset ArrayAppend(retval, temp)>
         </cfloop>
@@ -265,5 +266,31 @@
         <cfset variables.result = {} />
         <cfset variables.result['items'] = retVal />
         <cfreturn variables.result/> 
+    </cffunction> 
+    <cffunction name="getMoviesListByTitle" hint="get now playing movies"  access="remote" output="false"  returntype="any" returnformat="JSON" >	 
+        <cfset variables.retVal = ArrayNew(1)>
+        <cfquery name = "moviesList"> 
+            SELECT shows.movieID,shows.startDate,shows.startTime,movies.*,theaters.fld_theaterName,theaters.theaterID 
+            FROM shows as shows
+            LEFT JOIN movies as movies
+            ON shows.movieID  = movies.movieID 
+            LEFT JOIN theaters as theaters
+            ON shows.theaterID   = theaters.theaterID  
+            where shows.endDate >= CURDATE() ORDER BY movies.fld_moviename ASC     
+        </cfquery>
+        <cfloop query="moviesList"> 
+            <cfset variables.temp = {} /> 
+            <cfset variables.temp['fld_theaterName']=moviesList.fld_theaterName />
+            <cfset variables.temp['fld_moviename']=moviesList.fld_moviename />
+            <cfset variables.temp['fld_details']=moviesList.fld_details />
+            <cfset variables.temp['fld_cast']=moviesList.fld_cast />
+            <cfset variables.temp['fld_poster']=moviesList.fld_poster />
+            <cfset variables.temp['startTime']=moviesList.startTime />
+            <cfset variables.temp['movieID']=moviesList.movieID />
+            <cfset ArrayAppend(retval, temp)>
+        </cfloop>
+        <cfset variables.result = {} />
+        <cfset variables.result['items'] = retVal />
+        <cfreturn variables.result/>  
     </cffunction> 
 </cfcomponent>     

@@ -45,11 +45,14 @@
                         <div class="seatsChart col-lg-6">
                             <div class="exit">Exit</div>
                             </br>
-                            <div class="seatRow">
+                           
+                            <div class="exit2">Exit</div>
+                            </br>
+                             <div class="seatRow">
                                 <div class="seatRowNumber">
                                     Gold Full
                                 </div>
-                                <span class="left">
+                                <span class="left"> 
                                     <div id="G1" title="" role="checkbox" value="300" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">G1</div>
                                     <div id="G2" role="checkbox" value="300" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">G2</div>
                                     <div id="G3" role="checkbox" value="300" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">G3</div>
@@ -62,8 +65,6 @@
                                     <div id="G8" role="checkbox" value="300" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">G8</div>
                                 <span>
                             </div>
-                            <div class="exit2">Exit</div>
-                            </br>
                             <div class="seatRow">
                                 <div class="seatRowNumber">
                                    Gold Half

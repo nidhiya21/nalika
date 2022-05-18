@@ -41,6 +41,8 @@
                 </ul>
         </div><!--.popup-header-->
         <div class="popup-content">
+            <cfparam name="form.emailID" default=""> 
+            <cfparam name="form.password" default=""> 
             <form name="loginForm" method="post"  class="sign-in" action="./components/contactscript.cfc?method=validateLogin">
                 <label for="email">Email:</label>
                 <input type="text" id="log-email" name="emailID">

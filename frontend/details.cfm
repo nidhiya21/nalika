@@ -100,6 +100,7 @@
                 <cfinclude template="./bannerleftblock.cfm">	
             </aside>
         </section>
+        <cfinclude template="./cast.cfm">
         <cfinclude template="./footer.cfm">	
         <script type="text/javascript" src="./js/main.js"></script>   
     </body>

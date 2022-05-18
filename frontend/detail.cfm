@@ -5,7 +5,6 @@
         <cfset result=moviesObj.getMoviesById(movieID)/>   
     </cfif>
 </cfif>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +16,7 @@
     </head>
     <body>
         <header>
-            <cfinclude template="./header.cfm">	 
+            <cfinclude template="./header.cfm">	  
         </header>
         <section class="details-container">
             <cfoutput>
@@ -91,6 +90,7 @@
                 </div>
             </cfoutput>    
         </section>
+     
         <section id="details">
             <div class="main-content">
                 <!-- display date selector and times -->
@@ -115,6 +115,7 @@
                 <cfinclude template="./bannerleftblock.cfm">	
             </aside>
         </section>
+        <cfinclude template="./cast.cfm">
         <script type="text/javascript" src="./js/datelist.js"></script>
         <cfinclude template="./footer.cfm">	 
         <script type="text/javascript" src="./js/main.js"></script>

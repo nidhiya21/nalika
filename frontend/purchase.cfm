@@ -40,7 +40,7 @@
                 <section id="session-overview">
                     <section class="session-details ">
                         <div class="poster-container">
-                                <img class="poster" src="../manage/movies/#result.FLD_POSTER#" alt=#result.FLD_MOVIENAME# />
+                            <img class="poster" src="../manage/movies/#result.FLD_POSTER#" alt=#result.FLD_MOVIENAME# />
                         </div>
                         <section class="film-details">
                             <div class="film-details-header">
@@ -209,7 +209,6 @@
                                                    <span> &#x20b9;</span> 200.00
                                             </span>
                                         </td>
-                                    
                                         <td class="quantity">
                                             <div>
                                                 <button class="icon-button icon_circle_minus highlight-foreground"></button>
@@ -219,12 +218,12 @@
                                         </td>
                                     <td>
                                         <div class="subtotal">
-                                                <span class="subtotal-currency">
-                                                      <span> &#x20b9;</span> 
-                                                </span>
-                                                <span class="subtotal-value-money">
-                                                    0.00
-                                                </span>
+                                            <span class="subtotal-currency">
+                                                    <span> &#x20b9;</span> 
+                                            </span>
+                                            <span class="subtotal-value-money">
+                                                0.00
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>
@@ -239,8 +238,7 @@
                                     data-voucherBarcode=""
                                     property="offers" 
                                     typeof="Offer" 
-                                    class="">
-                                    
+                                    class="">                                    
                                         <td class="name" property="name">
                                             <div class="ticket-name">ODC Half </div>
                                             <div class="ticket-table-member">
@@ -264,12 +262,12 @@
                                         </td>
                                     <td>
                                         <div class="subtotal">
-                                                <span class="subtotal-currency">
-                                                       <span> &#x20b9;</span> 
-                                                </span>
-                                                <span class="subtotal-value-money">
-                                                    0.00
-                                                </span>
+                                            <span class="subtotal-currency">
+                                                    <span> &#x20b9;</span> 
+                                            </span>
+                                            <span class="subtotal-value-money">
+                                                0.00
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>
@@ -285,9 +283,8 @@
                                     property="offers" 
                                     typeof="Offer" 
                                     class="">
-                                    
                                         <td class="name" property="name">
-                                            <div class="ticket-name">Box          </div>
+                                            <div class="ticket-name">Box </div>
                                             <div class="ticket-table-member">
                                                 <span class="price mobile-only" property="price">
                                                       <span> &#x20b9;</span> 100.00
@@ -299,7 +296,6 @@
                                                   <span> &#x20b9;</span> 100.00
                                             </span>
                                         </td>
-                                    
                                         <td class="quantity">
                                             <div>
                                                 <button class="icon-button icon_circle_minus highlight-foreground"></button>
@@ -307,26 +303,25 @@
                                                 <button class="icon-button icon_circle_plus highlight-foreground"></button>
                                             </div>
                                         </td>
-                                    <td>
-                                        <div class="subtotal">
-                                                <span class="subtotal-currency">
-                                                      <span> &#x20b9;</span> 
-                                                </span>
-                                                <span class="subtotal-value-money">
-                                                    0.00
-                                                </span>
-                                        </div>
-                                    </td>
+                                        <td>
+                                            <div class="subtotal">
+                                                    <span class="subtotal-currency">
+                                                        <span> &#x20b9;</span> 
+                                                    </span>
+                                                    <span class="subtotal-value-money">
+                                                        0.00
+                                                    </span>
+                                            </div>
+                                        </td>
                                 </tr>
-
                                 </table>
                             </div>
                     </div>
                     <div id="price-summary">
-                            <div>
-                                <span>Booking fee</span>
-                                <div class="booking-fee-value"><span>0.00</span></div>
-                            </div>
+                        <div>
+                            <span>Booking fee</span>
+                            <div class="booking-fee-value"><span>0.00</span></div>
+                        </div>
                         <div>
                             <span class="total-label">Total price</span>
                             <div class="total-value">
@@ -335,9 +330,9 @@
                         </div>
                     </div>
                     <div id="ticket-actionss">
-                            <button class="action highlight-background next">
-                                <span><a href="./seat.cfm" class="pay">Select seats</a></span>
-                            </button>
+                        <button class="action highlight-background next">
+                            <span><a href="./seat.cfm" class="pay">Select seats</a></span>
+                        </button>
                     </div>
                 </section>
                 <section id="seat-selection">
@@ -376,7 +371,6 @@
                         </button>
                     </div>
                 </section>
-
             </div>
         </div>
         <script language="javascript" type="text/javascript" src="./js/date.js"></script>  

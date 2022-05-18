@@ -13,12 +13,12 @@
                   <g fill="#ffffff" fill-rule="evenodd">
                      <path d="M1.276 31.647a1.543 1.543 0 01.033-2.17l14.59-14.09a1.531 1.531 0 012.171.043c.59.61.566 1.592-.033 2.17L3.447 31.69a1.531 1.531 0 01-2.17-.043z"></path>
                      <path d="M1.276 1.43A1.543 1.543 0 001.31 3.6L15.9 17.69a1.531 1.531 0 002.171-.043 1.543 1.543 0 00-.033-2.17L3.447 1.387a1.531 1.531 0 00-2.17.043z"></path>
-                  </g>
+                  </g> 
                </svg>
             </div>
          </div>
          <div data-slides-to-scroll="5" data-element-width="120" data-arrow-vertical-offset="56px" class="sc-tesakv-1 gSXbBz">
-            <a href="https://in.bookmyshow.com/person/yash/2537" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -30,7 +30,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Yash</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">as Rocky</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/sanjay-dutt/2035" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -42,7 +42,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Sanjay Dutt</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">as Adheera </h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/srinidhi-shetty/22732" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -54,7 +54,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Srinidhi Shetty</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">as Reena</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/raveena-tandon/5136" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -66,7 +66,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Raveena Tandon</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">as Ramika Sen</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/prakash-raj/1713" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -78,7 +78,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Prakash Raj</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">as Vijayendra Ingalgi</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/anant-nag/2942" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -90,7 +90,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Anant Nag</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">as Anand Ingalagi</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/achyuth-kumar/19493" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -117,7 +117,7 @@
       </div>
       <div class="sc-tesakv-3 UkbwZ">
          <div data-slides-to-scroll="5" data-element-width="120" data-arrow-vertical-offset="56px" class="sc-tesakv-1 gSXbBz">
-            <a href="https://in.bookmyshow.com/person/prashanth-neel/42374" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -129,7 +129,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Prashanth Neel</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">Director, Writer</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/vijay-kiraganduru/IEIN091085" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -141,7 +141,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Vijay Kiraganduru</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">Producer</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/ravi-basrur/1054876" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -153,7 +153,7 @@
                <h5 class="sc-17p4id8-1 fJynRG">Ravi Basrur</h5>
                <h5 class="sc-17p4id8-2 eaHNMA">Musician</h5>
             </a>
-            <a href="https://in.bookmyshow.com/person/bhuvan-gowda/IEIN018632" class="sc-17p4id8-0 eLqLje">
+            <a href="##" class="sc-17p4id8-0 eLqLje">
                <div height="120px" width="120px" class="sc-eykeme-0 cHNfJE" style="border-radius: 60px; background: none;">
                   <div class="sc-eykeme-2 ixCZoP" style="opacity: 0;">
                      <svg width="70" height="70">
@@ -170,5 +170,3 @@
       </div>
    </section>
 </section>
-</body>
-</html> 
